@@ -57,3 +57,32 @@ function get_template_part( $slug, $name = '' ) {
 	}
 
 }
+
+/**
+ * A better `locate_template()` function than what core WP provides. Note that
+ * this function merely locates templates and does no loading. Use the core
+ * `load_template()` function for actually loading the template.
+ *
+ * @since  5.0.0
+ * @access public
+ * @param  array|string  $templates
+ * @return string
+ */
+function locate( $templates ) {
+	$located = '';
+
+	foreach ( (array) $templates as $template ) {
+
+		foreach ( locations() as $location ) {
+
+			$file = trailingslashit( $location ) . $template;
+
+			if ( file_exists( $file ) ) {
+				$located = $file;
+				break 2;
+			}
+		}
+	}
+
+	return $located;
+}
