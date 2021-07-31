@@ -27,3 +27,33 @@ function path( $file = '' ) {
 
 	return $file ? $path . $file : $path;
 }
+
+/**
+ * Output get_template_part();
+ * 
+ * @since  2.0.0
+ * @access public
+ */
+function get_template_part( $slug, $name = '' ) {
+	$path = path();
+
+	do_action( "get_template_part_{$slug}", $slug, $name );
+
+	$templates = [];
+
+	if ( $name ) {
+		$templates[] = "{$path}/{$slug}-{$name}.php";
+		$templates[] = "{$path}/{$slug}/{$name}.php";
+	}
+
+	$templates[] = "{$path}/{$slug}.php";
+	$templates[] = "{$path}/{$slug}/{$slug}.php";
+
+	$templates = apply_filters( "backdrop/{$slug}/template_hierarchy", $templates, $name );
+	$template  = apply_filters( "backdrop/{$slug}/template", locate_template( $templates ), $name );
+
+	if ( $template ) {
+		include( $template ); // phpcs:ignore
+	}
+
+}
