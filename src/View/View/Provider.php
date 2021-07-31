@@ -15,10 +15,8 @@
  */
 
 namespace Benlumia007\Backdrop\View\View;
-
+use Benlumia007\Backdrop\View\Engine\Component as Engine;
 use Benlumia007\Backdrop\Tools\ServiceProvider;
-use Benlumia007\Backdrop\Contracts\View\Engine as EngineContract;
-use Benlumia007\Backdrop\Contracts\View\View   as ViewContract;
 
 /**
  * View provider class.
@@ -38,10 +36,10 @@ class Provider extends ServiceProvider {
 	public function register() {
 
 		// Bind the view contract.
-		$this->app->bind( ViewContract::class, View::class );
+		$this->app->bind( View::class );
 
 		// Bind a single instance of the engine contract.
-		$this->app->singleton( EngineContract::class, Engine::class );
+		$this->app->singleton( Engine::class );
 
 		// Create aliases for the view and engine.
 		$this->app->alias( ViewContract::class,   'view'        );

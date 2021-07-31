@@ -32,7 +32,6 @@ class Component {
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
-	 * @param  array|Collection  $data
 	 * @return View
 	 */
 	public function view( $name, $slugs = [] ) {
@@ -47,12 +46,11 @@ class Component {
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
-	 * @param  array|Collection  $data
 	 * @return void
 	 */
 	public function display( $name, $slugs = [] ) {
 
-		$this->view( $name, $slugs, $data )->display();
+		$this->view( $name, $slugs )->display();
 	}
 
 	/**
@@ -62,11 +60,10 @@ class Component {
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
-	 * @param  array|Collection  $data
 	 * @return string
 	 */
 	public function render( $name, $slugs = [] ) {
 
-		return $this->view( $name, $slugs, $data )->render();
+		return $this->view( $name, $slugs )->render();
 	}
 }
