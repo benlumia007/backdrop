@@ -28,10 +28,9 @@ interface Engine {
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
-	 * @param  array|Collection  $data
 	 * @return View
 	 */
-	public function view( $name, $slugs = [], $data = [] );
+	public function view( $name, $slugs = [] );
 
 	/**
 	 * Outputs a view template.
@@ -40,10 +39,9 @@ interface Engine {
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
-	 * @param  array|Collection  $data
 	 * @return void
 	 */
-	public function display( $name, $slugs = [], $data = [] );
+	public function display( $name, $slugs = [] );
 
 	/**
 	 * Returns a view template as a string.
@@ -52,8 +50,7 @@ interface Engine {
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
-	 * @param  array|Collection  $data
 	 * @return string
 	 */
-	function render( $name, $slugs = [], $data = [] );
+	function render( $name, $slugs = [] );
 }
