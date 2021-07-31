@@ -19,6 +19,7 @@ use Benlumia007\Backdrop\Proxies\Proxy;
 use Benlumia007\Backdrop\Proxies\App;
 use Benlumia007\Backdrop\Assets\FontAwesome\Provider as FontAwesomeServiceProvider;
 use Benlumia007\Backdrop\Assets\GoogleFonts\Provider as GoogleFontsServiceProvider;
+use Benlumia007\Backdrop\Template\Hierarchy\Component as HierarchyServiceProvider;
 
 /**
  * Application class.
@@ -114,6 +115,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 		}, [
             FontAwesomeServiceProvider::class,
             GoogleFontsServiceProvider::class,
+			HierarchyServiceProvider::class,
 		] );
 	}
 

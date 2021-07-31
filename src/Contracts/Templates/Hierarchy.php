@@ -45,7 +45,7 @@ interface Hierarchy extends Bootable {
      * @access public
      * @param  string $template
      */
-    public function template( $templates );
+    public function template( $template );
     
     /**
      * Filters on  `template_include` to make sure we fall
