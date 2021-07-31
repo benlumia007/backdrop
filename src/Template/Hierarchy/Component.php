@@ -119,6 +119,8 @@ class Component implements templateHierarchy {
         if ( ! $this->located && $template ) {
             $this->located = $template;
         }
+
+        return '';
     }
     
     /**
