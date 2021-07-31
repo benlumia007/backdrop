@@ -14,7 +14,7 @@
  * @since  2.0.0
  * @access public
  */
-namespace Benlumia007\Backdrop\Templates;
+namespace Benlumia007\Backdrop\Contracts\Template;
 use Benlumia007\Backdrop\Contracts\Bootable;
 
 /**
