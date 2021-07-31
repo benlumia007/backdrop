@@ -14,6 +14,7 @@
 namespace Benlumia007\Backdrop\Template\Hierarchy;
 use Benlumia007\Backdrop\Contracts\Template\Hierarchy as templateHierarchy;
 use WP_User;
+use function Benlumia007\Backdrop\Template\path;
 
 /**
  * Overwrites the core WP template hierarchy.
