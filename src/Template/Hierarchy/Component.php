@@ -21,7 +21,7 @@ use WP_User;
  * @since  2.0.0
  * @access public
  */
-class Hierarchy implements templateHierarchy {
+class Component implements templateHierarchy {
     /**
      * Array of template types in WordPress Core.
      * 
