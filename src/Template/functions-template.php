@@ -86,3 +86,29 @@ function locate( $templates ) {
 
 	return $located;
 }
+
+/**
+ * Returns an array of locations to look for templates.
+ *
+ * Note that this won't work with the core WP template hierarchy due to an
+ * issue that hasn't been addressed since 2010.
+ *
+ * @link   https://core.trac.wordpress.org/ticket/13239
+ * @since  5.0.0
+ * @access public
+ * @return array
+ */
+function locations() {
+
+	$path = ltrim( path(), '/' );
+
+	// Add active theme path.
+	$locations = [ get_stylesheet_directory() . "/{$path}" ];
+
+	// If child theme, add parent theme path second.
+	if ( is_child_theme() ) {
+		$locations[] = get_template_directory() . "/{$path}";
+	}
+
+	return (array) apply_filters( 'hybrid/template/locations', $locations );
+}
