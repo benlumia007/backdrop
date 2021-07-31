@@ -14,10 +14,8 @@
  */
 
 namespace Benlumia007\Backdrop\View\Engine;
-
-use Benlumia007\Backdrop\Contracts\View\View;
 use Benlumia007\Backdrop\Proxies\App;
-use Benlumia007\Backdrop\Tools\Collection;
+use Benlumia007\Backdrop\View\View\Component as View;
 
 /**
  * Engine class.
@@ -37,17 +35,9 @@ class Component {
 	 * @param  array|Collection  $data
 	 * @return View
 	 */
-	public function view( $name, $slugs = [], $data = [] ) {
+	public function view( $name, $slugs = [] ) {
 
-		if ( ! $data instanceof Collection ) {
-			$data = new Collection( (array) $data );
-		}
-
-		// Pass the engine itself along so that it can be used directly
-		// in views.
-		$data->add( 'engine', $this );
-
-		return App::resolve( View::class, compact( 'name', 'slugs', 'data' ) );
+		return App::resolve( View::class, compact( 'name', 'slugs' ) );
 	}
 
 	/**
@@ -60,7 +50,7 @@ class Component {
 	 * @param  array|Collection  $data
 	 * @return void
 	 */
-	public function display( $name, $slugs = [], $data = [] ) {
+	public function display( $name, $slugs = [] ) {
 
 		$this->view( $name, $slugs, $data )->display();
 	}
@@ -75,7 +65,7 @@ class Component {
 	 * @param  array|Collection  $data
 	 * @return string
 	 */
-	public function render( $name, $slugs = [], $data = [] ) {
+	public function render( $name, $slugs = [] ) {
 
 		return $this->view( $name, $slugs, $data )->render();
 	}

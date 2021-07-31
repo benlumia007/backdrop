@@ -55,15 +55,6 @@ class Component implements ViewContract {
 	protected $slugs = [];
 
 	/**
-	 * An array of data that is passed into the view template.
-	 *
-	 * @since  5.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected $data = [];
-
-	/**
 	 * The template filename.
 	 *
 	 * @since  5.0.0
@@ -82,16 +73,14 @@ class Component implements ViewContract {
 	 * @param  object  $data
 	 * @return object
 	 */
-	public function __construct( $name, $slugs = [], Collection $data = null ) {
+	public function __construct( $name, $slugs = [] ) {
 
 		$this->name  = $name;
 		$this->slugs = (array) $slugs;
-		$this->data  = $data;
 
 		// Apply filters after all the properties have been assigned.
 		// This way, the full object is available to filters.
 		$this->slugs = apply_filters( "hybrid/view/{$this->name}/slugs", $this->slugs, $this );
-		$this->data  = apply_filters( "hybrid/view/{$this->name}/data",  $this->data,  $this );
 	}
 
 	/**
@@ -132,12 +121,6 @@ class Component implements ViewContract {
 		foreach ( $this->slugs as $slug ) {
 
 			$templates[] = "{$this->name}/{$slug}.php";
-		}
-
-		// Add in a `default.php` template.
-		if ( ! in_array( 'default', $this->slugs ) ) {
-
-			$templates[] = "{$this->name}/default.php";
 		}
 
 		// Fallback to `{$name}.php` as a last resort.
@@ -192,14 +175,7 @@ class Component implements ViewContract {
 			// Maybe remove core WP's `prepend_attachment`.
 			$this->maybeShiftAttachment();
 
-			// Extract the data into individual variables. Each of
-			// these variables will be available in the template.
-			if ( $this->data instanceof Collection ) {
-				extract( $this->data->all() );
-			}
-
 			// Make `$data` and `$view` variables available to templates.
-			$data = $this->data;
 			$view = $this;
 
 			// Load the template.
