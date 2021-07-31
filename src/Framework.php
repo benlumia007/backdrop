@@ -19,7 +19,7 @@ use Benlumia007\Backdrop\Proxies\Proxy;
 use Benlumia007\Backdrop\Proxies\App;
 use Benlumia007\Backdrop\Assets\FontAwesome\Provider as FontAwesomeServiceProvider;
 use Benlumia007\Backdrop\Assets\GoogleFonts\Provider as GoogleFontsServiceProvider;
-use Benlumia007\Backdrop\Template\Hierarchy\Component as HierarchyServiceProvider;
+use Benlumia007\Backdrop\Template\Hierarchy\Provider as HierarchyServiceProvider;
 
 /**
  * Application class.
