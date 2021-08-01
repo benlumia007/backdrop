@@ -20,6 +20,7 @@ use Benlumia007\Backdrop\Proxies\App;
 use Benlumia007\Backdrop\Assets\FontAwesome\Provider as FontAwesomeServiceProvider;
 use Benlumia007\Backdrop\Assets\GoogleFonts\Provider as GoogleFontsServiceProvider;
 use Benlumia007\Backdrop\Template\Hierarchy\Provider as HierarchyServiceProvider;
+use Benlumia007\Backdrop\Template\Template\Provider as TemplateServiceProvider;
 use Benlumia007\Backdrop\View\View\Provider as ViewServiceProvider;
 
 /**
@@ -117,6 +118,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
             FontAwesomeServiceProvider::class,
             GoogleFontsServiceProvider::class,
 			HierarchyServiceProvider::class,
+			TemplateServiceProvider::class,
 			ViewServiceProvider::class,
 		] );
 	}
