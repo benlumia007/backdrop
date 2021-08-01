@@ -123,6 +123,11 @@ class Component implements ViewContract {
 			$templates[] = "{$this->name}/{$slug}.php";
 		}
 
+		// Add in a `default.php` template.
+		if ( ! in_array( 'default', $this->slugs ) ) {
+			$templates[] = "{$this->name}/default.php";
+		}
+
 		// Fallback to `{$name}.php` as a last resort.
 		$templates[] = "{$this->name}.php";
 
