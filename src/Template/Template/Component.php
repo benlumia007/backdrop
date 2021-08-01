@@ -20,7 +20,7 @@ use Benlumia007\Backdrop\Contracts\Bootable;
  * @since  2.0.0
  * @access public
  */
-class Component extends Bootable {
+class Component implements Bootable {
     	/**
 	 * Templates collection.
 	 *
