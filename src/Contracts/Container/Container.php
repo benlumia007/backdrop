@@ -15,17 +15,37 @@ namespace Benlumia007\Backdrop\Contracts\Container;
 use Closure;
 
 /**
- * Container Interface
+ * Container interface
  * 
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 interface Container {
+	/**
+	 * Determine if the given abstract type has been bound.
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string $abstract
+	 * @return bool
+	 */
+	public function bound( $abstract );
+
+	/**
+	 * Create an alias for the abstract type
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string $abstract
+	 * @param  string $alias
+	 * @param  void
+	 */
+	public function alias( $abstract, $alias );
+
     /**
-     * Add a binding. The abstract should be a key, abstract class name, or interface name.
-     * The concrete should be the concrete implementation of the abstract.
+     * Register a binding with the container.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
      * @param  string $abstract
      * @param  mixed  $concrete
@@ -35,9 +55,9 @@ interface Container {
     public function bind( $abstract, $concrete = null, $shared = false );
 
     /**
-     * Alias for `bind()`
+     * Register a binding if it hasn't already been registered.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
 	 * @param  string  $abstract
 	 * @param  mixed   $concrete
@@ -49,7 +69,7 @@ interface Container {
     /**
      * Remove a Binding
      * 
-     * @since  2.0.0
+     * @since  3.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @return void
@@ -57,22 +77,54 @@ interface Container {
     public function remove( $abstract );
 
 	/**
+	 * Register a shared binding in the container.
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string $abstract
+	 * @param  mixed  $concrete
+	 * @return void
+	 */
+	public function singleton( $abstract, $concrete = null );
+
+	/**
+	 * Register an existing instance as a shared in the container.
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string $abstract
+	 * @param  mixed  $instance
+	 */
+	public function instance( $abstract, $instance );
+
+	 /**
+	  * Extend a binding.
+	  *
+	  * @since  3.0.0
+	  * @access public
+	  * @param  string  $abstract
+	  * @param  Closure $closure
+	  * @return void
+	  */
+	  public function extend( $abstract, Closure $closure );
+
+	/**
 	 * Resolve and return the binding.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $abstract
-	 * @param  array   $parameters
+	 * @param  string $abstract
+	 * @param  array  $parameters
 	 * @return mixed
 	 */
     public function resolve( $abstract, array $parameters = [] );
     
 	/**
-	 * Alias for `resolve()`.
+	 * Get a closure to resolve the given type from the container.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $abstract
+	 * @param  string $abstract
 	 * @return object
 	 */
 	public function get( $abstract );
@@ -80,54 +132,10 @@ interface Container {
 	/**
 	 * Check if a binding exists.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $abstract
+	 * @param  string $abstract
 	 * @return bool
 	 */
 	public function has( $abstract );
-
-	/**
-	 * Add a shared binding.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  object  $concrete
-	 * @return void
-	 */
-	public function singleton( $abstract, $concrete = null );
-
-	/**
-	 * Add an existing instance.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  mixed   $instance
-	 * @return mixed
-	 */
-	 public function instance( $abstract, $instance );
-
-	 /**
-	  * Extend a binding.
-	  *
-	  * @since  2.0.0
-	  * @access public
-	  * @param  string  $abstract
-	  * @param  Closure $closure
-	  * @return void
-	  */
-	 public function extend( $abstract, Closure $closure );
-
-	 /**
-	  * Create an alias for an abstract type.
-	  *
-	  * @since  2.0.0
-	  * @access public
-	  * @param  string  $abstract
-	  * @param  string  $alias
-	  * @return void
-	  */
-     public function alias( $abstract, $alias );
 }
