@@ -72,7 +72,7 @@ class Component implements Bootable {
 	 */
 	public function register() {
 
-		do_action( 'hybrid/templates/register', $this->templates );
+		do_action( 'backdrop/templates/register', $this->templates );
 	}
 
 	/**
