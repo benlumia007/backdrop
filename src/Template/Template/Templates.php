@@ -1,39 +1,41 @@
 <?php
 /**
- * Templates manager.
+ * Backdrop Core ( src/Template/Template/Templates.php )
  *
- * This class is just a wrapper around the `Collection` class for adding a
- * specific type of data.  Essentially, we make sure that anything added to the
- * collection is in fact a `Template`.
- *
- * @package   HybridCore
- * @author    Justin Tadlock <justintadlock@gmail.com>
- * @copyright Copyright (c) 2008 - 2019, Justin Tadlock
- * @link      https://themehybrid.com/hybrid-core
- * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @package   Backdrop Core
+ * @copyright Copyright (C) 2019-2021. Benjamin Lu
+ * @license   GNU General PUblic License v2 or later ( https://www.gnu.org/licenses/gpl-2.0.html )
+ * @author    Benjamin Lu ( https://getbenonit.com )
  */
 
+/**
+ * Define namespace
+ */
 namespace Benlumia007\Backdrop\Template\Template;
 use Benlumia007\Backdrop\Tools\Collection;
+use function Benlumia007\Backdrop\Template\path;
 
 /**
  * Template collection class.
  *
- * @since  5.0.0
+ * @since  2.0.0
  * @access public
  */
 class Templates extends Collection {
 
 	/**
-	 * Add a new template.
+	 * Add a new custom template.
 	 *
-	 * @since  5.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @param  string  $name
 	 * @param  mixed   $value
 	 * @return void
 	 */
 	 public function add( $name, $value ) {
+		$path = ltrim( trailingslashit( path( 'templates' ) ) );
+
+		$name = $path . $name;
 
 		parent::add( $name, new Template( $name, $value ) );
 	}
