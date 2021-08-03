@@ -54,7 +54,7 @@ function render_site_title( array $args = [] ) {
 			$link // phpcs:ignore
 		);
 	}
-	return apply_filters( 'backdrop_display_site_title', $html );
+	return apply_filters( 'backdrop/render/site/title', $html );
 }
 
 /**
@@ -94,7 +94,7 @@ function render_site_description( array $args = [] ) {
 			$title
 		);	
 	}
-	return apply_filters( 'backdrop_site_description', $html );
+	return apply_filters( 'backdrop/render/site/description', $html );
 }
 
 
@@ -134,7 +134,7 @@ function render_site_link( array $args = [] ) {
 		esc_url( home_url( '/' ) ),
 		sprintf( $args['text'], get_bloginfo( 'name' ) )
 	);
-	return apply_filters( 'backdrop_site_link', $html );
+	return apply_filters( 'backdrop/render/site/link', $html );
 }
 
 /**
@@ -171,7 +171,7 @@ function render_wp_link( array $args = [] ) {
 		esc_url( __( 'https://wordpress.org', 'backdrop-core' ) ),
 		sprintf( $args['text'], esc_html__( 'WordPress', 'backdrop-core' ) )
 	);
-	return apply_filters( 'backdrop_wp_link', $html );
+	return apply_filters( 'backdrop/render/wp/link', $html );
 }
 
 function display_theme_link( array $args = [] ) {
@@ -210,7 +210,7 @@ function render_theme_link( array $args = [] ) {
 		wp_kses( $theme->display( 'Name' ), $allowed )
 	);
 
-	return apply_filters( 'backdrop_theme_link', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/render/theme/link', $args['before'] . $html . $args['after'] );
 }
 
 
@@ -250,7 +250,7 @@ function render_home_link( array $args = [] ) {
 		esc_url( home_url() ),
 		sprintf( $args['text'], get_bloginfo( 'name', 'display' ) )
 	);
-	return apply_filters( 'display_home_link', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/render/home/link', $args['before'] . $html . $args['after'] );
 }
 
 /**
@@ -287,5 +287,5 @@ function render_cp_link( array $args = [] ) {
 		esc_url( __( 'https://classicpress.net', 'backdrop-core' ) ),
 		sprintf( $args['text'], esc_html__( 'ClassicPress', 'backdrop-core' ) )
 	);
-	return apply_filters( 'backdrop_cp_link', $html );
+	return apply_filters( 'backdrop/render/cp/link', $html );
 }

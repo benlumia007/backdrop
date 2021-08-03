@@ -14,7 +14,7 @@
 namespace Benlumia007\Backdrop\Entry;
 
 function display_title( array $args = [] ) {
-	echo render_title( $args ); // phpcs:ignore
+	echo render_title( $args ); 
 }
 
 function render_title( array $args = [] ) {
@@ -43,26 +43,26 @@ function render_title( array $args = [] ) {
 		$text
 	);
 
-	return apply_filters( 'backdrop_display_title', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/display/title', $args['before'] . $html . $args['after'] );
 }
 
 /**
  * Outputs the post permalink HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
  */
 function display_permalink( array $args = [] ) {
 
-	echo render_permalink( $args ); // phpcs:ignore
+	echo render_permalink( $args ); 
 }
 
 /**
  * Returns the post permalink HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -85,20 +85,20 @@ function render_permalink( array $args = [] ) {
 		sprintf( $args['text'], esc_url( $url ) )
 	);
 
-	return apply_filters( 'backdrop_display_permalink', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/display/permalink', $args['before'] . $html . $args['after'] );
 }
 
 /**
  * Outputs the post author HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
  */
 function display_author( array $args = [] ) {
 
-	echo render_author( $args ); // phpcs:ignore
+	echo render_author( $args );
 }
 
 function render_author( array $args = [] ) {
@@ -124,13 +124,13 @@ function render_author( array $args = [] ) {
 
 	$html = sprintf( '<i class="fas fa-user"></i><span class="%s">%s</span>', esc_attr( $args['class'] ), $author );
 
-	return apply_filters( 'backdrop_display_author', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/display/author', $args['before'] . $html . $args['after'] );
 }
 
 /**
  * Outputs the post date HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -143,7 +143,7 @@ function display_date( array $args = [] ) {
 /**
  * Returns the post date HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -165,13 +165,13 @@ function render_date( array $args = [] ) {
 		sprintf( $args['text'], get_the_date( $args['format'] ) )
 	);
 
-	return apply_filters( 'backdrop_display_date', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/display/date', $args['before'] . $html . $args['after'] );
 }
 
 /**
  * Outputs the post comments link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -184,7 +184,7 @@ function display_comments_link( array $args = [] ) {
 /**
  * Returns the post comments link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -216,7 +216,7 @@ function render_comments_link( array $args = [] ) {
 		$text
 	);
 
-	return apply_filters( 'backdrop_display_comments_link', $args['before'] . $html . $args['after'] );
+	return apply_filters( 'backdrop/display/comments/link', $args['before'] . $html . $args['after'] );
 }
 
 function display_categories( array $args = [] ) {
@@ -227,7 +227,7 @@ function display_categories( array $args = [] ) {
 /**
  * Returns the post terms HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -263,7 +263,7 @@ function render_categories( array $args = [] ) {
 		$html = $args['before'] . $html . $args['after'];
 	}
 
-	return apply_filters( 'backdrop_display_categories', $html );
+	return apply_filters( 'backdrop/display/categories', $html );
 }
 
 
@@ -275,7 +275,7 @@ function display_tags( array $args = [] ) {
 /**
  * Returns the post terms HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -311,5 +311,5 @@ function render_tags( array $args = [] ) {
 		$html = $args['before'] . $html . $args['after'];
 	}
 
-	return apply_filters( 'backdrop_display_tags', $html );
+	return apply_filters( 'backdrop/display/tags', $html );
 }
