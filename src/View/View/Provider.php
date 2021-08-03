@@ -23,7 +23,7 @@ use Benlumia007\Backdrop\Contracts\View\View   as ViewContract;
 /**
  * View provider class.
  *
- * @since  5.0.0
+ * @since  3.0.0
  * @access public
  */
 class Provider extends ServiceProvider {
@@ -31,7 +31,7 @@ class Provider extends ServiceProvider {
 	/**
 	 * Binds the implementation of the view contract to the container.
 	 *
-	 * @since  5.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */

@@ -20,7 +20,7 @@ use Benlumia007\Backdrop\Contracts\Container\Container as ContainerContract;
 /**
  * A simple container for objects.
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 class Container implements ContainerContract, ArrayAccess {
@@ -28,7 +28,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Stored definitions of objects.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access protected
 	* @var    array
 	*/
@@ -37,7 +37,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	 * Array of aliases for bindings.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -46,7 +46,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Array of single instance objects.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access protected
 	* @var    array
 	*/
@@ -55,7 +55,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Array of object extensions.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access protected
 	* @var    array
 	*/
@@ -64,7 +64,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Set up a new container.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  array  $definitions
 	* @return void
@@ -83,7 +83,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * the abstract. If no concrete is given, its assumed the abstract
 	 * handles the concrete implementation.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @param  mixed   $concrete
@@ -105,7 +105,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Alias for `bind()`.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $abstract
 	* @param  mixed   $concrete
@@ -120,7 +120,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	 * Remove a binding.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @return void
@@ -136,7 +136,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	 * Resolve and return the binding.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @param  array   $parameters
@@ -196,7 +196,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * Creates an alias for an abstract. This allows you to add names that
 	 * are easy to access without remembering more complex class names.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @param  string  $alias
@@ -210,7 +210,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Alias for `resolve()`.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $abstract
 	* @return object
@@ -223,7 +223,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Check if a binding exists.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $abstract
 	* @return bool
@@ -236,7 +236,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	 * Add a shared binding.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @param  object  $concrete
@@ -251,7 +251,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * Add an existing instance. This can be an instance of an object or a
 	 * single value that should be stored.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @param  mixed   $instance
@@ -268,7 +268,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * Extend a binding with something like a decorator class. Cannot
 	 * extend resolved instances.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @param  Closure $closure
@@ -285,7 +285,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * Checks if we're dealing with an alias and returns the abstract. If
 	 * not an alias, return the abstract passed in.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @param  string    $abstract
 	 * @return string
@@ -302,7 +302,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	 * Gets the concrete of an abstract.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @param  string    $abstract
 	 * @return mixed
@@ -323,7 +323,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * Determines if a concrete is buildable. It should either be a closure
 	 * or a concrete class.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @param  mixed    $concrete
 	 * @return bool
@@ -339,7 +339,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * the closure and pass the included parameters. Otherwise, we'll resolve
 	 * the dependencies for the class and return a new object.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @param  mixed  $concrete
 	 * @param  array  $parameters
@@ -369,7 +369,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 *
 	 * @todo Handle errors when we can't solve a dependency.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @param  array     $dependencies
 	 * @param  array     $parameters
@@ -404,7 +404,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Sets a property via `ArrayAccess`.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $name
 	* @param  mixed   $value
@@ -418,7 +418,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Unsets a property via `ArrayAccess`.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $name
 	* @return void
@@ -431,7 +431,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Checks if a property exists via `ArrayAccess`.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $name
 	* @return bool
@@ -444,7 +444,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Returns a property via `ArrayAccess`.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $name
 	* @return mixed
@@ -458,7 +458,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Magic method when trying to set a property.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $name
 	* @param  mixed   $value
@@ -472,7 +472,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Magic method when trying to unset a property.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $name
 	* @return void
@@ -485,7 +485,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Magic method when trying to check if a property exists.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $name
 	* @return bool
@@ -498,7 +498,7 @@ class Container implements ContainerContract, ArrayAccess {
 	/**
 	* Magic method when trying to get a property.
 	*
-	* @since  2.0.0
+	* @since  3.0.0
 	* @access public
 	* @param  string  $name
 	* @return mixed

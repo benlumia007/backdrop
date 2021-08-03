@@ -21,7 +21,7 @@ use Benlumia007\Backdrop\Tools\ServiceProvider;
 /**
  * Template hierarchy provider class.
  *
- * @since  5.0.0
+ * @since  3.0.0
  * @access public
  */
 class Provider extends ServiceProvider {
@@ -30,7 +30,7 @@ class Provider extends ServiceProvider {
 	 * Registration callback that adds a single instance of the template
 	 * hierarchy to the container.
 	 *
-	 * @since  5.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -44,7 +44,7 @@ class Provider extends ServiceProvider {
 	/**
 	 * Boots the hierarchy by firing its hooks in the `boot()` method.
 	 *
-	 * @since  5.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */

@@ -1,7 +1,7 @@
 # Changelog
 
 ## 1.1.6 
-- This is the last update for version 1.0.0
+- This is the last update for version 3.0.0
 
 ## 1.1.2 - November 18, 2020
 - Add Support for ClassicPress
@@ -73,5 +73,5 @@ deleted:    assets/js/image-radio.js
 - Removed `brands.css`, `brands.min.css`, `solid.css`, and `solid.min.css`
 - Primary Navigation set depth 2, allowing only sub-menu only.
 
-## 1.0.0 - May 1, 2019
+## 3.0.0 - May 1, 2019
 - Initial Release

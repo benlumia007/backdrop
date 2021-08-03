@@ -17,7 +17,7 @@ use Benlumia007\Backdrop\Contracts\Bootable;
 /**
  * Customize
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 interface Customize extends Bootable {

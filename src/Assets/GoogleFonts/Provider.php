@@ -18,7 +18,7 @@ use Benlumia007\Backdrop\Assets\GoogleFonts\Component;
 /**
  * Attr provider class.
  *
- * @since  5.0.0
+ * @since  3.0.0
  * @access public
  */
 class Provider extends ServiceProvider {
@@ -26,7 +26,7 @@ class Provider extends ServiceProvider {
 	/**
 	 * Binds the implementation of the attributes contract to the container.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */

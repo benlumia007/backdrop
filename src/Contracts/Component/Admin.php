@@ -21,7 +21,7 @@ interface Admin extends Bootable {
 	/**
 	 * menu()
 	 * 
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 */
 	public function menu();
@@ -29,7 +29,7 @@ interface Admin extends Bootable {
 	/**
 	 * callback()
 	 * 
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 */
 	public function callback();
@@ -37,7 +37,7 @@ interface Admin extends Bootable {
 	/**
 	 * tabs()
 	 * 
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 */
 	public function tabs();
@@ -45,7 +45,7 @@ interface Admin extends Bootable {
 	/**
 	 * pages()
 	 * 
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 */
 	public function pages();

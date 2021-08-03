@@ -17,7 +17,7 @@ use Benlumia007\Backdrop\Contracts\Bootable;
 /**
  * Sidebar Interface
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  */
 interface Sidebar extends Bootable {

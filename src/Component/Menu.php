@@ -60,7 +60,7 @@ class Menu implements MenuContracts {
 		/**
 		 * We will be enqueue the app.js file, which mainly be for the navigation only.
 		 */
-		wp_enqueue_script( 'backdrop-core-navigation', get_theme_file_uri( 'vendor/benlumia007/backdrop-core/assets/js/navigation.js' ), array('jquery'), '1.0.0', true );
+		wp_enqueue_script( 'backdrop-core-navigation', get_theme_file_uri( 'vendor/benlumia007/backdrop-core/assets/js/navigation.js' ), array('jquery'), '3.0.0', true );
 		wp_localize_script( 'backdrop-core-navigation', 'backdropCoreScreenReaderText', array(
 			'expand'   => '<span class="screen-reader-text">' . esc_html__( 'expand child menu', 'backdrop-core' ) . '</span>',
 			'collapse' => '<span class="screen-reader-text">' . esc_html__( 'collapse child menu', 'backdrop-core' ) . '</span>',

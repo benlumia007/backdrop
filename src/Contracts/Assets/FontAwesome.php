@@ -23,7 +23,7 @@ interface FontAwesome extends Bootable {
 	 *
 	 * The theme_enqueue(); is used to define any scripts and styles that's going to be used part of a theme.
 	 *
-	 * @since  1.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */

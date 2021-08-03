@@ -49,6 +49,6 @@ class Admin implements AdminContract {
 
     public function boot() {
 		add_action( 'admin_menu', array( $this, 'menu' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ), true, '1.0.0' );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ), true, '3.0.0' );
     }
 }

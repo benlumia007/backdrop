@@ -18,7 +18,7 @@ use Benlumia007\Backdrop\Assets\FontAwesome\Component;
 /**
  * Attr provider class.
  *
- * @since  5.0.0
+ * @since  3.0.0
  * @access public
  */
 class Provider extends ServiceProvider {

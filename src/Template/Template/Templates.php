@@ -26,7 +26,7 @@ class Templates extends Collection {
 	/**
 	 * Add a new custom template.
 	 *
-	 * @since  1.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $name
 	 * @param  mixed   $value
