@@ -22,16 +22,6 @@ use Closure;
  */
 interface Container {
 	/**
-	 * Determine if the given abstract type has been bound.
-	 * 
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string $abstract
-	 * @return bool
-	 */
-	public function bound( $abstract );
-
-	/**
 	 * Create an alias for the abstract type
 	 * 
 	 * @since  3.0.0
