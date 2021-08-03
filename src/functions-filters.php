@@ -1,22 +1,22 @@
-<?php 
-
-
+<?php
 /**
- * Overrides the default comments template.  This filter allows for a
- * `comments-{$post_type}.php` template based on the post type of the current
- * single post view.  If this template is not found, it falls back to the
- * default `comments.php` template.
+ * Backdrop Core
  *
- * @since  5.0.0
- * @access public
- * @param  string $template
- * @return string
+ * @package   Backdrop Core
+ * @copyright Copyright (C) 2019-2021. Benjamin Lu
+ * @license   GNU General Public License v2 or later ( https://www.gnu.org/licenses/gpl-2.0.html )
+ * @author    Benjamin Lu ( https://getbenonit.com )
  */
+use function Benlumia007\Backdrop\Template\path;
+
 add_filter( 'comments_template', function( $template ) {
 	$templates = [];
+    $path = path();
 
 	// Allow for custom templates entered into comments_template( $file ).
 	$template = str_replace( trailingslashit( get_stylesheet_directory() ), '', $template );
+
+	$template = $path . $template;
 
 	if ( 'comments.php' !== $template ) {
 		$templates[] = $template;
@@ -26,7 +26,7 @@ add_filter( 'comments_template', function( $template ) {
 	$templates[] = sprintf( 'comments/%s.php', get_post_type() );
 
 	// Add the default comments template.
-	$templates[] = 'comments/default.php';
+	$templates[] = "{$path}/comments/default.php";
 	$templates[] = 'comments.php';
 
 	// Return the found template.
