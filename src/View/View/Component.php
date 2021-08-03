@@ -79,7 +79,7 @@ class Component implements ViewContract {
 
 		// Apply filters after all the properties have been assigned.
 		// This way, the full object is available to filters.
-		$this->slugs = apply_filters( "hybrid/view/{$this->name}/slugs", $this->slugs, $this );
+		$this->slugs = apply_filters( "backdrop/view/{$this->name}/slugs", $this->slugs, $this );
 	}
 
 	/**
@@ -131,7 +131,7 @@ class Component implements ViewContract {
 		$templates[] = "{$this->name}.php";
 
 		// Allow developers to overwrite the hierarchy.
-		return apply_filters( "hybrid/view/{$this->name}/hierarchy", $templates, $this->slugs );
+		return apply_filters( "backdrop/view/{$this->name}/hierarchy", $templates, $this->slugs );
 	}
 
 	/**
