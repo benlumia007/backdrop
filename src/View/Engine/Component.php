@@ -6,11 +6,10 @@
  * without having to manually instantiate a view object.  It's also useful
  * because it passes an `$engine` variable to all views.
  *
- * @package   HybridCore
- * @author    Justin Tadlock <justintadlock@gmail.com>
- * @copyright Copyright (c) 2008 - 2019, Justin Tadlock
- * @link      https://themehybrid.com/hybrid-core
- * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @package   Backdrop Core
+ * @copyright Copyright (C) 2019-2021. Benjamin Lu
+ * @author    Benjamin Lu ( https://getbenonit.com )
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 namespace Benlumia007\Backdrop\View\Engine;
@@ -20,7 +19,7 @@ use Benlumia007\Backdrop\View\View\Component as View;
 /**
  * Engine class.
  *
- * @since  5.1.0
+ * @since  3.0.0
  * @access public
  */
 class Component {
@@ -28,7 +27,7 @@ class Component {
 	/**
 	 * Returns a View object.
 	 *
-	 * @since  5.1.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
@@ -42,7 +41,7 @@ class Component {
 	/**
 	 * Outputs a view template.
 	 *
-	 * @since  5.1.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
@@ -56,7 +55,7 @@ class Component {
 	/**
 	 * Returns a view template as a string.
 	 *
-	 * @since  5.1.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs

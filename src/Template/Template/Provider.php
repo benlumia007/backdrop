@@ -5,11 +5,10 @@
  * This is the service provider for the object templates system, which binds an
  * empty collection to the container that can later be used to register templates.
  *
- * @package   HybridCore
- * @author    Justin Tadlock <justintadlock@gmail.com>
- * @copyright Copyright (c) 2008 - 2019, Justin Tadlock
- * @link      https://themehybrid.com/hybrid-core
- * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @package   Backdrop Core
+ * @copyright Copyright (C) 2019-2021. Benjamin Lu
+ * @author    Benjamin Lu ( https://getbenonit.com )
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 namespace Benlumia007\Backdrop\Template\Template;
@@ -19,7 +18,7 @@ use Benlumia007\Backdrop\Tools\ServiceProvider;
 /**
  * Object templates provider class.
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 class Provider extends ServiceProvider {
@@ -27,7 +26,7 @@ class Provider extends ServiceProvider {
 	/**
 	 * Registers the templates collection and manager.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -41,7 +40,7 @@ class Provider extends ServiceProvider {
 	/**
 	 * Boots the manager by firing its hooks in the `boot()` method.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */

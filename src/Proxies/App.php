@@ -13,7 +13,7 @@ namespace Benlumia007\Backdrop\Proxies;
 /**
  * App static proxy class.
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 class App extends Proxy {
@@ -21,7 +21,7 @@ class App extends Proxy {
 	/**
 	 * Returns the name of the accessor for object registered in the container.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return string
 	 */

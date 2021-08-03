@@ -17,7 +17,7 @@ use Benlumia007\Backdrop\Contracts\Container\Container;
 /**
  * Base static proxy class.
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 class Proxy {
@@ -25,7 +25,7 @@ class Proxy {
 	/**
 	 * The container object.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @var    Container
 	 */
@@ -34,7 +34,7 @@ class Proxy {
 	/**
 	 * Returns the name of the accessor for object registered in the container.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return string
 	 */
@@ -46,7 +46,7 @@ class Proxy {
 	/**
 	 * Sets the container object.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -58,7 +58,7 @@ class Proxy {
 	/**
 	 * Returns the instance from the container.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return object
 	 */
@@ -71,7 +71,7 @@ class Proxy {
 	 * Calls the requested method from the object registered with the
 	 * container statically.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $method
 	 * @param  array   $args

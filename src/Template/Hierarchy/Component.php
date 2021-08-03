@@ -4,8 +4,8 @@
  *
  * @package   Backdrop Core
  * @copyright Copyright (C) 2019-2021. Benjamin Lu
- * @license   GNU General PUblic License v2 or later ( https://www.gnu.org/licenses/gpl-2.0.html )
  * @author    Benjamin Lu ( https://getbenonit.com )
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /**
@@ -19,14 +19,14 @@ use function Benlumia007\Backdrop\Template\path;
 /**
  * Overwrites the core WP template hierarchy.
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 class Component implements templateHierarchy {
     /**
      * Array of template types in WordPress Core.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access protected
      * @var    array
      */
@@ -55,7 +55,7 @@ class Component implements templateHierarchy {
      * Copy of the located template found when running through
      * the tamplate hierarchy.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access protected
      * @var    string
      */
@@ -64,7 +64,7 @@ class Component implements templateHierarchy {
     /**
      * Setup the template hierarchy filters.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
      * @return void
      */
@@ -86,7 +86,7 @@ class Component implements templateHierarchy {
      * Filters a queried template hierarchy for each type of template
      * and looks templates within `resources/views'.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
      * @return array
      */
@@ -112,7 +112,7 @@ class Component implements templateHierarchy {
      * an empty string so that the template hierarchy continues processing.
      * This way, we can capture the entire hierarchy.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
      * @param  string $template
      */
@@ -128,7 +128,7 @@ class Component implements templateHierarchy {
      * Filters on  `template_include` to make sure we fall
      * back to our template from earlier.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
      * @param  string $template
      * @return string

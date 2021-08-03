@@ -4,8 +4,8 @@
  *
  * @package   Backdrop Core
  * @copyright Copyright (C) 2019-2021. Benjamin Lu
- * @license   GNU General PUblic License v2 or later ( https://www.gnu.org/licenses/gpl-2.0.html )
  * @author    Benjamin Lu ( https://getbenonit.com )
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /**
@@ -18,7 +18,7 @@ class Admin implements AdminContract {
 	/**
 	 * menu()
 	 * 
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 */
 	public function menu() {}
@@ -26,7 +26,7 @@ class Admin implements AdminContract {
 	/**
 	 * callback()
 	 * 
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 */
 	public function callback() {}
@@ -34,7 +34,7 @@ class Admin implements AdminContract {
 	/**
 	 * tabs()
 	 * 
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 */
 	public function tabs() {}
@@ -42,7 +42,7 @@ class Admin implements AdminContract {
 	/**
 	 * pages()
 	 * 
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 */
 	public function pages() {}

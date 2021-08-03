@@ -18,7 +18,7 @@ use Benlumia007\Backdrop\Contracts\Displayable;
 /**
  * View interface.
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 interface View extends Renderable, Displayable {
@@ -26,7 +26,7 @@ interface View extends Renderable, Displayable {
 	/**
 	 * Returns the array of slugs.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return array
 	 */
@@ -35,7 +35,7 @@ interface View extends Renderable, Displayable {
 	/**
 	 * Returns the absolute path to the template file.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return string
 	 */

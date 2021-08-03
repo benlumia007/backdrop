@@ -3,9 +3,9 @@
  * Backdrop Core ( src/Contracts/Assets/GoogleFonts.php )
  *
  * @package   Backdrop Core
- * @copyright Copyright (C) 2019-2020. Benjamin Lu
- * @license   GNU General PUblic License v2 or later ( https://www.gnu.org/licenses/gpl-2.0.html )
+ * @copyright Copyright (C) 2019-2021. Benjamin Lu
  * @author    Benjamin Lu ( https://getbenonit.com )
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /**
@@ -23,7 +23,7 @@ class Component implements Bootable {
 	 *
 	 * The theme_enqueue(); is used to define any scripts and styles that's going to be used part of a theme.
 	 *
-	 * @since  1.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -33,7 +33,7 @@ class Component implements Bootable {
 		 * this feature, please go to the following url. ( https://google-webfonts-helper.herokuapp.com/fonts ). This also will
 		 * load font awesome 5.0 into one css file.
 		 */
-		wp_enqueue_style( 'backdrop-custom-fonts', get_theme_file_uri( '/vendor/benlumia007/backdrop-core/assets/fonts/custom-fonts.css' ), array(), '1.0.0' );
+		wp_enqueue_style( 'backdrop-custom-fonts', get_theme_file_uri( '/vendor/benlumia007/backdrop-core/assets/fonts/custom-fonts.css' ), array(), '3.0.0' );
     }
 
     public function boot() {

@@ -20,7 +20,7 @@ class Sanitize {
 	/**
 	 * Loads choices for layouts
 	 *
-	 * @since 1.0.0
+	 * @since 3.0.0
 	 * @access public
 	 * @param string $input     String containing a layout string.
 	 * @param mixed  $settings  Object containing info about settings/controls that's being sanitized.
@@ -34,7 +34,7 @@ class Sanitize {
 	/**
 	 * Santize checkbox
 	 *
-	 * @since 1.0.0
+	 * @since 3.0.0
 	 * @access public
 	 * @param boolean $value true or false.
 	 */

@@ -5,15 +5,16 @@
  * This is the service provider for the template hierarchy. It's used to register
  * the template hierarchy with the container and boot it when needed.
  *
- * @package   Benlumia007\BackdropCore
- * @author    Justin Tadlock <justintadlock@gmail.com>
- * @copyright Copyright (c) 2008 - 2019, Justin Tadlock
- * @link      https://themeBenlumia007\Backdrop.com/Benlumia007\Backdrop-core
- * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @package   Backdrop Core
+ * @copyright Copyright (C) 2019-2021. Benjamin Lu
+ * @author    Benjamin Lu ( https://getbenonit.com )
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+/**
+ * Define namespace
+ */
 namespace Benlumia007\Backdrop\Template\Hierarchy;
-
 use Benlumia007\Backdrop\Contracts\Template\Hierarchy as TemplateHierarchy;
 use Benlumia007\Backdrop\Tools\ServiceProvider;
 

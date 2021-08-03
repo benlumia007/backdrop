@@ -7,11 +7,10 @@
  * to the container, it also allows the view implementation to be overwritten.
  * That way, any custom functions will utilize the new class.
  *
- * @package   HybridCore
- * @author    Justin Tadlock <justintadlock@gmail.com>
- * @copyright Copyright (c) 2008 - 2019, Justin Tadlock
- * @link      https://themehybrid.com/hybrid-core
- * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @package   Backdrop Core
+ * @copyright Copyright (C) 2019-2021. Benjamin Lu
+ * @author    Benjamin Lu ( https://getbenonit.com )
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 namespace Benlumia007\Backdrop\View\View;

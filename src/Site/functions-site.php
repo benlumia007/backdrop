@@ -16,7 +16,7 @@ namespace Benlumia007\Backdrop\Site;
 /**
  * Outputs the site title HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -28,7 +28,7 @@ function display_site_title( array $args = [] ) {
 /**
  * Returns the site title HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -60,7 +60,7 @@ function render_site_title( array $args = [] ) {
 /**
  * Outputs the site description HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -72,7 +72,7 @@ function display_site_description( array $args = [] ) {
 /**
  * Returns the site description HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -101,7 +101,7 @@ function render_site_description( array $args = [] ) {
 /**
  * Outputs the site link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -113,7 +113,7 @@ function display_site_link( array $args = [] ) {
 /**
  * Return the site link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -140,7 +140,7 @@ function render_site_link( array $args = [] ) {
 /**
  * Output the WordPress Link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -152,7 +152,7 @@ function display_wp_link( array $args = [] ) {
 /**
  * Returns the WordPress Link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -181,7 +181,7 @@ function display_theme_link( array $args = [] ) {
 /**
  * Returns the Theme Link.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -217,7 +217,7 @@ function render_theme_link( array $args = [] ) {
 /**
  * Outputs the site link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -230,7 +230,7 @@ function display_home_link( array $args = [] ) {
 /**
  * Returns the site link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return string
@@ -256,7 +256,7 @@ function render_home_link( array $args = [] ) {
 /**
  * Output the ClassicPress Link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void
@@ -268,7 +268,7 @@ function display_cp_link( array $args = [] ) {
 /**
  * Returns the ClassicPress Link HTML.
  *
- * @since  1.0.0
+ * @since  3.0.0
  * @access public
  * @param  array  $args
  * @return void

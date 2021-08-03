@@ -11,7 +11,7 @@
 /**
  * Define namespace
  * 
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 namespace Benlumia007\Backdrop\Contracts\Template;
@@ -20,7 +20,7 @@ use Benlumia007\Backdrop\Contracts\Bootable;
 /**
  * Template Hierarchy Template
  * 
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 interface Hierarchy extends Bootable {
@@ -28,7 +28,7 @@ interface Hierarchy extends Bootable {
      * Filters a queried template hierarchy for each type of template
      * and looks templates within `resources/views'.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
      * @return array
      */
@@ -41,7 +41,7 @@ interface Hierarchy extends Bootable {
      * an empty string so that the template hierarchy continues processing.
      * This way, we can capture the entire hierarchy.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
      * @param  string $template
      */
@@ -51,7 +51,7 @@ interface Hierarchy extends Bootable {
      * Filters on  `template_include` to make sure we fall
      * back to our template from earlier.
      * 
-     * @since  2.0.0
+     * @since  3.0.0
      * @access public
      * @param  string $template
      * @return string

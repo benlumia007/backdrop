@@ -16,7 +16,7 @@ namespace Benlumia007\Backdrop\Contracts\View;
 /**
  * View interface.
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 interface Engine {
@@ -24,7 +24,7 @@ interface Engine {
 	/**
 	 * Returns a View object.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
@@ -35,7 +35,7 @@ interface Engine {
 	/**
 	 * Outputs a view template.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
@@ -46,7 +46,7 @@ interface Engine {
 	/**
 	 * Returns a view template as a string.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs

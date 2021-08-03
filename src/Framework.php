@@ -4,8 +4,8 @@
  *
  * @package   Backdrop Core
  * @copyright Copyright (C) 2019-2021. Benjamin Lu
- * @license   GNU General PUblic License v2 or later ( https://www.gnu.org/licenses/gpl-2.0.html )
  * @author    Benjamin Lu ( https://getbenonit.com )
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /**
@@ -26,7 +26,7 @@ use Benlumia007\Backdrop\View\View\Provider as ViewServiceProvider;
 /**
  * Application class.
  *
- * @since  2.0.0
+ * @since  3.0.0
  * @access public
  */
 class Framework extends Container implements FrameworkContract, Bootable {
@@ -34,16 +34,16 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * The current version of the framework.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @var    string
 	 */
-	const VERSION = '2.0.0';
+	const VERSION = '3.0.0';
 
 	/**
 	 * Array of service provider objects.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -52,7 +52,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Array of static proxy classes and aliases.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -62,7 +62,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * Registers the default bindings, providers, and proxies for the
 	 * framework.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -76,7 +76,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Calls the functions to register and boot providers and proxies.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -90,7 +90,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Registers the default bindings we need to run the framework.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -106,7 +106,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Adds the default service providers for the framework.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -126,7 +126,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Adds the default static proxy classes.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -138,7 +138,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Adds a service provider.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string|object  $provider
 	 * @return void
@@ -155,7 +155,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Creates a new instance of a service provider class.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @param  string    $provider
 	 * @return object
@@ -168,7 +168,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Calls a service provider's `register()` method if it exists.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @param  string    $provider
 	 * @return void
@@ -183,7 +183,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Calls a service provider's `boot()` method if it exists.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @param  string    $provider
 	 * @return void
@@ -198,7 +198,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Returns an array of service providers.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return array
 	 */
@@ -210,7 +210,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Calls the `register()` method of all the available service providers.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -224,7 +224,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Calls the `boot()` method of all the registered service providers.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -239,7 +239,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * Adds a static proxy alias. Developers must pass in fully-qualified
 	 * class name and alias class name.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access public
 	 * @param  string  $class_name
 	 * @param  string  $alias
@@ -253,7 +253,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Registers the static proxy classes.
 	 *
-	 * @since  2.0.0
+	 * @since  3.0.0
 	 * @access protected
 	 * @return void
 	 */
