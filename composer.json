@@ -19,11 +19,7 @@
           "Benlumia007\\Backdrop\\": "src/"
 		},
 		"files": [
-			"src/Entry/functions-entry.php",
-			"src/Site/functions-site.php",
-			"src/Template/functions-template.php",
-			"src/View/functions-view.php",
-            "src/functions-filters.php"
+            "src/functions-helpers.php"
 		]
     },
     "require": {
