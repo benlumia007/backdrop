@@ -87,7 +87,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	public function __construct() {
 
 		$this->registerDefaultBindings();
-		$this->registerDefaultProviders();
 		$this->registerDefaultProxies();
 	}
 
@@ -119,26 +118,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 
 		// Add the version for the framework.
 		$this->instance( 'version', static::VERSION );
-	}
-
-	/**
-	 * Adds the default service providers for the framework.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @return void
-	 */
-	protected function registerDefaultProviders() {
-
-		array_map( function( $provider ) {
-			$this->provider( $provider );
-		}, [
-            FontAwesomeServiceProvider::class,
-            GoogleFontsServiceProvider::class,
-			HierarchyServiceProvider::class,
-			TemplateServiceProvider::class,
-			ViewServiceProvider::class,
-		] );
 	}
 
 	/**
