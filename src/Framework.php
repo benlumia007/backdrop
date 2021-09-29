@@ -117,15 +117,10 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 */
 	public function provider( $provider ) {
 
-		// If passed a class name, resolve provider.
 		if ( is_string( $provider ) ) {
 			$provider = $this->resolveProvider( $provider );
 		}
 
-		// Register the provider.
-		$this->registerProvider( $provider );
-
-		// Store the provider.
 		$this->providers[] = $provider;
 	}
 
@@ -134,10 +129,11 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 *
 	 * @since  3.0.0
 	 * @access protected
-	 * @param  object    $provider
+	 * @param  string    $provider
 	 * @return object
 	 */
 	protected function resolveProvider( $provider ) {
+
 		return new $provider( $this );
 	}
 
@@ -146,7 +142,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 *
 	 * @since  3.0.0
 	 * @access protected
-	 * @param  object    $provider
+	 * @param  string    $provider
 	 * @return void
 	 */
 	protected function registerProvider( $provider ) {
@@ -161,21 +157,13 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 *
 	 * @since  3.0.0
 	 * @access protected
-	 * @param  object    $provider
+	 * @param  string    $provider
 	 * @return void
 	 */
 	protected function bootProvider( $provider ) {
 
-		$class_name = get_class( $provider );
-
-		// Bail if the provider has already been booted.
-		if ( in_array( $class_name, $this->booted_providers ) ) {
-			return;
-		}
-
 		if ( method_exists( $provider, 'boot' ) ) {
 			$provider->boot();
-			$this->booted_providers[] = $class_name;
 		}
 	}
 
@@ -187,6 +175,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @return array
 	 */
 	protected function getProviders() {
+
 		return $this->providers;
 	}
 
@@ -210,31 +199,13 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  string  $class
+	 * @param  string  $class_name
 	 * @param  string  $alias
 	 * @return void
 	 */
-	public function proxy( $class, $alias ) {
-		$this->proxies[ $class ] = $alias;
-	}
+	public function proxy( $class_name, $alias ) {
 
-
-	/**
-	 * Registers a static proxy class alias.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $class
-	 * @param  string  $alias
-	 * @return void
-	 */
-	protected function registerProxy( $class, $alias ) {
-
-		if ( ! class_exists( $alias ) ) {
-			class_alias( $class, $alias );
-		}
-
-		$this->registered_proxies[] = $alias;
+		$this->proxies[ $class_name ] = $alias;
 	}
 
 	/**
@@ -246,17 +217,10 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 */
 	protected function registerProxies() {
 
-		// Only set the container on the first call.
-		if ( ! $this->registered_proxies ) {
-			Proxy::setContainer( $this );
-		}
+		Proxy::setContainer( $this );
 
 		foreach ( $this->proxies as $class => $alias ) {
-
-			// Register proxy if not already registered.
-			if ( ! in_array( $alias, $this->registered_proxies ) ) {
-				$this->registerProxy( $class, $alias );
-			}
+			class_alias( $class, $alias );
 		}
 	}
 }
