@@ -54,24 +54,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	protected $proxies = [];
 
 	/**
-	 * Array of booted service providers.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected $booted_providers = [];
-
-	/**
-	 * Array of registered proxies.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected $registered_proxies = [];
-
-	/**
 	 * Registers the default bindings, providers, and proxies for the
 	 * framework.
 	 *
