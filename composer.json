@@ -20,6 +20,7 @@
 		}
     },
     "require": {
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "benlumia007/backdrop": "v3.0.0.x-dev"
     }
 }

@@ -75,6 +75,8 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @return void
 	 */
 	public function boot() {
+
+		$this->registerProviders();
 		$this->bootProviders();
 		$this->registerProxies();
 	}
@@ -177,6 +179,20 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	protected function getProviders() {
 
 		return $this->providers;
+	}
+
+	/**
+	 * Calls the `register()` method of all the available service providers.
+	 *
+	 * @since  3.0.0
+	 * @access protected
+	 * @return void
+	 */
+	protected function registerProviders() {
+
+		foreach ( $this->getProviders() as $provider ) {
+			$this->registerProvider( $provider );
+		}
 	}
 
 	/**
