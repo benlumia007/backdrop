@@ -1,10 +1,10 @@
 {
-    "name": "benlumia007/backdrop-core",
+    "name": "benlumia007/backdrop",
     "description": "A core that helps you build amazing themes",
     "keywords": [
         "wordpress"
     ],
-    "homepage": "https://github.com/benlumia007/backdrop-core",
+    "homepage": "https://github.com/benlumia007/backdrop",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
@@ -20,7 +20,7 @@
 		}
     },
     "require": {
-        "php": ">=5.6",
+        "php": ">=7.3.24",
         "benlumia007/backdrop": "v3.0.0.x-dev"
     }
 }
