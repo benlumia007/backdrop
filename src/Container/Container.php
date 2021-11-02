@@ -257,7 +257,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  string  $abstract
 	* @return object
 	*/
-	public function get( $abstract ) {
+	public function factory( $abstract ) {
 
 		return $this->resolve( $abstract );
 	}
@@ -493,7 +493,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function offsetGet( $name ) {
 
-		return $this->get( $name );
+		return $this->factory( $name );
 	}
 
 
@@ -547,7 +547,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function __get( $name ) {
 
-		return $this->get( $name );
+		return $this->factory( $name );
 	}
 
 	/**
