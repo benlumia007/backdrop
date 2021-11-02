@@ -69,6 +69,13 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	protected $extensions = [];
 
+    /**
+     * All of the registered rebound callbacks.
+     *
+     * @var array[]
+     */
+    protected $reboundCallbacks = [];
+
 	/**
 	* Set up a new container.
 	*
@@ -605,4 +612,14 @@ class Container implements ContainerContract, ArrayAccess {
 			call_user_func( $callback, $this, $instance );
 		}
 	}
+
+    /**
+     * Get the rebound callbacks for a given type.
+     *
+     * @param  string  $abstract
+     * @return array
+     */
+    protected function getReboundCallbacks( $abstract ) {
+        return $this->reboundCallbacks[ $abstract ] ?? [];
+    }
 }
