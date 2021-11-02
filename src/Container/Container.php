@@ -76,6 +76,20 @@ class Container implements ContainerContract, ArrayAccess {
      */
     protected $reboundCallbacks = [];
 
+    /**
+     * The stack of concretions currently being built.
+     *
+     * @var array[]
+     */
+    protected $buildStack = [];
+
+    /**
+     * The contextual binding map.
+     *
+     * @var array[]
+     */
+    public $contextual = [];
+
 	/**
 	* Set up a new container.
 	*
@@ -318,6 +332,11 @@ class Container implements ContainerContract, ArrayAccess {
 		if ( isset( $this->instances[ $abstract ] ) ) {
 			return $this->instances[ $abstract ];
 		}
+
+		/**
+		 * Get the contextual concrete binding for the given abstract.
+		 */
+		$concrete = $this->getContextualConcrete( $abstract );
 
 		// Get the concrete implementation.
 		$concrete = $this->getConcrete( $abstract );
@@ -671,4 +690,39 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $this->factory( $name );
 	}
+
+    /**
+     * Get the contextual concrete binding for the given abstract.
+     *
+     * @param  string|callable  $abstract
+     * @return \Closure|string|array|null
+     */
+    protected function getContextualConcrete( $abstract ) {
+        if ( ! is_null( $binding = $this->findInContextualBindings( $abstract ) ) ) {
+            return $binding;
+        }
+
+        // Next we need to see if a contextual binding might be bound under an alias of the
+        // given abstract type. So, we will need to check if any aliases exist with this
+        // type and then spin through them and check for contextual bindings on these.
+        if ( empty( $this->abstractAliases[ $abstract ] ) ) {
+            return;
+        }
+
+        foreach ( $this->abstractAliases[ $abstract ] as $alias) {
+            if (! is_null( $binding = $this->findInContextualBindings( $alias ) ) ) {
+                return $binding;
+            }
+        }
+    }
+
+    /**
+     * Find the concrete binding for the given abstract in the contextual binding array.
+     *
+     * @param  string|callable  $abstract
+     * @return \Closure|string|null
+     */
+    protected function findInContextualBindings( $abstract ) {
+        return $this->contextual[ end( $this->buildStack ) ][ $abstract ] ?? null;
+    }
 }
