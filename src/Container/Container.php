@@ -565,6 +565,8 @@ class Container implements ContainerContract, ArrayAccess {
     /**
      * Determine if the given abstract type has been resolved.
      *
+	 * @since  3.0.0
+	 * @access public
      * @param  string  $abstract
      * @return bool
      */
@@ -574,5 +576,17 @@ class Container implements ContainerContract, ArrayAccess {
 		}
 
 		return isset( $this->resolved[ $abstract ] ) || isset( $this->instances[ $abstract ] );
+	}
+
+	/**
+     * Determine if a given string is an alias.
+     *
+	 * @since  3.0.0
+	 * @access public
+     * @param  string  $abstract
+     * @return bool
+     */
+	public function isAlias( $name ) {
+		return isset( $this->aliases[ $name ] );
 	}
 }
