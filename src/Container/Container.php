@@ -78,6 +78,33 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
+	* Determine if the given abstract type has been bound.
+	*
+	* @since  3.0.0
+	* @access public
+	* @param  string  $abstract
+	* @return bool
+	*/
+	public function bound( $abstract ) {
+		return isset( $this->bindings[ $abstract ] ) || isset( $this->instances[ $abstract ] );
+	}
+
+	/**
+	 * Creates an alias for an abstract type. This allows you to add alias
+	 * names that are easier to remember rather than using full class names.
+	 *
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @param  string  $alias
+	 * @return void
+	 */
+	public function alias( $abstract, $alias ) {
+
+		$this->aliases[ $alias ] = $abstract;
+	}
+
+	/**
 	 * Add a binding. The abstract should be a key, abstract class name, or
 	 * interface name. The concrete should be the concrete implementation of
 	 * the abstract. If no concrete is given, its assumed the abstract
@@ -92,7 +119,10 @@ class Container implements ContainerContract, ArrayAccess {
 	 */
 	public function bind( $abstract, $concrete = null, $shared = false ) {
 
-		unset( $this->instances[ $abstract ] );
+		/**
+		 * Drop all of the stale instances and aliases.
+		 */
+		$this->dropStaleInstances( $abstract );
 
 		if ( is_null( $concrete ) ) {
 			$concrete = $abstract;
@@ -193,21 +223,6 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
-	 * Creates an alias for an abstract. This allows you to add names that
-	 * are easy to access without remembering more complex class names.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  string  $alias
-	 * @return void
-	 */
-	public function alias( $abstract, $alias ) {
-
-		$this->aliases[ $alias ] = $abstract;
-	}
-
-	/**
 	* Alias for `resolve()`.
 	*
 	* @since  3.0.0
@@ -218,18 +233,6 @@ class Container implements ContainerContract, ArrayAccess {
 	public function get( $abstract ) {
 
 		return $this->resolve( $abstract );
-	}
-
-	/**
-	* Check if a binding exists.
-	*
-	* @since  3.0.0
-	* @access public
-	* @param  string  $abstract
-	* @return bool
-	*/
-	public function bound( $abstract ) {
-		return isset( $this->bindings[ $abstract ] ) || isset( $this->instances[ $abstract ] );
 	}
 
 	/**

@@ -66,16 +66,6 @@ interface Container {
      */
     public function bindIf( $abstract, $concrete = null, $shared = false );
 
-    /**
-     * Remove a Binding
-     * 
-     * @since  3.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @return void
-     */
-    public function remove( $abstract );
-
 	/**
 	 * Register a shared binding in the container.
 	 * 
@@ -119,7 +109,27 @@ interface Container {
 	public function instance( $abstract, $instance );
 
 	/**
-	 * Resolve and return the binding.
+	 * Get a closure to resolve the given type from the container.
+	 *
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string $abstract
+	 * @return object
+	 */
+	public function factory( $abstract );
+
+    /**
+     * Remove a binding from the container.
+     * 
+     * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @return void
+     */
+    public function remove( $abstract );
+
+	/**
+	 * Resolve the given type from the container.
 	 *
 	 * @since  3.0.0
 	 * @access public
@@ -128,14 +138,4 @@ interface Container {
 	 * @return mixed
 	 */
     public function resolve( $abstract, array $parameters = [] );
-    
-	/**
-	 * Get a closure to resolve the given type from the container.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string $abstract
-	 * @return object
-	 */
-	public function get( $abstract );
 }
