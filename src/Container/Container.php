@@ -522,4 +522,16 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $this->get( $name );
 	}
+
+	/**
+	 * Drop all of the stale instances and aliases
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @return void
+	 */
+	protected function dropStaleInstances( $abstract ) {
+		unset( $this->instances[ $abstract ], $this->aliases[ $abstract ] );
+	}
 }
