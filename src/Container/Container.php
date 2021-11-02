@@ -177,8 +177,9 @@ class Container implements ContainerContract, ArrayAccess {
 	* @return void
 	*/
 	public function bindIf( $abstract, $concrete = null, $shared = false ) {
-
-		$this->bind( $abstract, $concrete, $shared );
+		if ( ! $this->bound( $abstract ) ) {
+			$this->bind( $abstract, $concrete, $shared );
+		}
 	}
 
 	/**
