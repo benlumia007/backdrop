@@ -31,7 +31,6 @@ interface Container {
 	 */
 	public function bound( $abstract );
 
-
 	/**
 	 * Create an alias for the abstract type
 	 * 
