@@ -24,6 +24,14 @@ use Benlumia007\Backdrop\Contracts\Container\Container as ContainerContract;
  * @access public
  */
 class Container implements ContainerContract, ArrayAccess {
+	/**
+	 * Array of the types that have been resolved
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @var static
+	 */
+	protected $resolved = [];
 
 	/**
 	* Stored definitions of objects.
@@ -118,18 +126,37 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return void
 	 */
 	public function bind( $abstract, $concrete = null, $shared = false ) {
-
 		/**
-		 * Drop all of the stale instances and aliases.
+		 * Drop all of the stale instances and aliases
+		 * 
+		 * @since  3.0.0
+		 * @access public
+		 * @param  string  $abstract
+		 * @return void
 		 */
 		$this->dropStaleInstances( $abstract );
 
+		/**
+		 * If no concrete type was given, we will simply set the concrete type to the
+		 * abstract type. After, the concrete type to be registered as shared without
+		 * be forced to state their classes in both  of the parameters
+		 */
 		if ( is_null( $concrete ) ) {
 			$concrete = $abstract;
 		}
 
 		$this->bindings[ $abstract ]   = compact( 'concrete', 'shared' );
-		$this->extensions[ $abstract ] = [];
+
+		/**
+		 * if the abstract was already resolved in the container we'll fire the
+		 * rebound listener so that any objects which have already gotten resolved
+		 * can have their copy of the updated via the listener callbacks.
+		 */
+		if ( $this->resolved( $abstract ) ) {
+			$this->rebound( $abstract );
+		}
+
+		// $this->extensions[ $abstract ] = [];
 	}
 
 	/**
@@ -533,5 +560,19 @@ class Container implements ContainerContract, ArrayAccess {
 	 */
 	protected function dropStaleInstances( $abstract ) {
 		unset( $this->instances[ $abstract ], $this->aliases[ $abstract ] );
+	}
+
+    /**
+     * Determine if the given abstract type has been resolved.
+     *
+     * @param  string  $abstract
+     * @return bool
+     */
+	public function resolved( $abstract ) {
+		if ( $this->isAlias( $abstract ) ) {
+			$abstract = $this->getAlias( $abstract );
+		}
+
+		return isset( $this->resolved[ $abstract ] ) || isset( $this->instances[ $abstract ] );
 	}
 }
