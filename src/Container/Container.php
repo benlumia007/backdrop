@@ -73,7 +73,7 @@ class Container implements ContainerContract, ArrayAccess {
 
 		foreach ( $definitions as $abstract => $concrete ) {
 
-			$this->add( $abstract, $concrete );
+			$this->bindIf( $abstract, $concrete );
 		}
 	}
 
@@ -112,7 +112,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  bool    $shared
 	* @return void
 	*/
-	public function add( $abstract, $concrete = null, $shared = false ) {
+	public function bindIf( $abstract, $concrete = null, $shared = false ) {
 
 		$this->bind( $abstract, $concrete, $shared );
 	}
@@ -243,7 +243,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 */
 	public function singleton( $abstract, $concrete = null ) {
 
-		$this->add( $abstract, $concrete, true );
+		$this->bindIf( $abstract, $concrete, true );
 	}
 
 	/**
@@ -411,7 +411,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function offsetSet( $name, $value ) {
 
-		$this->add( $name, $value );
+		$this->bindIf( $name, $value );
 	}
 
 	/**
@@ -465,7 +465,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function __set( $name, $value ) {
 
-		$this->add( $name, $value );
+		$this->bindIf( $name, $value );
 	}
 
 	/**
