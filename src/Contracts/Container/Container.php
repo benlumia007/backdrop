@@ -97,6 +97,17 @@ interface Container {
 	 */
 	public function singletonIf( $abstract, $concrete = null );
 
+	 /**
+	  * Extend an abstract type in the container
+	  *
+	  * @since  3.0.0
+	  * @access public
+	  * @param  string  $abstract
+	  * @param  Closure $closure
+	  * @return void
+	  */
+	  public function extend( $abstract, Closure $closure );
+
 	/**
 	 * Register an existing instance as a shared in the container.
 	 * 
@@ -106,17 +117,6 @@ interface Container {
 	 * @param  mixed  $instance
 	 */
 	public function instance( $abstract, $instance );
-
-	 /**
-	  * Extend a binding.
-	  *
-	  * @since  3.0.0
-	  * @access public
-	  * @param  string  $abstract
-	  * @param  Closure $closure
-	  * @return void
-	  */
-	  public function extend( $abstract, Closure $closure );
 
 	/**
 	 * Resolve and return the binding.

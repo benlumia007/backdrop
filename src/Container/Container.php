@@ -261,6 +261,22 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
+	 * Extend a binding with something like a decorator class. Cannot
+	 * extend resolved instances.
+	 *
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @param  Closure $closure
+	 * @return void
+	 */
+	public function extend( $abstract, Closure $closure ) {
+		$abstract = $this->getAlias( $abstract );
+
+		$this->extensions[ $abstract ][] = $closure;
+	}
+
+	/**
 	 * Add an existing instance. This can be an instance of an object or a
 	 * single value that should be stored.
 	 *
@@ -275,23 +291,6 @@ class Container implements ContainerContract, ArrayAccess {
 		$this->instances[ $abstract ] = $instance;
 
 		return $instance;
-	}
-
-	/**
-	 * Extend a binding with something like a decorator class. Cannot
-	 * extend resolved instances.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  Closure $closure
-	 * @return void
-	 */
-	public function extend( $abstract, Closure $closure ) {
-
-		$abstract = $this->getAbstract( $abstract );
-
-		$this->extensions[ $abstract ][] = $closure;
 	}
 
 	/**
