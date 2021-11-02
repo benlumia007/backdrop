@@ -127,7 +127,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 */
 	public function remove( $abstract ) {
 
-		if ( $this->has( $abstract ) ) {
+		if ( $this->bound( $abstract ) ) {
 
 			unset( $this->bindings[ $abstract ], $this->instances[ $abstract ] );
 		}
@@ -161,7 +161,7 @@ class Container implements ContainerContract, ArrayAccess {
 		if ( ! $this->isBuildable( $concrete ) ) {
 
 			// If we don't actually have this, return false.
-			if ( ! $this->has( $abstract ) ) {
+			if ( ! $this->bound( $abstract ) ) {
 				return false;
 			}
 
@@ -171,7 +171,7 @@ class Container implements ContainerContract, ArrayAccess {
 		// Build the object.
 		$object = $this->build( $concrete, $parameters );
 
-		if ( ! $this->has( $abstract ) ) {
+		if ( ! $this->bound( $abstract ) ) {
 			return $object;
 		}
 
@@ -228,8 +228,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  string  $abstract
 	* @return bool
 	*/
-	public function has( $abstract ) {
-
+	public function bound( $abstract ) {
 		return isset( $this->bindings[ $abstract ] ) || isset( $this->instances[ $abstract ] );
 	}
 
@@ -312,7 +311,7 @@ class Container implements ContainerContract, ArrayAccess {
 		$concrete = false;
 		$abstract = $this->getAbstract( $abstract );
 
-		if ( $this->has( $abstract ) ) {
+		if ( $this->bound( $abstract ) ) {
 			$concrete = $this->bindings[ $abstract ]['concrete'];
 		}
 
@@ -438,7 +437,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function offsetExists( $name ) {
 
-		return $this->has( $name );
+		return $this->bound( $name );
 	}
 
 	/**
@@ -492,7 +491,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function __isset( $name ) {
 
-		return $this->has( $name );
+		return $this->bound( $name );
 	}
 
 	/**
