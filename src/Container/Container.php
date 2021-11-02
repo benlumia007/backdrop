@@ -183,6 +183,60 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
+	 * Add a shared binding.
+	 *
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @param  object  $concrete
+	 * @return void
+	 */
+	public function singleton( $abstract, $concrete = null ) {
+
+		$this->bind( $abstract, $concrete, true );
+	}
+
+	/**
+	 * Register a shared binding if it hasn't already been register.
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  mixed  $concrete
+	 * @return void
+	 */
+	public function singletonIf( $abstract, $concrete = null ) {
+		if ( ! $this->bound( $abstract ) ) {
+			$this->singleton( $abstract, $concrete );
+		}
+	}
+
+	/**
+	 * Extend a binding with something like a decorator class. Cannot
+	 * extend resolved instancfes.
+	 *
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @param  Closure $closure
+	 * @return void
+	 */
+	public function extend( $abstract, Closure $closure ) {
+		$abstract = $this->getAlias( $abstract );
+
+		if ( isset( $this->instances[ $abstract ] ) ) {
+			$this->instances[ $abstract ] = $closure( $this->instances[ $abstract ] ), $this );
+
+			$this->rebound( $abstract );
+		} else {
+			$this->extensions[ $abstract ][] = $closure;
+
+            if ( $this->resolved( $abstract ) ) {
+                $this->rebound( $abstract );
+            }
+		}
+	}
+
+	/**
 	 * Remove a binding.
 	 *
 	 * @since  3.0.0
@@ -268,50 +322,6 @@ class Container implements ContainerContract, ArrayAccess {
 	public function factory( $abstract ) {
 
 		return $this->resolve( $abstract );
-	}
-
-	/**
-	 * Add a shared binding.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  object  $concrete
-	 * @return void
-	 */
-	public function singleton( $abstract, $concrete = null ) {
-
-		$this->bind( $abstract, $concrete, true );
-	}
-
-	/**
-	 * Register a shared binding if it hasn't already been register.
-	 * 
-	 * @since  3.0.0
-	 * @access public
-	 * @param  mixed  $concrete
-	 * @return void
-	 */
-	public function singletonIf( $abstract, $concrete = null ) {
-		if ( ! $this->bound( $abstract ) ) {
-			$this->singleton( $abstract, $concrete );
-		}
-	}
-
-	/**
-	 * Extend a binding with something like a decorator class. Cannot
-	 * extend resolved instancfes.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  Closure $closure
-	 * @return void
-	 */
-	public function extend( $abstract, Closure $closure ) {
-		$abstract = $this->getAlias( $abstract );
-
-		$this->extensions[ $abstract ][] = $closure;
 	}
 
 	/**
