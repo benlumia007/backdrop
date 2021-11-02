@@ -269,6 +269,19 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
+	* Alias for `resolve()`.
+	*
+	* @since  3.0.0
+	* @access public
+	* @param  string  $abstract
+	* @return object
+	*/
+	public function factory( $abstract ) {
+		return $this->resolve( $abstract );
+	}
+
+
+	/**
 	 * Remove a binding.
 	 *
 	 * @since  3.0.0
@@ -344,17 +357,110 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
-	* Alias for `resolve()`.
-	*
-	* @since  3.0.0
-	* @access public
-	* @param  string  $abstract
-	* @return object
-	*/
-	public function factory( $abstract ) {
-
-		return $this->resolve( $abstract );
+	 * Drop all of the stale instances and aliases
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @return void
+	 */
+	protected function dropStaleInstances( $abstract ) {
+		unset( $this->instances[ $abstract ], $this->aliases[ $abstract ] );
 	}
+
+    /**
+     * Determine if the given abstract type has been resolved.
+     *
+	 * @since  3.0.0
+	 * @access public
+     * @param  string  $abstract
+     * @return bool
+     */
+	public function resolved( $abstract ) {
+		if ( $this->isAlias( $abstract ) ) {
+			$abstract = $this->getAlias( $abstract );
+		}
+
+		return isset( $this->resolved[ $abstract ] ) || isset( $this->instances[ $abstract ] );
+	}
+
+	/**
+     * Determine if a given string is an alias.
+     *
+	 * @since  3.0.0
+	 * @access public
+     * @param  string  $abstract
+     * @return bool
+     */
+	public function isAlias( $name ) {
+		return isset( $this->aliases[ $name ] );
+	}
+
+	/**
+	 * Checks if we're dealing with an alias and returns the abstract. If
+	 * not an alias, return the abstract passed in.
+	 *
+	 * @since  3.0.0
+	 * @access protected
+	 * @param  string    $abstract
+	 * @return string
+	 */
+	protected function getAlias( $abstract ) {
+
+		if ( isset( $this->aliases[ $abstract ] ) ) {
+			return $this->aliases[ $abstract ];
+		}
+
+		return $abstract;
+	}
+
+    /**
+     * Fire the "rebound" callbacks for the given abstract type.
+     *
+	 * @since  3.0.0
+	 * @access public
+     * @param  string  $abstract
+     * @return void
+     */
+	protected function rebound( $abstract ) {
+		$this->resolve( $abstract );
+
+		foreach ( $this->getReboundCallbacks( $abstract ) as $callback ) {
+			call_user_func( $callback, $this, $instance );
+		}
+	}
+
+    /**
+     * Get the rebound callbacks for a given type.
+     *
+     * @param  string  $abstract
+     * @return array
+     */
+    protected function getReboundCallbacks( $abstract ) {
+        return $this->reboundCallbacks[ $abstract ] ?? [];
+    }
+
+    /**
+     * Remove an alias from the contextual binding alias cache.
+     *
+	 * @since  3.0.0
+	 * @access public
+     * @param  string  $searched
+     * @return void
+     */
+    protected function removeAbstractAlias( $searched ) {
+        if (! isset( $this->aliases[ $searched ] ) ) {
+            return;
+        }
+
+        foreach ( $this->abstractAliases as $abstract => $aliases ) {
+            foreach ($aliases as $index => $alias) {
+                if ($alias == $searched) {
+                    unset( $this->abstractAliases[ $abstract ][ $index ] );
+                }
+            }
+        }
+    }
 
 	/**
 	 * Gets the concrete of an abstract.
@@ -564,110 +670,4 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $this->factory( $name );
 	}
-
-	/**
-	 * Drop all of the stale instances and aliases
-	 * 
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @return void
-	 */
-	protected function dropStaleInstances( $abstract ) {
-		unset( $this->instances[ $abstract ], $this->aliases[ $abstract ] );
-	}
-
-    /**
-     * Determine if the given abstract type has been resolved.
-     *
-	 * @since  3.0.0
-	 * @access public
-     * @param  string  $abstract
-     * @return bool
-     */
-	public function resolved( $abstract ) {
-		if ( $this->isAlias( $abstract ) ) {
-			$abstract = $this->getAlias( $abstract );
-		}
-
-		return isset( $this->resolved[ $abstract ] ) || isset( $this->instances[ $abstract ] );
-	}
-
-	/**
-     * Determine if a given string is an alias.
-     *
-	 * @since  3.0.0
-	 * @access public
-     * @param  string  $abstract
-     * @return bool
-     */
-	public function isAlias( $name ) {
-		return isset( $this->aliases[ $name ] );
-	}
-
-	/**
-	 * Checks if we're dealing with an alias and returns the abstract. If
-	 * not an alias, return the abstract passed in.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @param  string    $abstract
-	 * @return string
-	 */
-	protected function getAlias( $abstract ) {
-
-		if ( isset( $this->aliases[ $abstract ] ) ) {
-			return $this->aliases[ $abstract ];
-		}
-
-		return $abstract;
-	}
-
-    /**
-     * Fire the "rebound" callbacks for the given abstract type.
-     *
-	 * @since  3.0.0
-	 * @access public
-     * @param  string  $abstract
-     * @return void
-     */
-	protected function rebound( $abstract ) {
-		$this->resolve( $abstract );
-
-		foreach ( $this->getReboundCallbacks( $abstract ) as $callback ) {
-			call_user_func( $callback, $this, $instance );
-		}
-	}
-
-    /**
-     * Get the rebound callbacks for a given type.
-     *
-     * @param  string  $abstract
-     * @return array
-     */
-    protected function getReboundCallbacks( $abstract ) {
-        return $this->reboundCallbacks[ $abstract ] ?? [];
-    }
-
-    /**
-     * Remove an alias from the contextual binding alias cache.
-     *
-	 * @since  3.0.0
-	 * @access public
-     * @param  string  $searched
-     * @return void
-     */
-    protected function removeAbstractAlias( $searched ) {
-        if (! isset( $this->aliases[ $searched ] ) ) {
-            return;
-        }
-
-        foreach ( $this->abstractAliases as $abstract => $aliases ) {
-            foreach ($aliases as $index => $alias) {
-                if ($alias == $searched) {
-                    unset( $this->abstractAliases[ $abstract ][ $index ] );
-                }
-            }
-        }
-    }
 }
