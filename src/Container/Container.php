@@ -307,14 +307,15 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return mixed
 	 */
 	public function resolve( $abstract, array $parameters = [] ) {
-
-		// Get the true abstract name.
 		$abstract = $this->getAlias( $abstract );
 
-		// If this is being managed as an instance and we already have
-		// the instance, return it now.
+		/**
+		 * if an instance of the type is currently being managed as a singleton
+		 * we'll just return an existing instance instead of instantiating a new
+		 * instance so the developer can keep using the same objects instance
+		 * every time.
+		 */
 		if ( isset( $this->instances[ $abstract ] ) ) {
-
 			return $this->instances[ $abstract ];
 		}
 
