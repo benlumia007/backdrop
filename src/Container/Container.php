@@ -224,7 +224,7 @@ class Container implements ContainerContract, ArrayAccess {
 		$abstract = $this->getAlias( $abstract );
 
 		if ( isset( $this->instances[ $abstract ] ) ) {
-			$this->instances[ $abstract ] = $closure( $this->instances[ $abstract ] ), $this );
+			$this->instances[ $abstract ] = $closure( $this->instances[ $abstract ], $this );
 
 			$this->rebound( $abstract );
 		} else {
