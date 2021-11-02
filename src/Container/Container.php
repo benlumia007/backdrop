@@ -145,7 +145,7 @@ class Container implements ContainerContract, ArrayAccess {
 	public function resolve( $abstract, array $parameters = [] ) {
 
 		// Get the true abstract name.
-		$abstract = $this->getAbstract( $abstract );
+		$abstract = $this->getAlias( $abstract );
 
 		// If this is being managed as an instance and we already have
 		// the instance, return it now.
@@ -262,7 +262,7 @@ class Container implements ContainerContract, ArrayAccess {
 
 	/**
 	 * Extend a binding with something like a decorator class. Cannot
-	 * extend resolved instances.
+	 * extend resolved instancfes.
 	 *
 	 * @since  3.0.0
 	 * @access public
@@ -302,7 +302,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @param  string    $abstract
 	 * @return string
 	 */
-	protected function getAbstract( $abstract ) {
+	protected function getAlias( $abstract ) {
 
 		if ( isset( $this->aliases[ $abstract ] ) ) {
 			return $this->aliases[ $abstract ];
@@ -322,7 +322,7 @@ class Container implements ContainerContract, ArrayAccess {
 	protected function getConcrete( $abstract ) {
 
 		$concrete = false;
-		$abstract = $this->getAbstract( $abstract );
+		$abstract = $this->getAlias( $abstract );
 
 		if ( $this->bound( $abstract ) ) {
 			$concrete = $this->bindings[ $abstract ]['concrete'];
