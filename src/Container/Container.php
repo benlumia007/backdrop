@@ -249,7 +249,7 @@ class Container implements ContainerContract, ArrayAccess {
 	public function instance( $abstract, $instance ) {
 		$this->removeAbstractAlias( $abstract );
 
-		$isBound = $this->bound( $abstrct );
+		$isBound = $this->bound( $abstract );
 
 		unset($this->aliases[ $abstract ] );
 
