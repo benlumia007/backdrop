@@ -88,6 +88,16 @@ interface Container {
 	public function singleton( $abstract, $concrete = null );
 
 	/**
+	 * Register a shared binding if it hasn't already been register.
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  mixed  $concrete
+	 * @return void
+	 */
+	public function singletonIf( $abstract, $concrete = null );
+
+	/**
 	 * Register an existing instance as a shared in the container.
 	 * 
 	 * @since  3.0.0

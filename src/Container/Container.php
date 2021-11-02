@@ -243,7 +243,21 @@ class Container implements ContainerContract, ArrayAccess {
 	 */
 	public function singleton( $abstract, $concrete = null ) {
 
-		$this->bindIf( $abstract, $concrete, true );
+		$this->bind( $abstract, $concrete, true );
+	}
+
+	/**
+	 * Register a shared binding if it hasn't already been register.
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  mixed  $concrete
+	 * @return void
+	 */
+	public function singletonIf( $abstract, $concrete = null ) {
+		if ( ! $this->bound( $abstract ) ) {
+			$this->singleton( $abstract, $concrete );
+		}
 	}
 
 	/**
