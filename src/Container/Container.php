@@ -237,6 +237,38 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
+	 * Add an existing instance. This can be an instance of an object or a
+	 * single value that should be stored.
+	 *
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @param  mixed   $instance
+	 * @return mixed
+	 */
+	public function instance( $abstract, $instance ) {
+		$this->removeAbstractAlias( $abstract );
+
+		$isBound = $this->bound( $abstrct );
+
+		unset($this->aliases[ $abstract ] );
+
+		/**
+		 * We will check to determine if the type has been bound before, and
+		 * if it has we will fire the rebound callback registered with the
+		 * container and it can be updated with consuming classes that
+		 * gotten resolved here.
+		 */
+		$this->instances[ $abstract ] = $instance;
+
+		if ( $isBound ) {
+			$this->rebound( $abstract );
+		}
+
+		return $instance;
+	}
+
+	/**
 	 * Remove a binding.
 	 *
 	 * @since  3.0.0
@@ -322,23 +354,6 @@ class Container implements ContainerContract, ArrayAccess {
 	public function factory( $abstract ) {
 
 		return $this->resolve( $abstract );
-	}
-
-	/**
-	 * Add an existing instance. This can be an instance of an object or a
-	 * single value that should be stored.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  mixed   $instance
-	 * @return mixed
-	 */
-	public function instance( $abstract, $instance ) {
-
-		$this->instances[ $abstract ] = $instance;
-
-		return $instance;
 	}
 
 	/**
