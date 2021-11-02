@@ -324,24 +324,6 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
-	 * Checks if we're dealing with an alias and returns the abstract. If
-	 * not an alias, return the abstract passed in.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @param  string    $abstract
-	 * @return string
-	 */
-	protected function getAlias( $abstract ) {
-
-		if ( isset( $this->aliases[ $abstract ] ) ) {
-			return $this->aliases[ $abstract ];
-		}
-
-		return $abstract;
-	}
-
-	/**
 	 * Gets the concrete of an abstract.
 	 *
 	 * @since  3.0.0
@@ -588,5 +570,39 @@ class Container implements ContainerContract, ArrayAccess {
      */
 	public function isAlias( $name ) {
 		return isset( $this->aliases[ $name ] );
+	}
+
+	/**
+	 * Checks if we're dealing with an alias and returns the abstract. If
+	 * not an alias, return the abstract passed in.
+	 *
+	 * @since  3.0.0
+	 * @access protected
+	 * @param  string    $abstract
+	 * @return string
+	 */
+	protected function getAlias( $abstract ) {
+
+		if ( isset( $this->aliases[ $abstract ] ) ) {
+			return $this->aliases[ $abstract ];
+		}
+
+		return $abstract;
+	}
+
+    /**
+     * Fire the "rebound" callbacks for the given abstract type.
+     *
+	 * @since  3.0.0
+	 * @access public
+     * @param  string  $abstract
+     * @return void
+     */
+	protected function rebound( $abstract ) {
+		$this->resolve( $abstract );
+
+		foreach ( $this->getReboundCallbacks( $abstract ) as $callback ) {
+			call_user_func( $callback, $this, $instance );
+		}
 	}
 }
