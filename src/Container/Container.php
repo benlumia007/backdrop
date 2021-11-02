@@ -163,7 +163,7 @@ class Container implements ContainerContract, ArrayAccess {
 			$this->rebound( $abstract );
 		}
 
-		// $this->extensions[ $abstract ] = [];
+		$this->extensions[ $abstract ] = [];
 	}
 
 	/**
