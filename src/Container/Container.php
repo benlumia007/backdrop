@@ -155,7 +155,7 @@ class Container implements ContainerContract, ArrayAccess {
 		 * @param  string  $abstract
 		 * @return void
 		 */
-		$this->dropStaleInstances( $abstract );
+		unset( $this->instances[ $abstract ], $this->aliases[ $abstract ] );
 
 		/**
 		 * If no concrete type was given, we will simply set the concrete type to the
@@ -375,19 +375,7 @@ class Container implements ContainerContract, ArrayAccess {
 		// Return the object.
 		return $object;
 	}
-
-	/**
-	 * Drop all of the stale instances and aliases
-	 * 
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @return void
-	 */
-	protected function dropStaleInstances( $abstract ) {
-		unset( $this->instances[ $abstract ], $this->aliases[ $abstract ] );
-	}
-
+	
     /**
      * Determine if the given abstract type has been resolved.
      *
