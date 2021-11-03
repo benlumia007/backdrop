@@ -1,21 +1,21 @@
 <?php
 /**
- * Backdrop Core ( src/Contracts/Container/Container.php )
+ * Container class.
+ * 
+ * The `Container` class handles storing objects for later use and 
+ * handles single instances to avoid globals or singleton.
  *
- * @package   Backdrop Core
+ * @package   Backdrop
+ * @author    Benjamin Lu <benlumia007@gmail.com>
  * @copyright Copyright (C) 2019-2021. Benjamin Lu
- * @author    Benjamin Lu ( https://getbenonit.com )
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-/**
- * Define namespace
- */
 namespace Benlumia007\Backdrop\Container;
+use Benlumia007\Backdrop\Contracts\Container\Container as ContainerContract;
 use ArrayAccess;
 use Closure;
 use ReflectionClass;
-use Benlumia007\Backdrop\Contracts\Container\Container as ContainerContract;
 
 /**
  * A simple container for objects.
@@ -24,15 +24,6 @@ use Benlumia007\Backdrop\Contracts\Container\Container as ContainerContract;
  * @access public
  */
 class Container implements ContainerContract, ArrayAccess {
-	/**
-	 * Array of the types that have been resolved
-	 * 
-	 * @since  3.0.0
-	 * @access public
-	 * @var static
-	 */
-	protected $resolved = [];
-
 	/**
 	* Stored definitions of objects.
 	*
@@ -68,27 +59,6 @@ class Container implements ContainerContract, ArrayAccess {
 	* @var    array
 	*/
 	protected $extensions = [];
-
-    /**
-     * All of the registered rebound callbacks.
-     *
-     * @var array[]
-     */
-    protected $reboundCallbacks = [];
-
-    /**
-     * The stack of concretions currently being built.
-     *
-     * @var array[]
-     */
-    protected $buildStack = [];
-
-    /**
-     * The contextual binding map.
-     *
-     * @var array[]
-     */
-    public $contextual = [];
 
 	/**
 	* Set up a new container.
