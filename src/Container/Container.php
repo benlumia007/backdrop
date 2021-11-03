@@ -99,7 +99,6 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return void
 	 */
 	public function alias( $abstract, $alias ) {
-
 		$this->aliases[ $alias ] = $abstract;
 	}
 
@@ -125,7 +124,7 @@ class Container implements ContainerContract, ArrayAccess {
 		 * @param  string  $abstract
 		 * @return void
 		 */
-		unset( $this->instances[ $abstract ], $this->aliases[ $abstract ] );
+		unset( $this->instances[ $abstract ] );
 
 		/**
 		 * If no concrete type was given, we will simply set the concrete type to the
@@ -137,15 +136,6 @@ class Container implements ContainerContract, ArrayAccess {
 		}
 
 		$this->bindings[ $abstract ]   = compact( 'concrete', 'shared' );
-
-		/**
-		 * if the abstract was already resolved in the container we'll fire the
-		 * rebound listener so that any objects which have already gotten resolved
-		 * can have their copy of the updated via the listener callbacks.
-		 */
-		if ( $this->resolved( $abstract ) ) {
-			$this->rebound( $abstract );
-		}
 
 		$this->extensions[ $abstract ] = [];
 	}
@@ -345,22 +335,6 @@ class Container implements ContainerContract, ArrayAccess {
 		// Return the object.
 		return $object;
 	}
-	
-    /**
-     * Determine if the given abstract type has been resolved.
-     *
-	 * @since  3.0.0
-	 * @access public
-     * @param  string  $abstract
-     * @return bool
-     */
-	public function resolved( $abstract ) {
-		if ( $this->isAlias( $abstract ) ) {
-			$abstract = $this->getAlias( $abstract );
-		}
-
-		return isset( $this->resolved[ $abstract ] ) || isset( $this->instances[ $abstract ] );
-	}
 
 	/**
      * Determine if a given string is an alias.
@@ -390,22 +364,6 @@ class Container implements ContainerContract, ArrayAccess {
 		}
 
 		return $abstract;
-	}
-
-    /**
-     * Fire the "rebound" callbacks for the given abstract type.
-     *
-	 * @since  3.0.0
-	 * @access public
-     * @param  string  $abstract
-     * @return void
-     */
-	protected function rebound( $abstract ) {
-		$this->resolve( $abstract );
-
-		foreach ( $this->getReboundCallbacks( $abstract ) as $callback ) {
-			call_user_func( $callback, $this, $instance );
-		}
 	}
 
     /**
