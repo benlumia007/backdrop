@@ -1,6 +1,6 @@
 <?php
 /**
- * Backdrop Core ( src/Contracts/Bootable.php )
+ * Proxy class
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
@@ -8,9 +8,6 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-/**
- * Define namespace
- */
 namespace Benlumia007\Backdrop\Proxies;
 use Benlumia007\Backdrop\Contracts\Container\Container;
 

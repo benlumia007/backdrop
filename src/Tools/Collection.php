@@ -1,6 +1,6 @@
 <?php
 /**
- * Backdrop Core ( src/Tools/Collection.php )
+ * Collection class.
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Backdrop Core ( src/Contracts/Bootable.php )
+ * App class.
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>

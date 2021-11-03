@@ -1,6 +1,6 @@
 <?php
 /**
- * Backdrop Core ( src/Tools/ServiceProvider.php )
+ * Base Service Provider
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>

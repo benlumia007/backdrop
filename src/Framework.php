@@ -1,6 +1,6 @@
 <?php
 /**
- * Backdrop Core ( src/Core/Framework.php )
+ * Create a new Framework.
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
@@ -8,9 +8,6 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-/**
- * Define namespace
- */
 namespace Benlumia007\Backdrop;
 use Benlumia007\Backdrop\Container\Container;
 use Benlumia007\Backdrop\Contracts\Foundation\Framework as FrameworkContract;
