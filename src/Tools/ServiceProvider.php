@@ -12,7 +12,7 @@
  * Define namespace
  */
 namespace Benlumia007\Backdrop\Tools;
-use Benlumia007\Backdrop\Contracts\Foundation\Application;
+use Benlumia007\Backdrop\Contracts\Foundation\Framework;
 
 /**
  * Provider
@@ -22,30 +22,30 @@ use Benlumia007\Backdrop\Contracts\Foundation\Application;
  */
 abstract class ServiceProvider {
 	/**
-	 * Application instance. Sub-classes should use this property to access
-	 * the application (container) to add, remove, or resolve bindings.
+	 * Framework instance. Sub-classes should use this property to access
+	 * the Framework (container) to add, remove, or resolve bindings.
 	 *
 	 * @since  3.0.0
 	 * @access protected
-	 * @var    Application
+	 * @var    Framework
 	 */
 	protected $app;
 
 	/**
-	 * Accepts the application and sets it to the `$app` property.
+	 * Accepts the Framework and sets it to the `$app` property.
 	 *
 	 * @since  3.0.0
 	 * @access public
-	 * @param  Application  $app
+	 * @param  Framework  $app
 	 * @return void
 	 */
-	public function __construct( Application $app ) {
+	public function __construct( Framework $app ) {
 
 		$this->app = $app;
 	}
 
 	/**
-	 * Callback executed when the `Application` class registers providers.
+	 * Callback executed when the `Framework` class registers providers.
 	 *
 	 * @since  3.0.0
 	 * @access public
