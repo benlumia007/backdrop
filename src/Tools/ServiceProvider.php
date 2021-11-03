@@ -2,9 +2,9 @@
 /**
  * Backdrop Core ( src/Tools/ServiceProvider.php )
  *
- * @package   Backdrop Core
+ * @package   Backdrop
+ * @author    Benjamin Lu <benlumia007@gmail.com>
  * @copyright Copyright (C) 2019-2021. Benjamin Lu
- * @author    Benjamin Lu ( https://getbenonit.com )
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
