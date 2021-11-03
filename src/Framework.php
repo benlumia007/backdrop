@@ -80,7 +80,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @return void
 	 */
 	public function __construct() {
-
 		$this->registerDefaultBindings();
 		$this->registerDefaultProxies();
 	}
@@ -125,7 +124,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @return void
 	 */
 	protected function registerDefaultProxies() {
-
 		$this->proxy( App::class, 'Benlumia007\Backdrop\App' );
 	}
 
@@ -139,41 +137,21 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 */
 	public function provider( $provider ) {
 
+		/**
+		 * Creates a new instance of a service provider class.
+		 */
 		if ( is_string( $provider ) ) {
-			$provider = $this->resolveProvider( $provider );
+			$provider = new $provider( $this );
 		}
 
-		$this->registerProvider( $provider );
-
-		$this->providers[] = $provider;
-	}
-
-	/**
-	 * Creates a new instance of a service provider class.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @param  string    $provider
-	 * @return object
-	 */
-	protected function resolveProvider( $provider ) {
-
-		return new $provider( $this );
-	}
-
-	/**
-	 * Calls a service provider's `register()` method if it exists.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @param  string    $provider
-	 * @return void
-	 */
-	protected function registerProvider( $provider ) {
-
+		/**
+		 * Call a service provider's `register()` method if exists.
+		 */
 		if ( method_exists( $provider, 'register' ) ) {
 			$provider->register();
 		}
+
+		$this->providers[] = $provider;
 	}
 
 	/**
