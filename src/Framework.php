@@ -196,24 +196,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	}
 
 	/**
-	 * Registers a static proxy class alias.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $class
-	 * @param  string  $alias
-	 * @return void
-	 */
-	protected function registerProxy( $class, $alias ) {
-
-		if ( ! class_exists( $alias ) ) {
-			class_alias( $class, $alias );
-		}
-
-		$this->registered_proxies[] = $alias;
-	}
-
-	/**
 	 * Registers the static proxy classes.
 	 *
 	 * @since  3.0.0
@@ -229,7 +211,11 @@ class Framework extends Container implements FrameworkContract, Bootable {
 		foreach ( $this->proxies as $class => $alias ) {
 			// Register proxy if not already registered.
 			if ( ! in_array( $alias, $this->registered_proxies ) ) {
-				$this->registerProxy( $class, $alias );
+				if ( ! class_exists( $alias ) ) {
+					class_alias( $class, $alias );
+				}
+
+				$this->registered_proxies[] = $alias;
 			}
 		}
 	}
