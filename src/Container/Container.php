@@ -467,7 +467,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function offsetSet( $name, $value ) {
 
-		$this->bindIf( $name, $value );
+		$this->add( $name, $value );
 	}
 
 	/**
@@ -521,7 +521,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function __set( $name, $value ) {
 
-		$this->bindIf( $name, $value );
+		$this->add( $name, $value );
 	}
 
 	/**
