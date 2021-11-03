@@ -12,6 +12,7 @@
  * Define namespace
  */
 namespace Benlumia007\Backdrop;
+use Benlumia007\Backdrop\App;
 
 if ( ! function_exists( __NAMESPACE__ . '\\booted' ) ) {
 	/**
@@ -25,5 +26,23 @@ if ( ! function_exists( __NAMESPACE__ . '\\booted' ) ) {
 	 */
 	function booted() {
 		return defined( 'BACKDROP_BOOTED' ) && true === BACKDROP_BOOTED;
+	}
+}
+
+if ( ! function_exists( __NAMESPACE__ . '\\app' ) ) {
+	/**
+	 * The single instance of the app. Use this function for quickly working
+	 * with data.  Returns an instance of the `\Hybrid\Core\Application`
+	 * class. If the `$abstract` parameter is passed in, it'll resolve and
+	 * return the value from the container.
+	 *
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @param  array   $params
+	 * @return mixed
+	 */
+	function app( $abstract = '', $params = [] ) {
+		return App::resolve( $abstract ?: 'app', $params );
 	}
 }
