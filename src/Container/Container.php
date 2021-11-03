@@ -293,18 +293,6 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
-     * Determine if a given string is an alias.
-     *
-	 * @since  3.0.0
-	 * @access public
-     * @param  string  $abstract
-     * @return bool
-     */
-	public function isAlias( $name ) {
-		return isset( $this->aliases[ $name ] );
-	}
-
-	/**
 	 * Checks if we're dealing with an alias and returns the abstract. If
 	 * not an alias, return the abstract passed in.
 	 *
@@ -321,16 +309,6 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $abstract;
 	}
-
-    /**
-     * Get the rebound callbacks for a given type.
-     *
-     * @param  string  $abstract
-     * @return array
-     */
-    protected function getReboundCallbacks( $abstract ) {
-        return $this->reboundCallbacks[ $abstract ] ?? [];
-    }
 
 	/**
 	 * Gets the concrete of an abstract.

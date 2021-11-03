@@ -9,7 +9,6 @@
  */
 
 namespace Benlumia007\Backdrop\Tools;
-
 use ArrayObject;
 
 /**
