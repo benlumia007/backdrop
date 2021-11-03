@@ -1,16 +1,16 @@
 <?php
 /**
- * Backdrop Core ( src/Contracts/Displayable.php )
+ * Displayable contract.
+ * 
+ * Displayable classes should be implemented by a `display()` method.
+ * This method should output HTML strings to the screen.
  *
- * @package   Backdrop Core
+ * @package   Backdrop
+ * @author    Benjamin Lu <benlumia007@gmail.com>
  * @copyright Copyright (C) 2019-2021. Benjamin Lu
- * @author    Benjamin Lu ( https://getbenonit.com )
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-/**
- * Define namespace
- */
 namespace Benlumia007\Backdrop\Contracts;
 
 /**

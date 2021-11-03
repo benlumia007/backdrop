@@ -1,20 +1,21 @@
 <?php
 /**
- * Backdrop Core ( src/Contracts/Bootable.php )
+ * Bootable interface.
+ * 
+ * The bootable classes should have a `boot()` method for 
+ * booting actions and filters which should be kept out of the
+ * constructor.
  *
- * @package   Backdrop Core
+ * @package   Backdrop
+ * @author    Benjamin Lu <benlumia007@gmail.com>
  * @copyright Copyright (C) 2019-2021. Benjamin Lu
- * @author    Benjamin Lu ( https://getbenonit.com )
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-/**
- * Define namespace
- */
 namespace Benlumia007\Backdrop\Contracts;
 
 /**
- * Bootable Interface
+ * Bootable interface.
  * 
  * @since  3.0.0
  * @access public
