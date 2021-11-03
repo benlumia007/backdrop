@@ -198,18 +198,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	}
 
 	/**
-	 * Returns an array of service providers.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @return array
-	 */
-	protected function getProviders() {
-
-		return $this->providers;
-	}
-
-	/**
 	 * Calls the `boot()` method of all the registered service providers.
 	 *
 	 * @since  3.0.0
@@ -218,7 +206,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 */
 	protected function bootProviders() {
 
-		foreach ( $this->getProviders() as $provider ) {
+		foreach ( $this->providers as $provider ) {
 			$this->bootProvider( $provider );
 		}
 	}
