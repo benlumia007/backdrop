@@ -63,6 +63,15 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	protected $booted_providers = [];
 
 	/**
+	 * Array of registered proxies.
+	 *
+	 * @since  3.0.0
+	 * @access protected
+	 * @var    array
+	 */
+	protected $registered_proxies = [];
+
+	/**
 	 * Registers the default bindings, providers, and proxies for the
 	 * framework.
 	 *
@@ -254,10 +263,15 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 */
 	protected function registerProxies() {
 
-		Proxy::setContainer( $this );
+		if ( ! $this->registered_proxies ) {
+			Proxy::setContainer( $this );
+		}
 
 		foreach ( $this->proxies as $class => $alias ) {
-			class_alias( $class, $alias );
+			// Register proxy if not already registered.
+			if ( ! in_array( $alias, $this->registered_proxies ) ) {
+				$this->registerProxy( $class, $alias );
+			}
 		}
 	}
 }
