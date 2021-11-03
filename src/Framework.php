@@ -94,10 +94,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	public function boot() {
 		$this->bootProviders();
 		$this->registerProxies();
-
-		if ( ! defined( 'BACKDROP_BOOTED' ) ) {
-			define( 'BACKDROP_BOOTED', true );
-		}
 	}
 
 	/**
