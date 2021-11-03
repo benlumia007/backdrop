@@ -180,13 +180,13 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	protected function bootProvider( $provider ) {
 		$class_name = get_class( $provider );
 
-		if ( in_array( $class, $this->booted_provider ) ) {
+		if ( in_array( $class_name, $this->booted_providers ) ) {
 			return;
 		}
 
 		if ( method_exists( $provider, 'boot' ) ) {
 			$provider->boot();
-			$this->booted_provider[] = $class_name;
+			$this->booted_providers[] = $class_name;
 		}
 	}
 
