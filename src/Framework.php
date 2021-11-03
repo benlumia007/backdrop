@@ -54,6 +54,15 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	protected $proxies = [];
 
 	/**
+	 * Array of booted service providers.
+	 *
+	 * @since  3.0.0
+	 * @access protected
+	 * @var    array
+	 */
+	protected $booted_providers = [];
+
+	/**
 	 * Registers the default bindings, providers, and proxies for the
 	 * framework.
 	 *
@@ -169,9 +178,15 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @return void
 	 */
 	protected function bootProvider( $provider ) {
+		$class_name = get_class( $provider );
+
+		if ( in_array( $class, $this->booted_provider ) ) {
+			return;
+		}
 
 		if ( method_exists( $provider, 'boot' ) ) {
 			$provider->boot();
+			$this->booted_provider[] = $class_name;
 		}
 	}
 
