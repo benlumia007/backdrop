@@ -332,28 +332,6 @@ class Container implements ContainerContract, ArrayAccess {
         return $this->reboundCallbacks[ $abstract ] ?? [];
     }
 
-    /**
-     * Remove an alias from the contextual binding alias cache.
-     *
-	 * @since  3.0.0
-	 * @access public
-     * @param  string  $searched
-     * @return void
-     */
-    protected function removeAbstractAlias( $searched ) {
-        if (! isset( $this->aliases[ $searched ] ) ) {
-            return;
-        }
-
-        foreach ( $this->abstractAliases as $abstract => $aliases ) {
-            foreach ($aliases as $index => $alias) {
-                if ($alias == $searched) {
-                    unset( $this->abstractAliases[ $abstract ][ $index ] );
-                }
-            }
-        }
-    }
-
 	/**
 	 * Gets the concrete of an abstract.
 	 *
