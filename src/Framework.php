@@ -127,6 +127,8 @@ class Framework extends Container implements FrameworkContract, Bootable {
 			$provider = $this->resolveProvider( $provider );
 		}
 
+		$this->registerProvider( $provider );
+
 		$this->providers[] = $provider;
 	}
 
