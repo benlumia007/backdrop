@@ -80,7 +80,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @return void
 	 */
 	public function __construct() {
-
 		$this->registerDefaultBindings();
 		$this->registerDefaultProxies();
 	}
@@ -125,7 +124,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @return void
 	 */
 	protected function registerDefaultProxies() {
-
 		$this->proxy( App::class, 'Benlumia007\Backdrop\App' );
 	}
 
@@ -139,62 +137,21 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 */
 	public function provider( $provider ) {
 
+		/**
+		 * Creates a new instance of a service provider class.
+		 */
 		if ( is_string( $provider ) ) {
-			$provider = $this->resolveProvider( $provider );
+			$provider = new $provider( $this );
 		}
 
-		$this->registerProvider( $provider );
-
-		$this->providers[] = $provider;
-	}
-
-	/**
-	 * Creates a new instance of a service provider class.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @param  string    $provider
-	 * @return object
-	 */
-	protected function resolveProvider( $provider ) {
-
-		return new $provider( $this );
-	}
-
-	/**
-	 * Calls a service provider's `register()` method if it exists.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @param  string    $provider
-	 * @return void
-	 */
-	protected function registerProvider( $provider ) {
-
+		/**
+		 * Call a service provider's `register()` method if exists.
+		 */
 		if ( method_exists( $provider, 'register' ) ) {
 			$provider->register();
 		}
-	}
 
-	/**
-	 * Calls a service provider's `boot()` method if it exists.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @param  string    $provider
-	 * @return void
-	 */
-	protected function bootProvider( $provider ) {
-		$class_name = get_class( $provider );
-
-		if ( in_array( $class_name, $this->booted_providers ) ) {
-			return;
-		}
-
-		if ( method_exists( $provider, 'boot' ) ) {
-			$provider->boot();
-			$this->booted_providers[] = $class_name;
-		}
+		$this->providers[] = $provider;
 	}
 
 	/**
@@ -207,7 +164,19 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	protected function bootProviders() {
 
 		foreach ( $this->providers as $provider ) {
-			$this->bootProvider( $provider );
+			$class_name = get_class( $provider );
+
+			if ( in_array( $class_name, $this->booted_providers ) ) {
+				return;
+			}
+
+			/**
+			 * Calls a service provider's `boot()` if it exists.
+			 */
+			if ( method_exists( $provider, 'boot' ) ) {
+				$provider->boot();
+				$this->booted_providers[] = $class_name;
+			}
 		}
 	}
 
@@ -227,24 +196,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	}
 
 	/**
-	 * Registers a static proxy class alias.
-	 *
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string  $class
-	 * @param  string  $alias
-	 * @return void
-	 */
-	protected function registerProxy( $class, $alias ) {
-
-		if ( ! class_exists( $alias ) ) {
-			class_alias( $class, $alias );
-		}
-
-		$this->registered_proxies[] = $alias;
-	}
-
-	/**
 	 * Registers the static proxy classes.
 	 *
 	 * @since  3.0.0
@@ -260,7 +211,11 @@ class Framework extends Container implements FrameworkContract, Bootable {
 		foreach ( $this->proxies as $class => $alias ) {
 			// Register proxy if not already registered.
 			if ( ! in_array( $alias, $this->registered_proxies ) ) {
-				$this->registerProxy( $class, $alias );
+				if ( ! class_exists( $alias ) ) {
+					class_alias( $class, $alias );
+				}
+
+				$this->registered_proxies[] = $alias;
 			}
 		}
 	}
