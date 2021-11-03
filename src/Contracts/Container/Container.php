@@ -77,16 +77,6 @@ interface Container {
 	 */
 	public function singleton( $abstract, $concrete = null );
 
-	/**
-	 * Register a shared binding if it hasn't already been register.
-	 * 
-	 * @since  3.0.0
-	 * @access public
-	 * @param  mixed  $concrete
-	 * @return void
-	 */
-	public function singletonIf( $abstract, $concrete = null );
-
 	 /**
 	  * Extend an abstract type in the container
 	  *
