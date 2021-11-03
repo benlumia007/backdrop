@@ -69,10 +69,8 @@ class Container implements ContainerContract, ArrayAccess {
 	* @return void
 	*/
 	public function __construct( array $definitions = [] ) {
-
 		foreach ( $definitions as $abstract => $concrete ) {
-
-			$this->bindIf( $abstract, $concrete );
+			$this->add( $abstract, $concrete );
 		}
 	}
 
@@ -150,7 +148,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  bool    $shared
 	* @return void
 	*/
-	public function bindIf( $abstract, $concrete = null, $shared = false ) {
+	public function add( $abstract, $concrete = null, $shared = false ) {
 		if ( ! $this->bound( $abstract ) ) {
 			$this->bind( $abstract, $concrete, $shared );
 		}
@@ -167,21 +165,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 */
 	public function singleton( $abstract, $concrete = null ) {
 
-		$this->bind( $abstract, $concrete, true );
-	}
-
-	/**
-	 * Register a shared binding if it hasn't already been register.
-	 * 
-	 * @since  3.0.0
-	 * @access public
-	 * @param  mixed  $concrete
-	 * @return void
-	 */
-	public function singletonIf( $abstract, $concrete = null ) {
-		if ( ! $this->bound( $abstract ) ) {
-			$this->singleton( $abstract, $concrete );
-		}
+		$this->add( $abstract, $concrete, true );
 	}
 
 	/**
@@ -195,19 +179,10 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return void
 	 */
 	public function extend( $abstract, Closure $closure ) {
+
 		$abstract = $this->getAlias( $abstract );
 
-		if ( isset( $this->instances[ $abstract ] ) ) {
-			$this->instances[ $abstract ] = $closure( $this->instances[ $abstract ], $this );
-
-			$this->rebound( $abstract );
-		} else {
-			$this->extensions[ $abstract ][] = $closure;
-
-            if ( $this->resolved( $abstract ) ) {
-                $this->rebound( $abstract );
-            }
-		}
+		$this->extensions[ $abstract ][] = $closure;
 	}
 
 	/**
@@ -221,23 +196,8 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return mixed
 	 */
 	public function instance( $abstract, $instance ) {
-		$this->removeAbstractAlias( $abstract );
 
-		$isBound = $this->bound( $abstract );
-
-		unset($this->aliases[ $abstract ] );
-
-		/**
-		 * We will check to determine if the type has been bound before, and
-		 * if it has we will fire the rebound callback registered with the
-		 * container and it can be updated with consuming classes that
-		 * gotten resolved here.
-		 */
 		$this->instances[ $abstract ] = $instance;
-
-		if ( $isBound ) {
-			$this->rebound( $abstract );
-		}
 
 		return $instance;
 	}
@@ -253,7 +213,6 @@ class Container implements ContainerContract, ArrayAccess {
 	public function factory( $abstract ) {
 		return $this->resolve( $abstract );
 	}
-
 
 	/**
 	 * Remove a binding.
@@ -281,6 +240,8 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return mixed
 	 */
 	public function resolve( $abstract, array $parameters = [] ) {
+		
+		// Let's grab the true abstract name.
 		$abstract = $this->getAlias( $abstract );
 
 		/**

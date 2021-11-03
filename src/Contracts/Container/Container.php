@@ -64,7 +64,7 @@ interface Container {
 	 * @param  bool    $shared
 	 * @return void
      */
-    public function bindIf( $abstract, $concrete = null, $shared = false );
+    public function add( $abstract, $concrete = null, $shared = false );
 
 	/**
 	 * Register a shared binding in the container.
