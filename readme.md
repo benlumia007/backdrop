@@ -4,7 +4,7 @@ Backdrop is a framework for developing ClassicPress and WordPress Themes.
 The main objective of this Backdrop Core is build a theme with its finest tools that you can use.
 
 ## Requirements
-- WordPress 4.9 or higher
+- WordPress 4.9 or higher (Compatible with ClassicPress)
 - PHP 5.6 or higher ( PHP 7.0 or higher is recommended )
 - Composer
 
