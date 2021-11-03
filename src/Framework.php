@@ -155,27 +155,6 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	}
 
 	/**
-	 * Calls a service provider's `boot()` method if it exists.
-	 *
-	 * @since  3.0.0
-	 * @access protected
-	 * @param  string    $provider
-	 * @return void
-	 */
-	protected function bootProvider( $provider ) {
-		$class_name = get_class( $provider );
-
-		if ( in_array( $class_name, $this->booted_providers ) ) {
-			return;
-		}
-
-		if ( method_exists( $provider, 'boot' ) ) {
-			$provider->boot();
-			$this->booted_providers[] = $class_name;
-		}
-	}
-
-	/**
 	 * Calls the `boot()` method of all the registered service providers.
 	 *
 	 * @since  3.0.0
@@ -185,7 +164,19 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	protected function bootProviders() {
 
 		foreach ( $this->providers as $provider ) {
-			$this->bootProvider( $provider );
+			$class_name = get_class( $provider );
+
+			if ( in_array( $class_name, $this->booted_providers ) ) {
+				return;
+			}
+
+			/**
+			 * Calls a service provider's `boot()` if it exists.
+			 */
+			if ( method_exists( $provider, 'boot' ) ) {
+				$provider->boot();
+				$this->booted_providers[] = $class_name;
+			}
 		}
 	}
 
