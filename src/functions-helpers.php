@@ -12,7 +12,7 @@
  * Define namespace
  */
 namespace Benlumia007\Backdrop;
-use Benlumia007\Backdrop\App;
+use Benlumia007\Backdrop\Proxies\App;
 
 if ( ! function_exists( __NAMESPACE__ . '\\booted' ) ) {
 	/**
