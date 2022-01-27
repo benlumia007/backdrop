@@ -15,6 +15,8 @@ use Benlumia007\Backdrop\Contracts\Bootable;
 use Benlumia007\Backdrop\Proxies\Proxy;
 use Benlumia007\Backdrop\Proxies\App;
 
+use Benlumia007\Backdrop\View\View\Provider as ViewServiceProvider;
+
 /**
  * Application class.
  *
@@ -79,6 +81,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	public function __construct() {
 		$this->registerDefaultBindings();
 		$this->registerDefaultProxies();
+		$this->registerDefaultProviders();
 	}
 
 	/**
@@ -118,6 +121,14 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 */
 	protected function registerDefaultProxies() {
 		$this->proxy( App::class, 'Benlumia007\Backdrop\App' );
+	}
+
+	protected function registerDefaultProviders() {
+		array_map( function( $provider ) {
+			$this->provider( $provider );
+		}, [
+			ViewServiceProvider::class,
+		] );
 	}
 
 	/**
