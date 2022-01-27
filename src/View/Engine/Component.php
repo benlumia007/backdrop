@@ -17,7 +17,7 @@
  */
 namespace Benlumia007\Backdrop\View\Engine;
 use Benlumia007\Backdrop\Proxies\App;
-use Benlumia007\Backdrop\Template\View\View\Component as View;
+use Benlumia007\Backdrop\View\View\Component as View;
 
 /**
  * Egine class
