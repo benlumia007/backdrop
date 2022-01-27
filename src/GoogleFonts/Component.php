@@ -33,7 +33,7 @@ class Component implements Bootable {
 		 * this feature, please go to the following url. ( https://google-webfonts-helper.herokuapp.com/fonts ). This also will
 		 * load font awesome 5.0 into one css file.
 		 */
-		wp_enqueue_style( 'backdrop-custom-fonts', get_theme_file_uri( '/vendor/benlumia007/backdrop/assets/googlefonts/custom-fonts.css' ), array(), '1.0.0' );
+        wp_enqueue_style( 'backdrop-custom-fonts', get_parent_theme_file_uri( '/vendor/benlumia007/backdrop/assets/googlefonts/custom-fonts.css' ), [], '1.0.0' );
     }
 
     public function boot() {
