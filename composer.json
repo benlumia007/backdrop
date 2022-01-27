@@ -17,7 +17,10 @@
     "autoload": {
         "psr-4": {
           "Benlumia007\\Backdrop\\": "src/"
-		}
+		},
+		"files": [
+			"src/Customize/Helpers/functions-helpers.php"
+		]
     },
     "require": {
         "php": ">=7.3.24"
