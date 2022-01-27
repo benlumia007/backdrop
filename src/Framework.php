@@ -16,6 +16,7 @@ use Benlumia007\Backdrop\Proxies\Proxy;
 use Benlumia007\Backdrop\Proxies\App;
 
 use Benlumia007\Backdrop\Template\Hierarchy\Provider as HierarchyServiceProvider;
+use Benlumia007\Backdrop\Template\Manager\Provider as ManagerServiceProvider;
 use Benlumia007\Backdrop\View\View\Provider as ViewServiceProvider;
 
 /**
@@ -129,6 +130,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 			$this->provider( $provider );
 		}, [
 			HierarchyServiceProvider::class,
+			ManagerServiceProvider::class,
 			ViewServiceProvider::class,
 		] );
 	}
