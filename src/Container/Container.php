@@ -113,7 +113,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @param  bool    $shared
 	 * @return void
 	 */
-	public function bind( string $abstract, mixed $concrete = null, bool $shared = false) : void {
+	public function bind( $abstract, $concrete = null, $shared = false ) {
 		/**
 		 * Drop all of the stale instances and aliases
 		 * 
