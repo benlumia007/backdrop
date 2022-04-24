@@ -394,17 +394,32 @@ class Container implements ContainerContract, ArrayAccess {
 
 			// If a dependency is set via the parameters passed in, use it.
 			if ( isset( $parameters[ $dependency->getName() ] ) ) {
-
 				$args[] = $parameters[ $dependency->getName() ];
+				continue;
+			}
 
 			// If the parameter is a class, resolve it.
-			} elseif ( ! is_null( $dependency->getType() ) ) {
+			$types = $this->getReflectionTypes( $dependency );
 
-				$args[] = $this->resolve( $dependency->getType()->getName() );
+			if ( $types ) {
+				$resolved_type = false;
+
+				foreach ( $types as $type ) {
+					if ( class_exists( $type->getName() ) ) {
+						$args[] = $this->resolve(
+							$type->getName()
+						);
+						$resolved_type = true;
+					}
+				}
+
+				if ( $resolved_type ) {
+					continue;
+				}
+			}
 
 			// Else, use the default parameter value.
-			} elseif ( $dependency->isDefaultValueAvailable() ) {
-
+			if ( $dependency->isDefaultValueAvailable() ) {
 				$args[] = $dependency->getDefaultValue();
 			}
 		}
