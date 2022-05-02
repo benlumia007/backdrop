@@ -37,6 +37,7 @@ function menu( $item ) {
 							'container'      => '',
 							'menu_id'        => 'primary-menu',
 							'menu_class'     => 'menu-items',
+							'depth'          => 2
 						)
 					);
 				?>
