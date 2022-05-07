@@ -34,6 +34,14 @@ class Component implements Menu {
         $this->menu_id = $this->menus();
     }
 
+    public function menus() {
+        return array(
+            'primary'   => esc_html__( 'Primary Navigation', 'backdrop' ),
+            'secondary' => esc_html__( 'Secondary Navigation', 'backdrop' ),
+            'social'    => esc_html__( 'Social Navigation', 'backdorp' )
+        );
+    }
+
     /**
      * Register Menus
      * 
@@ -54,11 +62,19 @@ class Component implements Menu {
 	 * @param string $id output id.
 	 */
 	public function create( string $name, string $id ) {
-		$args = [
+		$args = apply_filters( 'backdrop/nav/menus', [
 			$id => $name,
-		];
+		] );
 
 		register_nav_menus( $args );
+	}
+
+	public function enqueue() {
+		wp_enqueue_script( 'initiator-navigation', get_theme_file_uri( 'vendor/benlumia007/initiator/assets/js/navigation.js' ), array('jquery'), '3.0.0', true );
+		wp_localize_script( 'initiator-navigation', 'initiatorScreenReaderText', array(
+			'expand'   => '<span class="screen-reader-text">' . esc_html__( 'expand child menu', 'initiator' ) . '</span>',
+			'collapse' => '<span class="screen-reader-text">' . esc_html__( 'collapse child menu', 'initiator' ) . '</span>',
+		) );
 	}
 
 	public function boot() {
