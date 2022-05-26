@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-container.git",
-                "reference": "be2f7e0588ca29942025835b63cc4a6798c940ce"
+                "reference": "fe6ea119cdcf8691e1b7548cdc2e68d47152678d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-container/zipball/be2f7e0588ca29942025835b63cc4a6798c940ce",
-                "reference": "be2f7e0588ca29942025835b63cc4a6798c940ce",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-container/zipball/fe6ea119cdcf8691e1b7548cdc2e68d47152678d",
+                "reference": "fe6ea119cdcf8691e1b7548cdc2e68d47152678d",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "issues": "https://github.com/benlumia007/backdrop-container/issues",
                 "source": "https://github.com/benlumia007/backdrop-container/tree/v1.0.0"
             },
-            "time": "2022-05-26T20:44:17+00:00"
+            "time": "2022-05-26T21:58:46+00:00"
         },
         {
             "name": "benlumia007/backdrop-contracts",
