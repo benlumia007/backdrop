@@ -17,20 +17,13 @@
     "autoload": {
         "psr-4": {
           "Benlumia007\\Backdrop\\": "src/"
-		},
-		"files": [
-			"src/Customize/Helpers/functions-helpers.php",
-            "src/Mix/functions-mix.php",
-            "src/Template/functions-helpers.php",
-			"src/Theme/Entry/functions-entry.php",
-			"src/Theme/Menu/functions-menu.php",
-			"src/Theme/Sidebar/functions-sidebar.php",
-			"src/Theme/Site/functions-site.php",
-			"src/Theme/functions-filter.php",
-			"/src/Theme/functions-setup.php"
-		]
+		}
     },
     "require": {
-        "php": ">=7.3.24"
+        "php": ">=7.3.24",
+		"benlumia007/backdrop-container": "v1.0.0.x-dev",
+        "benlumia007/backdrop-contracts": "v1.0.0.x-dev",
+		"benlumia007/backdrop-proxies": "v1.0.0.x-dev",
+		"benlumia007/backdrop-support": "v1.0.0.x-dev"
     }
 }
