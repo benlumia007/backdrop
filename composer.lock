@@ -4,9 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5752945c9c178521571cb766785b0632",
-    "packages": [],
-    "packages-dev": [
+    "content-hash": "de20087a849190242943f8b96588195b",
+    "packages": [
         {
             "name": "benlumia007/backdrop-container",
             "version": "v1.0.0.x-dev",
@@ -203,6 +202,7 @@
             "time": "2022-05-26T21:06:42+00:00"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
