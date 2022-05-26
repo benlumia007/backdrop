@@ -4,57 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f209605fa4b5bbd9628c82b548cf6cd8",
+    "content-hash": "624141f40514dbb31d27add51e57fdee",
     "packages": [
-        {
-            "name": "benlumia007/backdrop-container",
-            "version": "v1.0.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/benlumia007/backdrop-container.git",
-                "reference": "be2f7e0588ca29942025835b63cc4a6798c940ce"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-container/zipball/be2f7e0588ca29942025835b63cc4a6798c940ce",
-                "reference": "be2f7e0588ca29942025835b63cc4a6798c940ce",
-                "shasum": ""
-            },
-            "require": {
-                "benlumia007/backdrop-contracts": "v1.0.0.x-dev",
-                "php": ">=7.4.3"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Benlumia007\\Backdrop\\Container\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Lu",
-                    "email": "benlumia007@gmail.com",
-                    "homepage": "https://benjlu.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Backdrop Contracts for Backdrop framework.",
-            "homepage": "https://github.com/benlumia007/backdrop-container",
-            "keywords": [
-                "classicpress",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/benlumia007/backdrop-container/issues",
-                "source": "https://github.com/benlumia007/backdrop-container/tree/v1.0.0"
-            },
-            "time": "2022-05-26T20:44:17+00:00"
-        },
         {
             "name": "benlumia007/backdrop-contracts",
             "version": "v1.0.0.x-dev",
@@ -202,14 +153,64 @@
             "time": "2022-05-26T21:06:42+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "benlumia007/backdrop-container",
+            "version": "v1.0.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/benlumia007/backdrop-container.git",
+                "reference": "be2f7e0588ca29942025835b63cc4a6798c940ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-container/zipball/be2f7e0588ca29942025835b63cc4a6798c940ce",
+                "reference": "be2f7e0588ca29942025835b63cc4a6798c940ce",
+                "shasum": ""
+            },
+            "require": {
+                "benlumia007/backdrop-contracts": "v1.0.0.x-dev",
+                "php": ">=7.4.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Benlumia007\\Backdrop\\Container\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Lu",
+                    "email": "benlumia007@gmail.com",
+                    "homepage": "https://benjlu.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Backdrop Contracts for Backdrop framework.",
+            "homepage": "https://github.com/benlumia007/backdrop-container",
+            "keywords": [
+                "classicpress",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/benlumia007/backdrop-container/issues",
+                "source": "https://github.com/benlumia007/backdrop-container/tree/v1.0.0"
+            },
+            "time": "2022-05-26T20:44:17+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "benlumia007/backdrop-container": 20,
         "benlumia007/backdrop-contracts": 20,
         "benlumia007/backdrop-proxies": 20,
-        "benlumia007/backdrop-support": 20
+        "benlumia007/backdrop-support": 20,
+        "benlumia007/backdrop-container": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

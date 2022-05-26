@@ -21,9 +21,11 @@
     },
     "require": {
         "php": ">=7.3.24",
-		"benlumia007/backdrop-container": "v1.0.0.x-dev",
         "benlumia007/backdrop-contracts": "v1.0.0.x-dev",
 		"benlumia007/backdrop-proxies": "v1.0.0.x-dev",
 		"benlumia007/backdrop-support": "v1.0.0.x-dev"
-    }
+    },
+	"require-dev": {
+		"benlumia007/backdrop-container": "v1.0.0.x-dev"
+	}
 }
