@@ -7,7 +7,8 @@
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
- * @copyright Copyright (C) 2019-2021. Benjamin Lu
+ * @copyright Copyright (C) 2019-2022. Benjamin Lu
+ * @link      https://github.com/benlumia007/backdrop
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
@@ -30,17 +31,6 @@ interface Container {
 	 * @return bool
 	 */
 	public function bound( $abstract );
-
-	/**
-	 * Create an alias for the abstract type
-	 * 
-	 * @since  3.0.0
-	 * @access public
-	 * @param  string $abstract
-	 * @param  string $alias
-	 * @param  void
-	 */
-	public function alias( $abstract, $alias );
 
     /**
      * Register a binding with the container.
@@ -128,4 +118,15 @@ interface Container {
 	 * @return mixed
 	 */
     public function resolve( $abstract, array $parameters = [] );
+
+	/**
+	 * Create an alias for the abstract type
+	 * 
+	 * @since  3.0.0
+	 * @access public
+	 * @param  string $abstract
+	 * @param  string $alias
+	 * @param  void
+	 */
+	public function alias( $abstract, $alias );
 }
