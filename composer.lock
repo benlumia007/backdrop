@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-contracts.git",
-                "reference": "e0647d3d337834ad15c0f11d05cda87bceefb2f2"
+                "reference": "ae5349a4ca78587d95200bffeabcf8ce25e7036c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/e0647d3d337834ad15c0f11d05cda87bceefb2f2",
-                "reference": "e0647d3d337834ad15c0f11d05cda87bceefb2f2",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/ae5349a4ca78587d95200bffeabcf8ce25e7036c",
+                "reference": "ae5349a4ca78587d95200bffeabcf8ce25e7036c",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "issues": "https://github.com/benlumia007/backdrop-contracts/issues",
                 "source": "https://github.com/benlumia007/backdrop-contracts/tree/v1.0.0"
             },
-            "time": "2022-05-27T06:20:55+00:00"
+            "time": "2022-05-27T07:05:04+00:00"
         },
         {
             "name": "benlumia007/backdrop-proxies",
@@ -108,17 +108,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-proxies.git",
-                "reference": "48af31456b688c9e90b608ea53d20fb4b7babc00"
+                "reference": "d9f9a480970f287fe3954b845f1d7c4839d003d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-proxies/zipball/48af31456b688c9e90b608ea53d20fb4b7babc00",
-                "reference": "48af31456b688c9e90b608ea53d20fb4b7babc00",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-proxies/zipball/d9f9a480970f287fe3954b845f1d7c4839d003d9",
+                "reference": "d9f9a480970f287fe3954b845f1d7c4839d003d9",
                 "shasum": ""
             },
             "require": {
-                "benlumia007/backdrop-contracts": "v1.0.0.x-dev",
-                "php": ">=7.4.3"
+                "php": ">=7.4.29"
             },
             "default-branch": true,
             "type": "library",
@@ -149,7 +148,7 @@
                 "issues": "https://github.com/benlumia007/backdrop-proxies/issues",
                 "source": "https://github.com/benlumia007/backdrop-proxies/tree/v1.0.0"
             },
-            "time": "2022-05-26T21:12:51+00:00"
+            "time": "2022-05-27T07:11:52+00:00"
         },
         {
             "name": "benlumia007/backdrop-support",
@@ -157,12 +156,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-support.git",
-                "reference": "64990dc25ac18d81070a371150c89e69568d0e22"
+                "reference": "35287d7128655ee54fd34f4c89563dedad181b2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-support/zipball/64990dc25ac18d81070a371150c89e69568d0e22",
-                "reference": "64990dc25ac18d81070a371150c89e69568d0e22",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-support/zipball/35287d7128655ee54fd34f4c89563dedad181b2d",
+                "reference": "35287d7128655ee54fd34f4c89563dedad181b2d",
                 "shasum": ""
             },
             "require": {
@@ -198,7 +197,7 @@
                 "issues": "https://github.com/benlumia007/backdrop-support/issues",
                 "source": "https://github.com/benlumia007/backdrop-support/tree/v1.0.0"
             },
-            "time": "2022-05-26T21:06:42+00:00"
+            "time": "2022-05-27T14:31:04+00:00"
         }
     ],
     "packages-dev": [],
