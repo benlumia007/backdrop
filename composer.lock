@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f209605fa4b5bbd9628c82b548cf6cd8",
+    "content-hash": "c17ad9620ceee3ab68dffef7f4cb803a",
     "packages": [
         {
             "name": "benlumia007/backdrop-container",
-            "version": "v1.0.0.x-dev",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-container.git",
@@ -23,7 +23,6 @@
             "require": {
                 "php": ">=7.4.29"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -50,28 +49,27 @@
             ],
             "support": {
                 "issues": "https://github.com/benlumia007/backdrop-container/issues",
-                "source": "https://github.com/benlumia007/backdrop-container/tree/v1.0.0"
+                "source": "https://github.com/benlumia007/backdrop-container/tree/1.0.0"
             },
             "time": "2022-05-27T06:34:21+00:00"
         },
         {
             "name": "benlumia007/backdrop-contracts",
-            "version": "v1.0.0.x-dev",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-contracts.git",
-                "reference": "ae5349a4ca78587d95200bffeabcf8ce25e7036c"
+                "reference": "c0956747d116aec4acb27719dccd63e193e37b10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/ae5349a4ca78587d95200bffeabcf8ce25e7036c",
-                "reference": "ae5349a4ca78587d95200bffeabcf8ce25e7036c",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/c0956747d116aec4acb27719dccd63e193e37b10",
+                "reference": "c0956747d116aec4acb27719dccd63e193e37b10",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4.3"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -98,28 +96,27 @@
             ],
             "support": {
                 "issues": "https://github.com/benlumia007/backdrop-contracts/issues",
-                "source": "https://github.com/benlumia007/backdrop-contracts/tree/v1.0.0"
+                "source": "https://github.com/benlumia007/backdrop-contracts/tree/1.0.0"
             },
-            "time": "2022-05-27T07:05:04+00:00"
+            "time": "2022-05-28T02:36:49+00:00"
         },
         {
             "name": "benlumia007/backdrop-proxies",
-            "version": "v1.0.0.x-dev",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-proxies.git",
-                "reference": "d9f9a480970f287fe3954b845f1d7c4839d003d9"
+                "reference": "ec925f6b3e51b0e5e3d0c2508fc169293af08add"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-proxies/zipball/d9f9a480970f287fe3954b845f1d7c4839d003d9",
-                "reference": "d9f9a480970f287fe3954b845f1d7c4839d003d9",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-proxies/zipball/ec925f6b3e51b0e5e3d0c2508fc169293af08add",
+                "reference": "ec925f6b3e51b0e5e3d0c2508fc169293af08add",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4.29"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -146,29 +143,27 @@
             ],
             "support": {
                 "issues": "https://github.com/benlumia007/backdrop-proxies/issues",
-                "source": "https://github.com/benlumia007/backdrop-proxies/tree/v1.0.0"
+                "source": "https://github.com/benlumia007/backdrop-proxies/tree/1.0.0"
             },
-            "time": "2022-05-27T07:11:52+00:00"
+            "time": "2022-05-28T00:53:38+00:00"
         },
         {
             "name": "benlumia007/backdrop-support",
-            "version": "v1.0.0.x-dev",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-support.git",
-                "reference": "35287d7128655ee54fd34f4c89563dedad181b2d"
+                "reference": "3a095d2c49c49735ab82cdff21036213da9604b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-support/zipball/35287d7128655ee54fd34f4c89563dedad181b2d",
-                "reference": "35287d7128655ee54fd34f4c89563dedad181b2d",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-support/zipball/3a095d2c49c49735ab82cdff21036213da9604b7",
+                "reference": "3a095d2c49c49735ab82cdff21036213da9604b7",
                 "shasum": ""
             },
             "require": {
-                "benlumia007/backdrop-contracts": "v1.0.0.x-dev",
-                "php": ">=7.4.3"
+                "php": ">=7.4.29"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -195,20 +190,15 @@
             ],
             "support": {
                 "issues": "https://github.com/benlumia007/backdrop-support/issues",
-                "source": "https://github.com/benlumia007/backdrop-support/tree/v1.0.0"
+                "source": "https://github.com/benlumia007/backdrop-support/tree/1.0.0"
             },
-            "time": "2022-05-27T14:31:04+00:00"
+            "time": "2022-05-28T04:11:19+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "benlumia007/backdrop-container": 20,
-        "benlumia007/backdrop-contracts": 20,
-        "benlumia007/backdrop-proxies": 20,
-        "benlumia007/backdrop-support": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
