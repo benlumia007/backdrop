@@ -1,22 +1,22 @@
 # Changelog
 
-## 3.0.0
+## 2.0.0
 - New and Improved Framework
 
-## 2.0.1 
+## 2.0.1
 - Minor Changes
 
 ## 2.0.0
 - Add Container and provider
 
-## 1.1.6 
+## 1.1.6
 - This is the last update for version 1.1.6
 
 ## 1.1.2 - November 18, 2020
 - Add Support for ClassicPress
 
 ## 1.1.1 - April 10, 2020
-- Merged 
+- Merged
 
 ## 1.1.0 - March 21, 2020
 - update minor fixes

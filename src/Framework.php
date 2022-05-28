@@ -18,7 +18,7 @@ use Benlumia007\Backdrop\Proxies\App;
 /**
  * Application class.
  *
- * @since  3.0.0
+ * @since  2.0.0
  * @access public
  */
 class Framework extends Container implements FrameworkContract, Bootable {
@@ -26,16 +26,16 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * The current version of the framework.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @var    string
 	 */
-	const VERSION = '3.0.0';
+	const VERSION = '2.0.0';
 
 	/**
 	 * Array of service provider objects.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -44,7 +44,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Array of static proxy classes and aliases.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -53,7 +53,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Array of booted service providers.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -62,7 +62,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Array of registered proxies.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -72,7 +72,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * Registers the default bindings, providers, and proxies for the
 	 * framework.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -84,7 +84,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Calls the functions to register and boot providers and proxies.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -96,7 +96,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Registers the default bindings we need to run the framework.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -112,7 +112,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Adds the default static proxy classes.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -123,7 +123,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Adds a service provider.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string|object  $provider
 	 * @return void
@@ -150,7 +150,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Calls the `boot()` method of all the registered service providers.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -177,7 +177,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * Adds a static proxy alias. Developers must pass in fully-qualified
 	 * class name and alias class name.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $class_name
 	 * @param  string  $alias
@@ -191,7 +191,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	/**
 	 * Registers the static proxy classes.
 	 *
-	 * @since  3.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
