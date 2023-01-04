@@ -16,12 +16,11 @@
     ],
     "autoload": {
         "psr-4": {
-          "Benlumia007\\Backdrop\\": "src/"
+          "Backdrop\\": "src/"
 		}
     },
     "require": {
         "php": ">=7.4",
-		"benlumia007/backdrop-container": "^1.0.0",
         "benlumia007/backdrop-contracts": "^1.0.0",
 		"benlumia007/backdrop-proxies": "^1.0.0",
 		"benlumia007/backdrop-support": "^1.0.0"
