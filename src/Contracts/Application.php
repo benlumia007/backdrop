@@ -12,7 +12,7 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Container\Contracts;
+namespace Backdrop\Contracts;
 
 use Backdrop\Contracts\Container;
 use Backdrop\Core\ServiceProvider;
