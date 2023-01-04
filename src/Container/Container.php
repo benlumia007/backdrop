@@ -312,4 +312,17 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $this->bound( $name );
 	}
+
+	/**
+	* Returns a property via `ArrayAccess`.
+	*
+	* @since  2.0.0
+	* @access public
+	* @param  string  $name
+	* @return mixed
+	*/
+	public function offsetGet( $name ) {
+
+		return $this->factory( $name );
+	}
 }
