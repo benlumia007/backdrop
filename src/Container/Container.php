@@ -370,3 +370,4 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $abstract;
 	}
+}
