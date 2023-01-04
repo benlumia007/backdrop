@@ -128,7 +128,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @param  string|object  $provider
 	 * @return void
 	 */
-	public function provider( $provider ) {
+	public function provider( ServiceProvider|string $provider ) {
 
 		/**
 		 * Creates a new instance of a service provider class.
