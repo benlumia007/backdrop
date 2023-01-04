@@ -339,4 +339,17 @@ class Container implements ContainerContract, ArrayAccess {
 
 		$this->add( $name, $value );
 	}
+
+	/**
+	* Unsets a property via `ArrayAccess`.
+	*
+	* @since  2.0.0
+	* @access public
+	* @param  string  $name
+	* @return void
+	*/
+	public function offsetUnset( $name ) {
+
+		$this->remove( $name );
+	}
 }
