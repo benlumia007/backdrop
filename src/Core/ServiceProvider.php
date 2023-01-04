@@ -58,5 +58,5 @@ abstract class ServiceProvider implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function boot() {}
+	public function boot() : void {}
 }
