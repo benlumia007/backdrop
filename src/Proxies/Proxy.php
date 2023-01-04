@@ -10,7 +10,7 @@
  */
 
 namespace Backdrop\Proxies;
-use Backdrop\Container\Contracts\Container;
+use Backdrop\Contracts\Container;
 
 /**
  * Base static proxy class.
