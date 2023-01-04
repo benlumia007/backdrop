@@ -390,4 +390,19 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $concrete ?: $abstract;
 	}
+
+	/**
+	 * Determines if a concrete is buildable. It should either be a closure
+	 * or a concrete class.
+	 *
+	 * @since  2.0.0
+	 * @access protected
+	 * @param  mixed    $concrete
+	 * @return bool
+	 */
+	protected function isBuildable( $concrete ) {
+
+		return $concrete instanceof Closure
+		       || ( is_string( $concrete ) && class_exists( $concrete ) );
+	}
 }
