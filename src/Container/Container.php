@@ -241,7 +241,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @param  array   $parameters
 	 * @return mixed
 	 */
-	public function resolve( $abstract, array $parameters = [] ) {
+    public function resolve( string $abstract, array $parameters = [] ) : mixed {
 		
 		// Let's grab the true abstract name.
 		$abstract = $this->getAlias( $abstract );
