@@ -98,7 +98,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @param  string  $alias
 	 * @return void
 	 */
-	public function alias( $abstract, $alias ) {
+	public function alias( string $abstract, string $alias ) : void {
 		$this->aliases[ $alias ] = $abstract;
 	}
 
