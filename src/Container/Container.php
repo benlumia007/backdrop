@@ -405,4 +405,35 @@ class Container implements ContainerContract, ArrayAccess {
 		return $concrete instanceof Closure
 		       || ( is_string( $concrete ) && class_exists( $concrete ) );
 	}
+
+	/**
+	 * Builds the concrete implementation. If a closure, we'll simply return
+	 * the closure and pass the included parameters. Otherwise, we'll resolve
+	 * the dependencies for the class and return a new object.
+	 *
+	 * @since  2.0.0
+	 * @access protected
+	 * @param  mixed  $concrete
+	 * @param  array  $parameters
+	 * @return object
+	 */
+	protected function build( $concrete, array $parameters = [] ) {
+
+		if ( $concrete instanceof Closure ) {
+			return $concrete( $this, $parameters );
+		}
+
+		$reflect = new ReflectionClass( $concrete );
+
+		$constructor = $reflect->getConstructor();
+
+		if ( ! $constructor ) {
+			return new $concrete();
+		}
+
+		return $reflect->newInstanceArgs(
+			$this->resolveDependencies( $constructor->getParameters(), $parameters )
+		);
+	}
+
 }
