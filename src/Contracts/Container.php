@@ -94,7 +94,7 @@ interface Container {
 	 * @param  string  $abstract
 	 * @return bool
 	 */
-	public function has( string $abstract ) : bool;
+	public function bound( string $abstract ) : bool;
 
 	/**
 	 * Add a shared binding.
