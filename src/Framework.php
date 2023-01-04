@@ -118,7 +118,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @return void
 	 */
 	protected function registerDefaultProxies() {
-		$this->proxy( App::class, 'Benlumia007\Backdrop\App' );
+		$this->proxy( App::class, 'Backdrop\App' );
 	}
 
 	/**
