@@ -224,7 +224,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @param  string  $abstract
 	 * @return void
 	 */
-	public function remove( $abstract ) {
+	public function remove( string $abstract ) : void {
 
 		if ( $this->bound( $abstract ) ) {
 
