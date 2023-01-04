@@ -118,16 +118,16 @@ interface Container {
 	 */
     public function instance( string $abstract, mixed $instance ) : mixed;
 
-	 /**
-	  * Extend a binding.
-	  *
-	  * @since  2.0.0
-	  * @access public
-	  * @param  string  $abstract
-	  * @param  Closure $closure
-	  * @return void
-	  */
-      public function extend( string $abstract, Closure $closure ) : void;
+    /**
+     * Extend a binding.
+    *
+    * @since  2.0.0
+    * @access public
+    * @param  string  $abstract
+    * @param  Closure $closure
+    * @return void
+    */
+    public function extend( string $abstract, Closure $closure ) : void;
 
 	 /**
 	  * Create an alias for an abstract type.
