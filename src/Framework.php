@@ -8,12 +8,12 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Benlumia007\Backdrop;
-use Benlumia007\Backdrop\Container\Container;
-use Benlumia007\Backdrop\Contracts\Foundation\Application as FrameworkContract;
-use Benlumia007\Backdrop\Contracts\Bootable;
-use Benlumia007\Backdrop\Proxies\Proxy;
-use Benlumia007\Backdrop\Proxies\App;
+namespace Backdrop;
+use Backdrop\Container\Container;
+use Backdrop\Contracts\Application as FrameworkContract;
+use Backdrop\Contracts\Bootable;
+use Backdrop\Proxies\Proxy;
+use Backdrop\Proxies\App;
 
 /**
  * Application class.

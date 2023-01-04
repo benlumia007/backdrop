@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a9a03b9e341a6249c5191604d987d63",
+    "content-hash": "7ad8ccebe695814e99145fe042e4759e",
     "packages": [
         {
             "name": "benlumia007/backdrop-contracts",
-            "version": "1.0.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-contracts.git",
-                "reference": "702aa4e483e7cc4d27bca1f38c39fd495ed67f90"
+                "reference": "6e00c04fc5e35d4f490d7d23860a4a8ab2f8eb90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/702aa4e483e7cc4d27bca1f38c39fd495ed67f90",
-                "reference": "702aa4e483e7cc4d27bca1f38c39fd495ed67f90",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/6e00c04fc5e35d4f490d7d23860a4a8ab2f8eb90",
+                "reference": "6e00c04fc5e35d4f490d7d23860a4a8ab2f8eb90",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Benlumia007\\Backdrop\\Contracts\\": "src"
+                    "Backdrop\\Contracts\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -49,103 +49,9 @@
             ],
             "support": {
                 "issues": "https://github.com/benlumia007/backdrop-contracts/issues",
-                "source": "https://github.com/benlumia007/backdrop-contracts/tree/1.0.1"
+                "source": "https://github.com/benlumia007/backdrop-contracts/tree/1.0.0"
             },
-            "time": "2022-11-23T04:04:44+00:00"
-        },
-        {
-            "name": "benlumia007/backdrop-proxies",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/benlumia007/backdrop-proxies.git",
-                "reference": "d9ab0fd144b66fa0b203edb39a391b5ea604ee7a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-proxies/zipball/d9ab0fd144b66fa0b203edb39a391b5ea604ee7a",
-                "reference": "d9ab0fd144b66fa0b203edb39a391b5ea604ee7a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Benlumia007\\Backdrop\\Proxies\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Lu",
-                    "email": "benlumia007@gmail.com",
-                    "homepage": "https://benjlu.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Backdrop Contracts for Backdrop framework.",
-            "homepage": "https://github.com/benlumia007/backdrop-proxies",
-            "keywords": [
-                "classicpress",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/benlumia007/backdrop-proxies/issues",
-                "source": "https://github.com/benlumia007/backdrop-proxies/tree/1.0.1"
-            },
-            "time": "2022-11-23T04:07:12+00:00"
-        },
-        {
-            "name": "benlumia007/backdrop-support",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/benlumia007/backdrop-support.git",
-                "reference": "06cde59db90a97f6b1e11bb9766c2e9bfc8d1066"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-support/zipball/06cde59db90a97f6b1e11bb9766c2e9bfc8d1066",
-                "reference": "06cde59db90a97f6b1e11bb9766c2e9bfc8d1066",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Benlumia007\\Backdrop\\Support\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Lu",
-                    "email": "benlumia007@gmail.com",
-                    "homepage": "https://benjlu.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Backdrop Contracts for Backdrop framework.",
-            "homepage": "https://github.com/benlumia007/backdrop-support",
-            "keywords": [
-                "classicpress",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/benlumia007/backdrop-support/issues",
-                "source": "https://github.com/benlumia007/backdrop-support/tree/1.0.1"
-            },
-            "time": "2022-11-23T04:01:02+00:00"
+            "time": "2023-01-04T19:04:22+00:00"
         }
     ],
     "packages-dev": [],
