@@ -300,4 +300,16 @@ class Container implements ContainerContract, ArrayAccess {
 		$this->aliases[ $alias ] = $abstract;
 	}
 
+	/**
+	* Checks if a property exists via `ArrayAccess`.
+	*
+	* @since  2.0.0
+	* @access public
+	* @param  string  $name
+	* @return bool
+	*/
+	public function offsetExists( $name ) {
+
+		return $this->bound( $name );
+	}
 }
