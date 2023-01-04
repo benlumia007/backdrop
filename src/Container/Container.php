@@ -325,4 +325,18 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $this->factory( $name );
 	}
+
+	/**
+	* Sets a property via `ArrayAccess`.
+	*
+	* @since  2.0.0
+	* @access public
+	* @param  string  $name
+	* @param  mixed   $value
+	* @return void
+	*/
+	public function offsetSet( $name, $value ) {
+
+		$this->add( $name, $value );
+	}
 }
