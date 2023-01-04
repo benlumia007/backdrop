@@ -487,4 +487,26 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $args;
 	}
+
+	/**
+	 * `ReflectionParameter::getType()` in PHP may return an instance of
+	 * `ReflectionNamedType` or an `ReflectionUnionType`.  The latter class's
+	 * `getTypes()` method returns an array of the former objects. This
+	 * method ensures that we always get an array of `ReflectionNamedType`
+	 * objects.
+	 *
+	 * @since  2.0.0
+	 */
+	protected function getReflectionTypes( ReflectionParameter $dependency ): array
+	{
+		$types = $dependency->getType();
+
+		if ( ! $types ) {
+			return [];
+		} elseif ( class_exists( 'ReflectionUnionType' ) && $types instanceof ReflectionUnionType ) {
+			return $types->getTypes();
+		}
+
+		return [ $types ];
+	}
 }
