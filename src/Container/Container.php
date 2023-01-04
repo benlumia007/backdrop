@@ -352,4 +352,21 @@ class Container implements ContainerContract, ArrayAccess {
 
 		$this->remove( $name );
 	}
-}
+    
+	/**
+	 * Checks if we're dealing with an alias and returns the abstract. If
+	 * not an alias, return the abstract passed in.
+	 *
+	 * @since  2.0.0
+	 * @access protected
+	 * @param  string    $abstract
+	 * @return string
+	 */
+	protected function getAlias( $abstract ) {
+
+		if ( isset( $this->aliases[ $abstract ] ) ) {
+			return $this->aliases[ $abstract ];
+		}
+
+		return $abstract;
+	}
