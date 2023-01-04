@@ -370,4 +370,24 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return $abstract;
 	}
+
+	/**
+	 * Gets the concrete of an abstract.
+	 *
+	 * @since  2.0.0
+	 * @access protected
+	 * @param  string    $abstract
+	 * @return mixed
+	 */
+	protected function getConcrete( $abstract ) {
+
+		$concrete = false;
+		$abstract = $this->getAlias( $abstract );
+
+		if ( $this->bound( $abstract ) ) {
+			$concrete = $this->bindings[ $abstract ]['concrete'];
+		}
+
+		return $concrete ?: $abstract;
+	}
 }
