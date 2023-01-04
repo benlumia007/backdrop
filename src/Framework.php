@@ -12,6 +12,7 @@ namespace Backdrop;
 use Backdrop\Container\Container;
 use Backdrop\Contracts\Application as FrameworkContract;
 use Backdrop\Contracts\Bootable;
+use Backdrop\Core\ServiceProvider;
 use Backdrop\Proxies\Proxy;
 use Backdrop\Proxies\App;
 
@@ -128,7 +129,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @param  string|object  $provider
 	 * @return void
 	 */
-	public function provider( ServiceProvider|string $provider ) {
+	public function provider( ServiceProvider|string $provider ) : void {
 
 		/**
 		 * Creates a new instance of a service provider class.
