@@ -89,7 +89,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function boot() {
+	public function boot() : void {
 		$this->bootProviders();
 		$this->registerProxies();
 	}
