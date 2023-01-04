@@ -184,7 +184,7 @@ class Framework extends Container implements FrameworkContract, Bootable {
 	 * @param  string  $alias
 	 * @return void
 	 */
-	public function proxy( $class_name, $alias ) {
+	public function proxy( string $class_name, string $alias ) : void {
 
 		$this->proxies[ $class_name ] = $alias;
 	}
