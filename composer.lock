@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ad8ccebe695814e99145fe042e4759e",
+    "content-hash": "2a433de55080e5db423463c04916d5e3",
     "packages": [
         {
             "name": "benlumia007/backdrop-contracts",
-            "version": "1.0.0",
+            "version": "v1.0.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-contracts.git",
@@ -23,6 +23,7 @@
             "require": {
                 "php": ">=7.4"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -57,7 +58,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "benlumia007/backdrop-contracts": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
