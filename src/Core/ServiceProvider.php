@@ -15,7 +15,7 @@
 namespace Backdrop\Core;
 
 use Backdrop\Contracts\Bootable;
-use Backdrop\Contracts\Container\Container as Application;
+use Backdrop\Contracts\Container as Application;
 
 abstract class ServiceProvider implements Bootable {
 	/**
