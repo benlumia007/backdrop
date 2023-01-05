@@ -324,7 +324,7 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function offsetGet( $name ) : mixed {
 
-		return $this->factory( $name );
+		return $this->get( $name );
 	}
 
 	/**
@@ -560,6 +560,6 @@ class Container implements ContainerContract, ArrayAccess {
 	*/
 	public function __get( $name ) : mixed {
 
-		return $this->factory( $name );
+		return $this->get( $name );
 	}
 }
