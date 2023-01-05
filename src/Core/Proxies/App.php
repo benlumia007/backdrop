@@ -9,7 +9,7 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Proxies;
+namespace Backdrop\Core\Proxies;
 
 /**
  * App static proxy class.
