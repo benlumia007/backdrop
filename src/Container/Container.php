@@ -545,7 +545,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  string  $name
 	* @return bool
 	*/
-	public function __isset( $name ) {
+	public function __isset( $name ) : bool {
 
 		return $this->bound( $name );
 	}
