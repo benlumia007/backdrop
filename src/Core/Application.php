@@ -14,8 +14,8 @@ namespace Backdrop\Core;
 use Backdrop\Contracts\Bootable;
 use Backdrop\Core\Container;
 use Backdrop\Core\ServiceProvider;
-use Backdrop\Proxies\Proxy;
-use Backdrop\Proxies\App;
+use Backdrop\Core\Proxies\App;
+use Backdrop\Core\Proxies\Proxy;
 
 /**
  * Application class.
