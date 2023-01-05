@@ -5,7 +5,7 @@ The main objective of this Backdrop Core is build a theme with its finest tools 
 
 ## Requirements
 - WordPress 4.9 or higher (Compatible with ClassicPress)
-- PHP 5.6 or higher ( PHP 7.0 or higher is recommended )
+- PHP 7.4 or higher
 - Composer
 
 ## Documentations
