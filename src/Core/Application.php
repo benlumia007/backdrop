@@ -1,6 +1,6 @@
 <?php
 /**
- * Create a new Framework.
+ * Create a new Application.
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
@@ -9,7 +9,7 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop;
+namespace Backdrop\Core;
 
 use Backdrop\Contracts\Bootable;
 use Backdrop\Core\Container;
@@ -23,7 +23,7 @@ use Backdrop\Proxies\App;
  * @since  2.0.0
  * @access public
  */
-class Framework extends Container implements Bootable {
+class Application extends Container implements Bootable {
 
 	/**
 	 * The current version of the framework.
