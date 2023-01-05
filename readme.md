@@ -1,7 +1,7 @@
 # Backdrop
 Backdrop is a framework for developing ClassicPress and WordPress themes and plugins.
 
-The main objective of this Backdrop Core is build a theme with its finest tools that you can use.
+The main objective of this Backdrop is to build a theme or plugin with its finest tools that you can use.
 
 ## Requirements
 - WordPress 4.9 or higher (Compatible with ClassicPress)
