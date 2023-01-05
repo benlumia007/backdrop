@@ -94,7 +94,7 @@ class Application extends Container implements Bootable {
 		$this->bootProviders();
 		$this->registerProxies();
 
-		if ( ! define( 'BACKDROP_BOOTED' ) ) {
+		if ( ! defined( 'BACKDROP_BOOTED' ) ) {
 			define('BACKDROP_BOOTED', true );
 			
 		}
