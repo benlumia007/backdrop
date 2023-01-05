@@ -305,6 +305,33 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
+	 * Adds a service provider. All service providers must extend the
+	 * `ServiceProvider` class. A string or an instance of the provider may
+	 * be passed in.
+	 *
+	 * @since  1.0.0
+	 */
+	public function provider( ServiceProvider|string $provider ): void
+	{
+		if ( is_string( $provider ) ) {
+			$provider = $this->resolveProvider( $provider );
+		}
+
+		$this->providers[] = $provider;
+	}
+
+	/**
+	 * Adds a static proxy alias. Developers must pass in fully-qualified
+	 * class name and alias class name.
+	 *
+	 * @since 1.0.0
+	 */
+	public function proxy( string $class_name, string $alias ): void
+	{
+		$this->proxies[ $class_name ] = $alias;
+	}
+
+	/**
 	* Checks if a property exists via `ArrayAccess`.
 	*
 	* @since  2.0.0
