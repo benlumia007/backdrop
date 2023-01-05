@@ -1,5 +1,5 @@
 # Backdrop
-Backdrop is a framework for developing ClassicPress and WordPress Themes.
+Backdrop is a framework for developing ClassicPress and WordPress themes and plugins.
 
 The main objective of this Backdrop Core is build a theme with its finest tools that you can use.
 
