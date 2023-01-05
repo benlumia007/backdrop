@@ -4,56 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ad8ccebe695814e99145fe042e4759e",
-    "packages": [
-        {
-            "name": "benlumia007/backdrop-contracts",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/benlumia007/backdrop-contracts.git",
-                "reference": "6e00c04fc5e35d4f490d7d23860a4a8ab2f8eb90"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/6e00c04fc5e35d4f490d7d23860a4a8ab2f8eb90",
-                "reference": "6e00c04fc5e35d4f490d7d23860a4a8ab2f8eb90",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Backdrop\\Contracts\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Lu",
-                    "email": "benlumia007@gmail.com",
-                    "homepage": "https://benjlu.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Backdrop Contracts for Backdrop framework.",
-            "homepage": "https://github.com/benlumia007/backdrop-contracts",
-            "keywords": [
-                "classicpress",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/benlumia007/backdrop-contracts/issues",
-                "source": "https://github.com/benlumia007/backdrop-contracts/tree/1.0.0"
-            },
-            "time": "2023-01-04T19:04:22+00:00"
-        }
-    ],
+    "content-hash": "1e1f3244eb0357fb1d8da9325e3f28ff",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
