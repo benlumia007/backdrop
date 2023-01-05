@@ -10,8 +10,9 @@
  */
 
 namespace Backdrop;
-use Backdrop\Container\Container;
+
 use Backdrop\Contracts\Bootable;
+use Backdrop\Core\Container;
 use Backdrop\Core\ServiceProvider;
 use Backdrop\Proxies\Proxy;
 use Backdrop\Proxies\App;
