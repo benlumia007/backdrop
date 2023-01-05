@@ -11,7 +11,6 @@
 
 namespace Backdrop;
 use Backdrop\Container\Container;
-use Backdrop\Contracts\Application as FrameworkContract;
 use Backdrop\Contracts\Bootable;
 use Backdrop\Core\ServiceProvider;
 use Backdrop\Proxies\Proxy;
@@ -23,7 +22,7 @@ use Backdrop\Proxies\App;
  * @since  2.0.0
  * @access public
  */
-class Framework extends Container implements FrameworkContract, Bootable {
+class Framework extends Container implements Bootable {
 
 	/**
 	 * The current version of the framework.
