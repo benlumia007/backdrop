@@ -13,7 +13,7 @@
  */
 
 namespace Backdrop\Container;
-use Backdrop\Contracts\Container\Container as ContainerContract;
+use Backdrop\Contracts\Container as ContainerContract;
 
 use Backdrop\Core\ServiceProvider;
 
