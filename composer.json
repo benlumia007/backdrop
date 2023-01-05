@@ -21,6 +21,6 @@
     },
     "require": {
         "php": ">=7.4",
-        "benlumia007/backdrop-contracts": "v1.0.0.x-dev"
+        "benlumia007/backdrop-contracts": "^1.0.0"
     }
 }
