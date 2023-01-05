@@ -509,4 +509,57 @@ class Container implements ContainerContract, ArrayAccess {
 
 		return [ $types ];
 	}
+
+	/**
+	* Magic method when trying to set a property.
+	*
+	* @since  2.0.0
+	* @access public
+	* @param  string  $name
+	* @param  mixed   $value
+	* @return void
+	*/
+	public function __set( $name, $value ) {
+
+		$this->add( $name, $value );
+	}
+
+	/**
+	* Magic method when trying to unset a property.
+	*
+	* @since  2.0.0
+	* @access public
+	* @param  string  $name
+	* @return void
+	*/
+	public function __unset( $name ) {
+
+		$this->remove( $name );
+	}
+
+	/**
+	* Magic method when trying to check if a property exists.
+	*
+	* @since  2.0.0
+	* @access public
+	* @param  string  $name
+	* @return bool
+	*/
+	public function __isset( $name ) {
+
+		return $this->bound( $name );
+	}
+
+	/**
+	* Magic method when trying to get a property.
+	*
+	* @since  2.0.0
+	* @access public
+	* @param  string  $name
+	* @return mixed
+	*/
+	public function __get( $name ) {
+
+		return $this->factory( $name );
+	}
 }
