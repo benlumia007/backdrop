@@ -16,11 +16,11 @@
 
 namespace Backdrop\View;
 
-use Backdrop\Tools\ServiceProvider;
-use Backdrop\Template\View\Engine\Component as Engine;
-use Backdrop\Template\View\Contracts\Engine as EngineContract;
-use Backdrop\Template\View\Contracts\View   as ViewContract;
 
+use Backdrop\View\Engine\Component as Engine;
+use Backdrop\Contracts\View\Engine as EngineContract;
+use Backdrop\Contracts\View\View   as ViewContract;
+use Backdrop\Tools\ServiceProvider;
 /**
  * View provider class.
  *
