@@ -12,29 +12,29 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Core;
+namespace Backdrop\Tools;
 
 use Backdrop\Contracts\Bootable;
-use Backdrop\Contracts\Container as Application;
+use Backdrop\Contracts\Core\Container as Application;
 
 abstract class ServiceProvider implements Bootable {
 	/**
-	 * Application instance. Sub-classes should use this property to access
+	 * Application instance. Subclasses should use this property to access
 	 * the application (container) to add, remove, or resolve bindings.
 	 *
 	 * @since  2.0.0
 	 * @access protected
-	 * @var    \Backdrop\Application
+	 * @var    Application
 	 */
-	protected $app;
+	protected Application $app;
 
 	/**
 	 * Accepts the application and sets it to the `$app` property.
 	 *
-	 * @param  \Backdrop\Core\Application  $app
-	 * @return void
-	 *@since  2.0.0
+	 * @since  2.0.0
 	 * @access public
+	 * @param  Application  $app
+	 * @return void
 	 */
 	public function __construct( Application $app ) {
 		$this->app = $app;
@@ -47,7 +47,7 @@ abstract class ServiceProvider implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function register() {}
+	public function register(): void {}
 
 	/**
 	 * Callback executed after all the service providers have been registered.
@@ -58,5 +58,5 @@ abstract class ServiceProvider implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function boot() : void {}
+	public function boot(): void {}
 }

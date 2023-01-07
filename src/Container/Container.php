@@ -14,10 +14,9 @@
 
 namespace Backdrop\Container;
 
-use Backdrop\Contracts\Core\Container as ContainerContract;
-use Backdrop\Core\ServiceProvider;
-
 use ArrayAccess;
+use Backdrop\Contracts\Core\Container as ContainerContract;
+use Backdrop\Tools\ServiceProvider;
 use Closure;
 use ReflectionClass;
 use ReflectionException;

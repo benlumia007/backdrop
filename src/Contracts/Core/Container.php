@@ -14,7 +14,7 @@
 
 namespace Backdrop\Contracts\Core;
 
-use Backdrop\Core\ServiceProvider;
+use Backdrop\Tools\ServiceProvider;
 use Closure;
 
 /**
