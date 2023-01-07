@@ -17,7 +17,7 @@ namespace Backdrop\Contracts;
 /**
  * Displayable interface
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 interface Displayable {
@@ -25,7 +25,7 @@ interface Displayable {
 	/**
 	 * Prints the HTML string.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */

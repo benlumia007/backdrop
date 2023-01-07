@@ -17,14 +17,14 @@ namespace Backdrop\Contracts;
 /**
  * Renderable interface
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 interface Renderable {
 	/**
 	 * Return an HTML string for output.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return string
 	 */
