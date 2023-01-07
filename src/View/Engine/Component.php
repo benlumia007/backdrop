@@ -20,7 +20,7 @@
 namespace Backdrop\View\Engine;
 
 use Backdrop\Proxies\App;
-use Backdrop\Template\View\View\Component as View;
+use Backdrop\View\View\Component as View;
 use Backdrop\Tools\Collection;
 
 /**
