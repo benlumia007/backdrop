@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Mix Manifest provider.
@@ -11,9 +12,6 @@
 
 namespace Backdrop\Mix\Manifest;
 use Backdrop\Tools\ServiceProvider;
-use function Backdrop\Mix\get_parent_theme_file_path;
-use function Backdrop\Mix\get_stylesheet_directory;
-use function Backdrop\Mix\is_child_theme;
 
 /**
  * App service provider.
