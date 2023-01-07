@@ -22,11 +22,11 @@ if ( ! function_exists( __NAMESPACE__ . '\\booted' ) ) {
 	 * booted. Use before launching a new application. If booted, reference
 	 * the `app()` instance directly.
 	 *
-	 * @since  6.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return bool
 	 */
-	function booted() {
+	function booted(): bool {
 		return defined( 'BACKDROP_BOOTED' ) && true === BACKDROP_BOOTED;
 	}
 }
@@ -44,7 +44,8 @@ if ( ! function_exists( __NAMESPACE__ . '\\app' ) ) {
 	 * @param  array   $params
 	 * @return mixed
 	 */
-	function app( $abstract = '', $params = [] ) {
+	function app( string $abstract = '', array $params = [] ) {
+
 		return App::resolve( $abstract ?: 'app', $params );
 	}
 }

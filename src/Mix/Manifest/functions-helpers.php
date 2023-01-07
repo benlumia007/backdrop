@@ -10,6 +10,7 @@
  */
 
 namespace Backdrop\Mix\Manifest;
+
 use Backdrop\App;
 
 function asset( $path ) {
