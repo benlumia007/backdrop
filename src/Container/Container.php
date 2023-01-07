@@ -20,6 +20,7 @@ use Backdrop\Core\ServiceProvider;
 use ArrayAccess;
 use Closure;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionParameter;
 use ReflectionUnionType;
 
@@ -67,6 +68,24 @@ class Container implements ContainerContract, ArrayAccess {
 	protected array $extensions = [];
 
 	/**
+	 * Array of service provider objects.
+	 *
+	 * @since  2.0.0
+	 * @access protected
+	 * @var    array
+	 */
+	protected array $providers = [];
+
+	/**
+	 * Array of static proxy classes and aliases.
+	 *
+	 * @since  2.0.0
+	 * @access protected
+	 * @var    array
+	 */
+	protected array $proxies = [];
+
+	/**
 	* Set up a new container.
 	*
 	* @since  2.0.0
@@ -75,7 +94,9 @@ class Container implements ContainerContract, ArrayAccess {
 	* @return void
 	*/
 	public function __construct( array $definitions = [] ) {
+
 		foreach ( $definitions as $abstract => $concrete ) {
+
 			$this->add( $abstract, $concrete );
 		}
 	}
@@ -94,7 +115,7 @@ class Container implements ContainerContract, ArrayAccess {
      */
     public function bind( string $abstract, mixed $concrete = null, bool $shared = false ) : void {
 		/**
-		 * Drop all of the stale instances and aliases
+		 * Drop all the stale instances and aliases
 		 *
 		 * @since  2.0.0
 		 * @access public
@@ -128,7 +149,9 @@ class Container implements ContainerContract, ArrayAccess {
 	* @return void
 	*/
 	public function add( string $abstract, mixed $concrete = null, bool $shared = false ) : void {
+
 		if ( ! $this->bound( $abstract ) ) {
+
 			$this->bind( $abstract, $concrete, $shared );
 		}
 	}
@@ -223,6 +246,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return object
 	 */
 	public function get( string $abstract ) : mixed {
+
         return $this->resolve( $abstract );
     }
 
@@ -321,6 +345,19 @@ class Container implements ContainerContract, ArrayAccess {
 	}
 
 	/**
+	 * Creates a new instance of a service provider class.
+	 *
+	 * @since  2.0.0
+	 * @access protected
+	 * @param  object    $provider
+	 * @return object
+	 */
+	protected function resolveProvider( object $provider ): object {
+
+		return new $provider( $this );
+	}
+
+	/**
 	 * Adds a static proxy alias. Developers must pass in fully-qualified
 	 * class name and alias class name.
 	 *
@@ -336,12 +373,12 @@ class Container implements ContainerContract, ArrayAccess {
 	*
 	* @since  2.0.0
 	* @access public
-	* @param  string  $name
+	* @param  mixed  $offset
 	* @return bool
 	*/
-	public function offsetExists( $name ) : bool {
+	public function offsetExists( mixed $offset ) : bool {
 
-		return $this->bound( $name );
+		return $this->bound( $offset );
 	}
 
 	/**
@@ -349,12 +386,12 @@ class Container implements ContainerContract, ArrayAccess {
 	*
 	* @since  2.0.0
 	* @access public
-	* @param  string  $name
+	* @param  mixed  $offset
 	* @return mixed
 	*/
-	public function offsetGet( $name ) : mixed {
+	public function offsetGet( mixed $offset ) : mixed {
 
-		return $this->get( $name );
+		return $this->get( $offset );
 	}
 
 	/**
@@ -362,13 +399,13 @@ class Container implements ContainerContract, ArrayAccess {
 	*
 	* @since  2.0.0
 	* @access public
-	* @param  string  $name
+	* @param  mixed  $offset
 	* @param  mixed   $value
 	* @return void
 	*/
-	public function offsetSet( $name, $value ) : void {
+	public function offsetSet( mixed $offset, mixed $value ) : void {
 
-		$this->add( $name, $value );
+		$this->add( $offset, $value );
 	}
 
 	/**
@@ -376,12 +413,12 @@ class Container implements ContainerContract, ArrayAccess {
 	*
 	* @since  2.0.0
 	* @access public
-	* @param  string  $name
+	* @param  mixed  $offset
 	* @return void
 	*/
-	public function offsetUnset( $name ) : void {
+	public function offsetUnset(  mixed $offset ) : void {
 
-		$this->remove( $name );
+		$this->remove( $offset );
 	}
 
 	/**
@@ -393,9 +430,10 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @param  string    $abstract
 	 * @return string
 	 */
-	protected function getAlias( $abstract ) : string {
+	protected function getAlias( string $abstract ) : string {
 
 		if ( isset( $this->aliases[ $abstract ] ) ) {
+
 			return $this->aliases[ $abstract ];
 		}
 
@@ -410,7 +448,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @param  string    $abstract
 	 * @return mixed
 	 */
-	protected function getConcrete( $abstract ) : mixed {
+	protected function getConcrete( string $abstract ) : mixed {
 
 		$concrete = false;
 		$abstract = $this->getAlias( $abstract );
@@ -431,7 +469,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @param  mixed    $concrete
 	 * @return bool
 	 */
-	protected function isBuildable( $concrete ) : bool {
+	protected function isBuildable( mixed $concrete ) : bool {
 
 		return $concrete instanceof Closure
 		       || ( is_string( $concrete ) && class_exists( $concrete ) );
@@ -444,11 +482,12 @@ class Container implements ContainerContract, ArrayAccess {
 	 *
 	 * @since  2.0.0
 	 * @access protected
-	 * @param  mixed  $concrete
-	 * @param  array  $parameters
+	 * @param mixed $concrete
+	 * @param array $parameters
 	 * @return object
+	 * @throws ReflectionException
 	 */
-	protected function build( $concrete, array $parameters = [] ) : mixed {
+	protected function build( mixed $concrete, array $parameters = [] ) : mixed {
 
 		if ( $concrete instanceof Closure ) {
 			return $concrete( $this, $parameters );
@@ -549,7 +588,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  mixed   $value
 	* @return void
 	*/
-	public function __set( $name, $value ) {
+	public function __set( string $name, mixed $value ) {
 
 		$this->add( $name, $value );
 	}
@@ -562,7 +601,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  string  $name
 	* @return void
 	*/
-	public function __unset( $name ) : void {
+	public function __unset( string $name ) : void {
 
 		$this->remove( $name );
 	}
@@ -575,7 +614,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  string  $name
 	* @return bool
 	*/
-	public function __isset( $name ) : bool {
+	public function __isset( string $name ) : bool {
 
 		return $this->bound( $name );
 	}
@@ -588,7 +627,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @param  string  $name
 	* @return mixed
 	*/
-	public function __get( $name ) : mixed {
+	public function __get( string $name ) : mixed {
 
 		return $this->get( $name );
 	}
