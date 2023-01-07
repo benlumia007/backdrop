@@ -35,12 +35,12 @@ class Component {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  string           $name
-	 * @param  array|string     $slugs
-	 * @param  array|Collection $data
-	 * @return View
+	 * @param  string	$name
+	 * @param  array	$slugs
+	 * @param  array	$data
+	 * @return void
 	 */
-	public function view( $name, $slugs = [], $data = [] ) {
+	public function view( string $name, array $slugs = [], array $data = [] ): void {
 
 		if ( ! $data instanceof Collection ) {
 			$data = new Collection( ( array ) $data );
