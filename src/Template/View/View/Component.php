@@ -1,4 +1,3 @@
-
 <?php
 /**
  * View class.
