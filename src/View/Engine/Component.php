@@ -24,7 +24,7 @@ use Backdrop\View\View\Component as View;
 use Backdrop\Tools\Collection;
 
 /**
- * Egine class
+ * Engine class
  *
  * @since  1.0.0
  * @access public
