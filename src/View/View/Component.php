@@ -26,7 +26,7 @@ namespace Backdrop\View\View;
 
 use Backdrop\Contracts\View\View as ViewContract;
 use Backdrop\Tools\Collection;
-use function Backdrop\Template\Helpers\locate as locate_template;
+use function Backdrop\Helpers\locate as locate_template;
 
 /**
  * View class.
