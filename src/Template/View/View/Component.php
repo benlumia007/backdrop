@@ -165,7 +165,7 @@ class Component implements ViewContract {
 	 * @access public
 	 * @return string
 	 */
-	public function template() {
+	public function template(): string {
 
 		if ( is_null( $this->template ) ) {
 			$this->template = $this->locate();
