@@ -40,7 +40,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $providers = [];
+	protected array $providers = [];
 
 	/**
 	 * Array of static proxy classes and aliases.
@@ -49,7 +49,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $proxies = [];
+	protected array $proxies = [];
 
 	/**
 	 * Array of booted service providers.
