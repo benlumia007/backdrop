@@ -9,8 +9,9 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Core\Proxies;
-use Backdrop\Contracts\Container;
+namespace Backdrop\Proxies;
+
+use Backdrop\Contracts\Core\Container;
 
 /**
  * Base static proxy class.
@@ -27,7 +28,7 @@ class Proxy {
 	 * @access protected
 	 * @var    Container
 	 */
-	protected static $container;
+	protected static Container $container;
 
 	/**
 	 * Returns the name of the accessor for object registered in the container.
@@ -36,7 +37,7 @@ class Proxy {
 	 * @access protected
 	 * @return string
 	 */
-	protected static function accessor() {
+	protected static function accessor(): string {
 
 		return '';
 	}
@@ -48,7 +49,7 @@ class Proxy {
 	 * @access public
 	 * @return void
 	 */
-	public static function setContainer( Container $container ) {
+	public static function setContainer( Container $container ): void {
 
 		static::$container = $container;
 	}
@@ -60,7 +61,7 @@ class Proxy {
 	 * @access protected
 	 * @return object
 	 */
-	protected static function instance() {
+	protected static function instance(): object {
 
 		return static::$container->resolve( static::accessor() );
 	}
@@ -75,10 +76,10 @@ class Proxy {
 	 * @param  array   $args
 	 * @return mixed
 	 */
-	public static function __callStatic( $method, $args ) {
+	public static function __callStatic( string $method, array $args ) {
 
 		$instance = static::instance();
 
-		return $instance ? $instance->$method( ...$args ) : null;
+		return $instance?->$method(...$args);
 	}
 }
