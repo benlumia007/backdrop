@@ -14,7 +14,7 @@
 /**
  * Define namespace
  */
-namespace Backdrop\Contracts\View;
+namespace Backdrop\Contracts\Template;
 
 /**
  * Engine interface.

@@ -12,10 +12,11 @@
 /**
  * Define namespace
  */
-namespace Backdrop\Contracts\View;
+namespace Backdrop\Contracts\Template;
 
 use Backdrop\Contracts\Displayable;
 use Backdrop\Contracts\Renderable;
+
 /**
  * View interface.
  *

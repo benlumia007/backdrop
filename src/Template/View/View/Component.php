@@ -1,3 +1,4 @@
+
 <?php
 /**
  * View class.
@@ -22,9 +23,9 @@
 /**
  * Define namespace
  */
-namespace Backdrop\View\View;
+namespace Backdrop\Template\View\View;
 
-use Backdrop\Contracts\View\View as ViewContract;
+use Backdrop\Contracts\Template\View as ViewContract;
 use Backdrop\Tools\Collection;
 use function Backdrop\Helpers\locate as locate_template;
 

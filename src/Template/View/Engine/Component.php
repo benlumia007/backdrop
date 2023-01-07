@@ -16,10 +16,10 @@
 /**
  * Define namespace
  */
-namespace Backdrop\View\Engine;
+namespace Backdrop\Template\View\Engine;
 
 use Backdrop\Proxies\App;
-use Backdrop\View\View\Component as View;
+use Backdrop\Template\View\View\Component as View;
 use Backdrop\Tools\Collection;
 
 /**
@@ -34,12 +34,12 @@ class Component {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  string	$name
-	 * @param  array	$slugs
-	 * @param  array	$data
-	 * @return void
+	 * @param string $name
+	 * @param array	 $slugs
+	 * @param array|Collection  $data
+	 * @return View
 	 */
-	public function view( string $name, array $slugs = [], array $data = [] ): void {
+	public function view( string $name, array $slugs = [], array|Collection $data = [] ): View {
 
 		if ( ! $data instanceof Collection ) {
 			$data = new Collection( ( array ) $data );
@@ -47,7 +47,7 @@ class Component {
 
 		$data->add( 'engine', $this );
 
-		return;
+		return App::resolve( View::class, compact( 'name', 'slugs', 'data' ) );
 	}
 
 	/**
