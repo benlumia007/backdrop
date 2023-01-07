@@ -26,7 +26,7 @@ use Closure;
 interface Container {
 
     /**
-     * Add a binding. The abstract should be a key, abstract class name, or 
+     * Add a binding. The abstract should be a key, abstract class name, or
      * interface name. The concrete should be the concrete implementation of
      * the abstract.
      *
@@ -143,12 +143,12 @@ interface Container {
       public function alias( string $abstract, string $alias ) : void;
 
     /**
-	 * Adds a service provider. Developers can pass in an object or a fully-
-	 * qualified class name.
+	 * Adds a service provider. Developers can pass in an object or a fully-qualified
+	 * class name.
 	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string|object  $provider
+	 * @param  ServiceProvider|string  $provider
 	 * @return void
 	 */
     public function provider( ServiceProvider|string $provider ) : void;
