@@ -6,12 +6,13 @@ if ( ! function_exists( __NAMESPACE__ . '\\locate' ) ) {
 	/**
 	 * A better `locate_template()` function than what core WP provides.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  array|string  $templates
 	 * @return string
 	 */
-	function locate( $templates ) {
+	function locate( array|string $templates ): string {
+
 		$located = '';
 
 		foreach ( ( array ) $templates as $template ) {
@@ -21,6 +22,7 @@ if ( ! function_exists( __NAMESPACE__ . '\\locate' ) ) {
 				$file = trailingslashit( $location ) . $template;
 
 				if ( file_exists( $file ) ) {
+
 					$located = $file;
 					break 2;
 				}
@@ -32,6 +34,7 @@ if ( ! function_exists( __NAMESPACE__ . '\\locate' ) ) {
 }
 
 if ( ! function_exists( __NAMESPACE__ . '\\locations' ) ) {
+
 	/**
 	 * Returns an array of locations to look for templates.
 	 *
@@ -39,11 +42,11 @@ if ( ! function_exists( __NAMESPACE__ . '\\locations' ) ) {
 	 * issue that hasn't been addressed since 2010.
 	 *
 	 * @link   https://core.trac.wordpress.org/ticket/13239
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return array
 	 */
-	function locations() {
+	function locations(): array {
 
 		$path = ltrim( path(), '/' );
 
@@ -52,6 +55,7 @@ if ( ! function_exists( __NAMESPACE__ . '\\locations' ) ) {
 
 		// If child theme, add parent theme path second.
 		if ( is_child_theme() ) {
+
 			$locations[] = get_template_directory() . "/{$path}";
 		}
 
@@ -63,12 +67,12 @@ if ( ! function_exists( __NAMESPACE__ . '\\filter_templates'  ) ) {
 	/**
 	 * Filters an array of templates and prefixes them with the view path.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  array  $templates
 	 * @return array
 	 */
-	function filter_templates( $templates ) {
+	function filter_templates( array $templates ): array {
 		$path = path();
 
 		if ( $path ) {
@@ -88,12 +92,12 @@ if ( ! function_exists( __NAMESPACE__ . '\\path' ) ) {
 	/**
 	 * Return the relative path to where templates are held in the theme
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string $file
 	 * @return string
 	 */
-	function path( $file = '' ) {
+	function path( string $file = '' ): string {
 		$file = ltrim( $file, '/' );
 		$path = apply_filters( 'backdrop/template/path', 'public/views' );
 
