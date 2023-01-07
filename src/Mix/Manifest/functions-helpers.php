@@ -9,8 +9,8 @@
  * @link      https://github.com/benlumia007/backdrop-mix-manifest
  */
 
-namespace Backdrop\Mix;
-use Backdrop\Proxies\App;
+namespace Backdrop\Mix\Manifest;
+use Backdrop\App;
 
 function asset( $path ) {
 
