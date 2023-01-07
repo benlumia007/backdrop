@@ -115,7 +115,7 @@ class Component implements ViewContract {
 	 * @access public
 	 * @return array
 	 */
-	public function slugs() {
+	public function slugs(): array {
 		return ( array ) $this->slugs;
 	}
 
