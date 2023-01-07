@@ -47,7 +47,7 @@ class Component {
 
 		$data->add( 'engine', $this );
 
-		return App::resolve( View::class, compact( 'name', 'slugs', 'data' ) );
+		return;
 	}
 
 	/**
