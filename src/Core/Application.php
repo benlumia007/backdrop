@@ -17,6 +17,8 @@ use Backdrop\Proxies\App;
 use Backdrop\Proxies\Proxy;
 use Backdrop\Tools\ServiceProvider;
 
+use Backdrop\Template\View\Provider as ViewServiceProvider;
+
 /**
  * Application class.
  *
@@ -114,6 +116,24 @@ class Application extends Container implements Bootable {
 
 		// Add the version for the framework.
 		$this->instance( 'version', static::VERSION );
+	}
+
+	/**
+	 * Adds the default service providers for the framework.
+	 *
+	 * @since  5.0.0
+	 * @access protected
+	 * @return void
+	 */
+	protected function registerDefaultProviders(): void {
+
+		array_map( function( $provider ) {
+			$this->provider( $provider );
+		}, [
+//			TemplatesServiceProvider::class,
+//			HierarchyServiceProvider::class,
+			ViewServiceProvider::class
+		] );
 	}
 
 	/**
