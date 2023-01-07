@@ -12,12 +12,10 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Core;
-use Backdrop\Contracts\Core\Container as ContainerContract;
-
-use Backdrop\Core\ServiceProvider;
-
+namespace Backdrop\Container;
 use ArrayAccess;
+use Backdrop\Contracts\Core\Container as ContainerContract;
+use Backdrop\Core\ServiceProvider;
 use Closure;
 use ReflectionClass;
 use ReflectionParameter;

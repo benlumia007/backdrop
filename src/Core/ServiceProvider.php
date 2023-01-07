@@ -24,17 +24,17 @@ abstract class ServiceProvider implements Bootable {
 	 *
 	 * @since  2.0.0
 	 * @access protected
-	 * @var    Application
+	 * @var    \Backdrop\Application
 	 */
 	protected $app;
 
 	/**
 	 * Accepts the application and sets it to the `$app` property.
 	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  Application  $app
+	 * @param  \Backdrop\Core\Application  $app
 	 * @return void
+	 *@since  2.0.0
+	 * @access public
 	 */
 	public function __construct( Application $app ) {
 		$this->app = $app;
