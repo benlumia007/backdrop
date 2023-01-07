@@ -16,7 +16,7 @@
 
 namespace Backdrop\Template\View;
 
-use Backdrop\Core\ServiceProvider;
+use Backdrop\Tools\ServiceProvider;
 use Backdrop\Template\View\Engine\Component as Engine;
 use Backdrop\Template\View\Contracts\Engine as EngineContract;
 use Backdrop\Template\View\Contracts\View   as ViewContract;
