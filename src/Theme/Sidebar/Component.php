@@ -23,9 +23,9 @@ class Component implements Bootable {
 	/**
 	 * $post post.
 	 *
-	 * @var string
+	 * @var array
 	 */
-	public string $sidebar_id;
+	public array $sidebar_id;
 
 	/**
 	 * Construct
