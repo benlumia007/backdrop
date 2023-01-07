@@ -17,6 +17,7 @@ use Backdrop\Proxies\App;
 use Backdrop\Proxies\Proxy;
 use Backdrop\Tools\ServiceProvider;
 
+use Backdrop\Template\Hierarchy\Provider as HierarchyServiceProvider;
 use Backdrop\Template\View\Provider as ViewServiceProvider;
 
 /**
@@ -133,7 +134,7 @@ class Application extends Container implements Bootable {
 			$this->provider( $provider );
 		}, [
 //			TemplatesServiceProvider::class,
-//			HierarchyServiceProvider::class,
+			HierarchyServiceProvider::class,
 			ViewServiceProvider::class
 		] );
 	}
