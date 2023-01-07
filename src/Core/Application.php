@@ -9,11 +9,9 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop;
+namespace Backdrop\Core;
 
 use Backdrop\Contracts\Bootable;
-use Backdrop\Core\Container;
-use Backdrop\Core\ServiceProvider;
 use Backdrop\Proxies\App;
 use Backdrop\Proxies\Proxy;
 
