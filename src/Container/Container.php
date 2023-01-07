@@ -13,9 +13,11 @@
  */
 
 namespace Backdrop\Container;
-use ArrayAccess;
+
 use Backdrop\Contracts\Core\Container as ContainerContract;
 use Backdrop\Core\ServiceProvider;
+
+use ArrayAccess;
 use Closure;
 use ReflectionClass;
 use ReflectionParameter;
@@ -35,7 +37,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @access protected
 	* @var    array
 	*/
-	protected $bindings = [];
+	protected array $bindings = [];
 
 	/**
 	 * Array of aliases for bindings.
@@ -44,7 +46,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $aliases = [];
+	protected array $aliases = [];
 
 	/**
 	* Array of single instance objects.
@@ -53,7 +55,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @access protected
 	* @var    array
 	*/
-	protected $instances = [];
+	protected array $instances = [];
 
 	/**
 	* Array of object extensions.
@@ -62,7 +64,7 @@ class Container implements ContainerContract, ArrayAccess {
 	* @access protected
 	* @var    array
 	*/
-	protected $extensions = [];
+	protected array $extensions = [];
 
 	/**
 	* Set up a new container.
