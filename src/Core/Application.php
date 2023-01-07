@@ -9,13 +9,13 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Core;
+namespace Backdrop;
 
 use Backdrop\Contracts\Bootable;
 use Backdrop\Core\Container;
 use Backdrop\Core\ServiceProvider;
-use Backdrop\Core\Proxies\App;
-use Backdrop\Core\Proxies\Proxy;
+use Backdrop\Proxies\App;
+use Backdrop\Proxies\Proxy;
 
 /**
  * Application class.
@@ -96,7 +96,7 @@ class Application extends Container implements Bootable {
 
 		if ( ! defined( 'BACKDROP_BOOTED' ) ) {
 			define('BACKDROP_BOOTED', true );
-			
+
 		}
 	}
 

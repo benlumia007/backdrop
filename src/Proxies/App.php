@@ -1,6 +1,8 @@
 <?php
 /**
- * App class.
+ * App static proxy class.
+ *
+ * Static proxy for the application instance.
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
@@ -9,7 +11,7 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Core\Proxies;
+namespace Backdrop\Proxies;
 
 /**
  * App static proxy class.
@@ -26,7 +28,7 @@ class App extends Proxy {
 	 * @access protected
 	 * @return string
 	 */
-	protected static function accessor() {
+	protected static function accessor(): string {
 
 		return 'app';
 	}
