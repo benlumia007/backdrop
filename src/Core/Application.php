@@ -81,6 +81,8 @@ class Application extends Container implements Bootable {
 	 * @return void
 	 */
 	public function __construct() {
+
+		$this->registerDefaultProviders();
 		$this->registerDefaultBindings();
 		$this->registerDefaultProxies();
 	}
