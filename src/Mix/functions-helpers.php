@@ -10,7 +10,7 @@
  */
 
 namespace Backdrop\Mix;
-use Backdrop\App;
+use Backdrop\Proxies\App;
 
 function asset( $path ) {
 
