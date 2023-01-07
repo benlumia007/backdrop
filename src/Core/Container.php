@@ -1,8 +1,8 @@
 <?php
 /**
  * Container class.
- * 
- * The `Container` class handles storing objects for later use and 
+ *
+ * The `Container` class handles storing objects for later use and
  * handles single instances to avoid globals or singleton.
  *
  * @package   Backdrop
@@ -13,7 +13,7 @@
  */
 
 namespace Backdrop\Core;
-use Backdrop\Contracts\Container as ContainerContract;
+use Backdrop\Contracts\Core\Container as ContainerContract;
 
 use Backdrop\Core\ServiceProvider;
 
@@ -79,9 +79,9 @@ class Container implements ContainerContract, ArrayAccess {
 			$this->add( $abstract, $concrete );
 		}
 	}
-    
+
     /**
-     * Add a binding. The abstract should be a key, abstract class name, or 
+     * Add a binding. The abstract should be a key, abstract class name, or
      * interface name. The concrete should be the concrete implementation of
      * the abstract.
      *
@@ -95,7 +95,7 @@ class Container implements ContainerContract, ArrayAccess {
     public function bind( string $abstract, mixed $concrete = null, bool $shared = false ) : void {
 		/**
 		 * Drop all of the stale instances and aliases
-		 * 
+		 *
 		 * @since  2.0.0
 		 * @access public
 		 * @param  string  $abstract
@@ -159,7 +159,7 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return mixed
 	 */
     public function resolve( string $abstract, array $parameters = [] ) : mixed {
-		
+
 		// Let's grab the true abstract name.
 		$abstract = $this->getAlias( $abstract );
 
@@ -383,7 +383,7 @@ class Container implements ContainerContract, ArrayAccess {
 
 		$this->remove( $name );
 	}
-    
+
 	/**
 	 * Checks if we're dealing with an alias and returns the abstract. If
 	 * not an alias, return the abstract passed in.
