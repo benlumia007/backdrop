@@ -14,7 +14,7 @@
  */
 namespace Backdrop\Theme\Menu;
 
-function display( $type, $items = [] ) {
+function display( string $type, array $items = [] ): void {
 	foreach ( $items as $item ) {
 		switch ( $type ) {
 			case 'menu':
@@ -26,41 +26,37 @@ function display( $type, $items = [] ) {
 	}
 }
 
-function menu( $item ) {
+function menu( string $item ): string {
+
 	if ( 'primary' === $item ) {
 		if ( has_nav_menu( 'primary' ) ) { ?>
 			<nav id="primaire" class="primary-navigation">
-				<button class="menu-toggle" aria-control="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'backdrop' ); ?></button>
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'backdrop' ); ?></button>
 				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'primary',
-						'container'      => '',
-						'menu_id'        => 'primary-menu',
-						'menu_class'     => 'menu-items',
-						'depth'          => 2
-					)
-				);
+				wp_nav_menu( [
+					'theme_location' => 'primary',
+					'container'      => '',
+					'menu_id'        => 'primary-menu',
+					'menu_class'     => 'menu-items',
+					'depth'          => 2
+				] );
 				?>
 			</nav>
 		<?php }
 	} elseif ( 'secondary' === $item ) { ?>
 		<nav id="secondary" class="secondary-navigation">
 			<?php
-			wp_nav_menu(
-				array(
+				wp_nav_menu( [
 					'theme_location' => 'secondary',
 					'depth'			 => 1,
-				)
-			);
+				] );
 			?>
 		</nav>
 	<?php } elseif ( 'social' === $item ) {
 		if ( has_nav_menu( 'social' ) ) { ?>
 			<nav id="social" class="site-social">
 				<?php
-				wp_nav_menu(
-					array(
+					wp_nav_menu( [
 						'theme_location'  => 'social',
 						'container'       => 'nav',
 						'container_id'    => 'menu-social',
@@ -71,8 +67,7 @@ function menu( $item ) {
 						'link_before'     => '<span class="screen-reader-text">',
 						'link_after'      => '</span>',
 						'fallback_cb'     => '',
-					)
-				);
+					] );
 				?>
 			</nav>
 		<?php }

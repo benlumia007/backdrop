@@ -14,9 +14,10 @@
  */
 namespace Backdrop\Theme\Sidebar;
 
+function display( $type, $items = [] ): void {
 
-function display( $type, $items = [] ) {
 	foreach ( $items as $item ) {
+
 		switch ( $type ) {
 			case 'sidebar': ?>
 				<div id="aside" class="widget-area">
