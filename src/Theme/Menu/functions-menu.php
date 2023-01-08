@@ -26,7 +26,7 @@ function display( string $type, array $items = [] ): void {
 	}
 }
 
-function menu( string $item ): string {
+function menu( $item ): void {
 
 	if ( 'primary' === $item ) {
 		if ( has_nav_menu( 'primary' ) ) { ?>
