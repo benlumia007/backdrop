@@ -32,7 +32,7 @@ class Component implements Bootable {
 	 */
 	public $menu_id;
 
-	public function __construct( $menu_id = [] ) {
+	public function __construct( array $menu_id = [] ) {
 		$this->menu_id = $this->menus();
 	}
 
