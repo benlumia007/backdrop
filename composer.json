@@ -20,7 +20,6 @@
 		},
         "files": [
 			"src/Helpers/functions-helpers.php",
-			"src/Mix/Manifest/functions-helpers.php",
 			"src/Theme/Menu/functions-menu.php",
 			"src/Theme/Sidebar/functions-sidebar.php"
         ]
