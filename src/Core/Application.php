@@ -18,6 +18,7 @@ use Backdrop\Proxies\Proxy;
 use Backdrop\Tools\ServiceProvider;
 
 use Backdrop\Template\Hierarchy\Provider as HierarchyServiceProvider;
+use Backdrop\Template\Manager\Provider as ManagerServiceProvider;
 use Backdrop\Template\View\Provider as ViewServiceProvider;
 
 /**
@@ -133,7 +134,7 @@ class Application extends Container implements Bootable {
 		array_map( function( $provider ) {
 			$this->provider( $provider );
 		}, [
-//			TemplatesServiceProvider::class,
+			MangerServiceProvider::class,
 			HierarchyServiceProvider::class,
 			ViewServiceProvider::class
 		] );
