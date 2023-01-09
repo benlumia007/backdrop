@@ -134,7 +134,7 @@ class Application extends Container implements Bootable {
 		array_map( function( $provider ) {
 			$this->provider( $provider );
 		}, [
-			MangerServiceProvider::class,
+			ManagerServiceProvider::class,
 			HierarchyServiceProvider::class,
 			ViewServiceProvider::class
 		] );
