@@ -37,7 +37,7 @@ class Templates extends Collection {
 	 * @param  mixed   $value
 	 * @return void
 	 */
-	public function add( $name, $value ) {
+	public function add( string $name, mixed $value ): void {
 		$path = ltrim( trailingslashit( path( 'templates' ) ) );
 
 		$name = $path . $name;
