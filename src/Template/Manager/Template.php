@@ -81,11 +81,11 @@ class Template implements TemplateContract {
 	/**
 	 * Register a new template object.
 	 *
+	 * @since  1.0.0
+	 * @access public
 	 * @param  string  $filename
 	 * @param  array $args
-		  * @return void
-	 *@since  1.0.0
-	 * @access public
+	 * @return void
 	 */
 	public function __construct( string $filename, array $args = [] ) {
 
@@ -133,6 +133,7 @@ class Template implements TemplateContract {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @param  $type
 	 * @return bool
 	 */
 	public function isType( $type ): bool {
@@ -145,6 +146,7 @@ class Template implements TemplateContract {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @param  $subtype
 	 * @return bool
 	 */
 	public function hasSubtype( $subtype ): bool {
@@ -157,6 +159,7 @@ class Template implements TemplateContract {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @param  $type
 	 * @return bool
 	 */
 	public function forPostType( $type ): bool {
