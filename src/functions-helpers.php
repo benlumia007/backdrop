@@ -16,7 +16,8 @@ namespace Backdrop;
 
 use Backdrop\App;
 
-if (!function_exists(__NAMESPACE__ . '\\booted')) {
+if ( ! function_exists(__NAMESPACE__ . '\\booted' ) ) {
+
 	/**
 	 * Conditional function for checking whether the application has been
 	 * booted. Use before launching a new application. If booted, reference
@@ -31,7 +32,7 @@ if (!function_exists(__NAMESPACE__ . '\\booted')) {
 	}
 }
 
-if ( !function_exists(__NAMESPACE__ . '\\app' ) ) {
+if ( ! function_exists(__NAMESPACE__ . '\\app' ) ) {
 	/**
 	 * The single instance of the app. Use this function for quickly working
 	 * with data.  Returns an instance of the `\Hybrid\Core\Application`
