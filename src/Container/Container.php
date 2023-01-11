@@ -16,7 +16,6 @@ namespace Backdrop\Container;
 
 use ArrayAccess;
 use Backdrop\Contracts\Core\Container as ContainerContract;
-use Backdrop\Tools\ServiceProvider;
 use Closure;
 use ReflectionClass;
 use ReflectionException;
@@ -67,24 +66,6 @@ class Container implements ContainerContract, ArrayAccess {
 	protected array $extensions = [];
 
 	/**
-	 * Array of service provider objects.
-	 *
-	 * @since  2.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected array $providers = [];
-
-	/**
-	 * Array of static proxy classes and aliases.
-	 *
-	 * @since  2.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected array $proxies = [];
-
-	/**
 	* Set up a new container.
 	*
 	* @since  2.0.0
@@ -113,14 +94,8 @@ class Container implements ContainerContract, ArrayAccess {
      * @return void
      */
     public function bind( string $abstract, mixed $concrete = null, bool $shared = false ): void {
-		/**
-		 * Drop all the stale instances and aliases
-		 *
-		 * @since  2.0.0
-		 * @access public
-		 * @param  string  $abstract
-		 * @return void
-		 */
+
+		// Drop all the stale instances and aliases
 		unset( $this->instances[ $abstract ] );
 
 		/**
@@ -133,7 +108,6 @@ class Container implements ContainerContract, ArrayAccess {
 		}
 
 		$this->bindings[ $abstract ]   = compact( 'concrete', 'shared' );
-
 		$this->extensions[ $abstract ] = [];
     }
 
@@ -324,47 +298,8 @@ class Container implements ContainerContract, ArrayAccess {
 	 * @return void
 	 */
 	public function alias( string $abstract, string $alias ): void {
+
 		$this->aliases[ $alias ] = $abstract;
-	}
-
-	/**
-	 * Adds a service provider. All service providers must extend the
-	 * `ServiceProvider` class. A string or an instance of the provider may
-	 * be passed in.
-	 *
-	 * @since  1.0.0
-	 */
-	public function provider( ServiceProvider|string $provider ): void
-	{
-		if ( is_string( $provider ) ) {
-			$provider = $this->resolveProvider( $provider );
-		}
-
-		$this->providers[] = $provider;
-	}
-
-	/**
-	 * Creates a new instance of a service provider class.
-	 *
-	 * @since  2.0.0
-	 * @access protected
-	 * @param  object    $provider
-	 * @return object
-	 */
-	protected function resolveProvider( object $provider ): object {
-
-		return new $provider( $this );
-	}
-
-	/**
-	 * Adds a static proxy alias. Developers must pass in fully-qualified
-	 * class name and alias class name.
-	 *
-	 * @since 1.0.0
-	 */
-	public function proxy( string $class_name, string $alias ): void
-	{
-		$this->proxies[ $class_name ] = $alias;
 	}
 
 	/**
@@ -524,6 +459,7 @@ class Container implements ContainerContract, ArrayAccess {
 
 			// If a dependency is set via the parameters passed in, use it.
 			if ( isset( $parameters[ $dependency->getName() ] ) ) {
+
 				$args[] = $parameters[ $dependency->getName() ];
 				continue;
 			}
