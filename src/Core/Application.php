@@ -243,7 +243,7 @@ class Application extends Container implements ApplicationContract, Bootable {
 	 * @param  string  $alias
 	 * @return void
 	 */
-	public function proxy( $class, $alias ) {
+	public function proxy( string $class, string $alias ): void {
 		$this->proxies[ $class ] = $alias;
 	}
 
