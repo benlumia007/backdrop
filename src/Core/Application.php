@@ -12,6 +12,7 @@
 namespace Backdrop\Core;
 
 use Backdrop\Container\Container;
+use Backdrop\Contracts\Core\Application as ApplicationContract;
 use Backdrop\Contracts\Bootable;
 use Backdrop\Proxies\App;
 use Backdrop\Proxies\Proxy;
@@ -27,7 +28,7 @@ use Backdrop\Template\View\Provider as ViewServiceProvider;
  * @since  2.0.0
  * @access public
  */
-class Application extends Container implements Bootable {
+class Application extends Container implements ApplicationContract, Bootable {
 
 	/**
 	 * The current version of the framework.
