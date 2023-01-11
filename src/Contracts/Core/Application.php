@@ -14,7 +14,6 @@
 
 namespace Backdrop\Contracts\Core;
 
-use Backdrop\Core\ServiceProvider;
 use Closure;
 
 interface Application extends Container {
@@ -135,27 +134,4 @@ interface Application extends Container {
 	 * @return void
 	 */
 	public function alias( string $abstract, string $alias ) : void;
-
-	/**
-	 * Adds a service provider. Developers can pass in an object or a fully-
-	 * qualified class name.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  ServiceProvider|string  $provider
-	 * @return void
-	 */
-	public function provider( ServiceProvider|string $provider ): void;
-
-	/**
-	 * Adds a static proxy alias. Developers must pass in fully-qualified
-	 * class name and alias class name.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  string  $class_name
-	 * @param  string  $alias
-	 * @return void
-	 */
-	public function proxy( string $class_name, string $alias ): void;
 }
