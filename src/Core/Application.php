@@ -157,10 +157,10 @@ class Application extends Container implements ApplicationContract, Bootable {
 	 *
 	 * @since  2.0.0
 	 * @access protected
-	 * @param  object    $provider
+	 * @param  string    $provider
 	 * @return object
 	 */
-	protected function resolveProvider( object $provider ): object {
+	protected function resolveProvider( string $provider ): object {
 
 		return new $provider( $this );
 	}
