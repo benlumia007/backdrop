@@ -12,7 +12,7 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Tools;
+namespace Backdrop\Core;
 
 use Backdrop\Contracts\Bootable;
 use Backdrop\Contracts\Core\Application;

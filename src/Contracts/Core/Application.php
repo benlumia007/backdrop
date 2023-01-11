@@ -14,7 +14,7 @@
 
 namespace Backdrop\Contracts\Core;
 
-use Backdrop\Tools\ServiceProvider;
+use Backdrop\Core\ServiceProvider;
 
 interface Application extends Container {
 
