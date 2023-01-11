@@ -141,10 +141,10 @@ class Application extends Container implements ApplicationContract, Bootable {
 	 *
 	 * @since  5.0.0
 	 * @access public
-	 * @param  string|object  $provider
+	 * @param  ServiceProvider|string  $provider
 	 * @return void
 	 */
-	public function provider( $provider ) {
+	public function provider( ServiceProvider|string $provider ): void {
 
 		// If passed a class name, resolve provider.
 		if ( is_string( $provider ) ) {
