@@ -15,7 +15,6 @@
 namespace Backdrop\Container;
 
 use ArrayAccess;
-use Backdrop\Contracts\Core\Container as ContainerContract;
 use Closure;
 use ReflectionClass;
 use ReflectionException;
@@ -28,7 +27,7 @@ use ReflectionUnionType;
  * @since  2.0.0
  * @access public
  */
-class Container implements ContainerContract, ArrayAccess {
+class Container implements ArrayAccess {
 	/**
 	* Stored definitions of objects.
 	*
