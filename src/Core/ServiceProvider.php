@@ -15,7 +15,7 @@
 namespace Backdrop\Core;
 
 use Backdrop\Contracts\Bootable;
-use Backdrop\Contracts\Core\Application;
+use Backdrop\Contracts\Core\Container;
 
 abstract class ServiceProvider implements Bootable {
 	/**
@@ -24,19 +24,19 @@ abstract class ServiceProvider implements Bootable {
 	 *
 	 * @since  2.0.0
 	 * @access protected
-	 * @var    Application
+	 * @var    Container
 	 */
-	protected Application $app;
+	protected Container $app;
 
 	/**
 	 * Accepts the application and sets it to the `$app` property.
 	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  Application  $app
+	 * @param  Container  $app
 	 * @return void
+	 *@since  2.0.0
+	 * @access public
 	 */
-	public function __construct( Application $app ) {
+	public function __construct( Container $app ) {
 		$this->app = $app;
 	}
 

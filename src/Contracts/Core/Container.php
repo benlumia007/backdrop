@@ -16,7 +16,7 @@ namespace Backdrop\Contracts\Core;
 
 use Closure;
 
-interface Application {
+interface Container {
 
 	/**
 	 * Add a binding. The abstract should be a key, abstract class name, or
