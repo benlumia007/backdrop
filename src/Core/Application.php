@@ -99,8 +99,8 @@ class Application extends Container implements ApplicationContract, Bootable {
 		$this->bootProviders();
 		$this->registerProxies();
 
-		if ( ! defined( 'HYBRID_BOOTED' ) ) {
-			define( 'HYBRID_BOOTED', true );
+		if ( ! defined( 'BACKDROP_BOOTED' ) ) {
+			define( 'BACKDROP_BOOTED', true );
 		}
 	}
 
