@@ -18,10 +18,6 @@ use Backdrop\Proxies\App;
 use Backdrop\Proxies\Proxy;
 use Backdrop\Tools\ServiceProvider;
 
-use Backdrop\Template\Hierarchy\Provider as HierarchyServiceProvider;
-use Backdrop\Template\Manager\Provider as ManagerServiceProvider;
-use Backdrop\Template\View\Provider as ViewServiceProvider;
-
 /**
  * Application class.
  *
@@ -33,78 +29,66 @@ class Application extends Container implements ApplicationContract, Bootable {
 	/**
 	 * The current version of the framework.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @var    string
 	 */
-	const VERSION = '6.0.1';
+	const VERSION = '2.0.0';
 
 	/**
 	 * Array of service provider objects.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
-	protected $providers = [];
+	protected array $providers = [];
 
 	/**
 	 * Array of static proxy classes and aliases.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
-	protected $proxies = [];
+	protected array $proxies = [];
 
 	/**
 	 * Array of booted service providers.
 	 *
-	 * @since  6.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
-	protected $booted_providers = [];
+	protected array $booted_providers = [];
 
 	/**
 	 * Array of registered proxies.
 	 *
-	 * @since  6.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
-	protected $registered_proxies = [];
+	protected array $registered_proxies = [];
 
 	/**
 	 * Registers the default bindings, providers, and proxies for the
 	 * framework.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function __construct() {
+
 		$this->registerDefaultBindings();
 		$this->registerDefaultProxies();
-
-		$this->registerDefaultProviders();
-	}
-
-	public function registerDefaultProviders() {
-
-		array_map( function( $provider ) {
-			$this->provider( $provider );
-		}, [
-			ManagerServiceProvider::class,
-			HierarchyServiceProvider::class,
-			ViewServiceProvider::class
-		] );
 	}
 
 	/**
 	 * Calls the functions to register and boot providers and proxies.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -120,17 +104,14 @@ class Application extends Container implements ApplicationContract, Bootable {
 	/**
 	 * Registers the default bindings we need to run the framework.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
-	protected function registerDefaultBindings() {
+	protected function registerDefaultBindings(): void {
 
 		// Add the instance of this application.
 		$this->instance( 'app', $this );
-
-		// Adds the directory path for the framework.
-		$this->instance( 'path', untrailingslashit( __DIR__ . '/..' ) );
 
 		// Add the version for the framework.
 		$this->instance( 'version', static::VERSION );
@@ -139,20 +120,20 @@ class Application extends Container implements ApplicationContract, Bootable {
 	/**
 	 * Adds the default static proxy classes.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
-	protected function registerDefaultProxies() {
+	protected function registerDefaultProxies(): void {
 
 		// Makes the `Backdrop\App` class an alias for the app.
-		$this->proxy( App::class, '\Backdrop\App' );
+		$this->proxy( App::class, 'Backdrop\App' );
 	}
 
 	/**
 	 * Adds a service provider.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  ServiceProvider|string  $provider
 	 * @return void
@@ -174,24 +155,25 @@ class Application extends Container implements ApplicationContract, Bootable {
 	/**
 	 * Creates a new instance of a service provider class.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @param  object    $provider
 	 * @return object
 	 */
-	protected function resolveProvider( $provider ) {
+	protected function resolveProvider( object $provider ): object {
+
 		return new $provider( $this );
 	}
 
 	/**
 	 * Calls a service provider's `register()` method if it exists.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @param  object    $provider
 	 * @return void
 	 */
-	protected function registerProvider( $provider ) {
+	protected function registerProvider( object $provider ): void {
 
 		if ( method_exists( $provider, 'register' ) ) {
 			$provider->register();
@@ -201,12 +183,12 @@ class Application extends Container implements ApplicationContract, Bootable {
 	/**
 	 * Calls a service provider's `boot()` method if it exists.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @param  object    $provider
 	 * @return void
 	 */
-	protected function bootProvider( $provider ) {
+	protected function bootProvider( object $provider ): void {
 
 		$class_name = get_class( $provider );
 
@@ -224,22 +206,23 @@ class Application extends Container implements ApplicationContract, Bootable {
 	/**
 	 * Returns an array of service providers.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return array
 	 */
-	protected function getProviders() {
+	protected function getProviders(): array {
+
 		return $this->providers;
 	}
 
 	/**
 	 * Calls the `boot()` method of all the registered service providers.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
-	protected function bootProviders() {
+	protected function bootProviders(): void {
 
 		foreach ( $this->getProviders() as $provider ) {
 			$this->bootProvider( $provider );
@@ -250,26 +233,26 @@ class Application extends Container implements ApplicationContract, Bootable {
 	 * Adds a static proxy alias. Developers must pass in fully-qualified
 	 * class name and alias class name.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $class
+	 * @param  string  $class_name
 	 * @param  string  $alias
 	 * @return void
 	 */
-	public function proxy( string $class, string $alias ): void {
-		$this->proxies[ $class ] = $alias;
+	public function proxy( string $class_name, string $alias ): void {
+		$this->proxies[ $class_name ] = $alias;
 	}
 
 	/**
 	 * Registers a static proxy class alias.
 	 *
-	 * @since  6.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $class
 	 * @param  string  $alias
 	 * @return void
 	 */
-	protected function registerProxy( $class, $alias ) {
+	protected function registerProxy( string $class, string $alias ): void {
 
 		if ( ! class_exists( $alias ) ) {
 			class_alias( $class, $alias );
@@ -281,11 +264,11 @@ class Application extends Container implements ApplicationContract, Bootable {
 	/**
 	 * Registers the static proxy classes.
 	 *
-	 * @since  5.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
-	protected function registerProxies() {
+	protected function registerProxies(): void {
 
 		// Only set the container on the first call.
 		if ( ! $this->registered_proxies ) {
