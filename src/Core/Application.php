@@ -23,7 +23,7 @@ use Backdrop\Proxies\Proxy;
  * @since  2.0.0
  * @access public
  */
-class Application extends Container implements ApplicationContract, Bootable {
+class Application extends Container implements Bootable {
 
 	/**
 	 * The current version of the framework.
