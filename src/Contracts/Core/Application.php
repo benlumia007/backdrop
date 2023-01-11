@@ -14,7 +14,7 @@
 
 namespace Backdrop\Contracts\Core;
 
-use Backdrop\Contracts\Core\Container;
+use Backdrop\Tools\ServiceProvider;
 
 interface Application extends Container {
 
@@ -24,10 +24,10 @@ interface Application extends Container {
 	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string|object  $provider
+	 * @param  ServiceProvider|string  $provider
 	 * @return void
 	 */
-	public function provider( $provider ): void;
+	public function provider( ServiceProvider|string $provider ): void;
 
 	/**
 	 * Adds a static proxy alias. Developers must pass in fully-qualified
