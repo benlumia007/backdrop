@@ -13,7 +13,6 @@ namespace Backdrop\Core;
 
 use Backdrop\Container\Container;
 use Backdrop\Contracts\Bootable;
-use Backdrop\Contracts\Core\Application as ApplicationContract;
 use Backdrop\Proxies\App;
 use Backdrop\Proxies\Proxy;
 
