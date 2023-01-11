@@ -86,6 +86,19 @@ class Application extends Container implements ApplicationContract, Bootable {
 	public function __construct() {
 		$this->registerDefaultBindings();
 		$this->registerDefaultProxies();
+
+		$this->registerDefaultProviders();
+	}
+
+	public function registerDefaultProviders() {
+
+		array_map( function( $provider ) {
+			$this->provider( $provider );
+		}, [
+			ManagerServiceProvider::class,
+			HierarchyServiceProvider::class,
+			ViewServiceProvider::class
+		] );
 	}
 
 	/**
