@@ -149,9 +149,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $abstract
-	 * @param  array   $parameters
+	 * @param string $abstract
+	 * @param array $parameters
 	 * @return mixed
+	 * @throws ReflectionException
 	 */
     public function resolve( string $abstract, array $parameters = [] ): mixed {
 
@@ -214,8 +215,9 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $abstract
+	 * @param string $abstract
 	 * @return object
+	 * @throws ReflectionException
 	 */
 	public function get( string $abstract ): mixed {
 
@@ -271,7 +273,7 @@ class Container implements ArrayAccess {
 
 	/**
 	 * Extend a binding with something like a decorator class. Cannot
-	 * extend resolved instancfes.
+	 * extend resolved instances.
 	 *
 	 * @since  2.0.0
 	 * @access public
@@ -446,9 +448,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  2.0.0
 	 * @access protected
-	 * @param  array     $dependencies
-	 * @param  array     $parameters
+	 * @param array $dependencies
+	 * @param array $parameters
 	 * @return array
+	 * @throws ReflectionException
 	 */
 	protected function resolveDependencies( array $dependencies, array $parameters ): array {
 
@@ -554,13 +557,14 @@ class Container implements ArrayAccess {
 	}
 
 	/**
-	* Magic method when trying to get a property.
-	*
-	* @since  2.0.0
-	* @access public
-	* @param  string  $name
-	* @return mixed
-	*/
+	 * Magic method when trying to get a property.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @param string $name
+	 * @return mixed
+	 * @throws ReflectionException
+	 */
 	public function __get( string $name ): mixed {
 
 		return $this->get( $name );

@@ -12,6 +12,7 @@
 namespace Backdrop\Proxies;
 
 use Backdrop\Container\Container;
+use ReflectionException;
 
 /**
  * Base static proxy class.
@@ -60,6 +61,7 @@ class Proxy {
 	 * @since  2.0.0
 	 * @access protected
 	 * @return object
+	 * @throws ReflectionException
 	 */
 	protected static function instance(): object {
 
@@ -72,9 +74,10 @@ class Proxy {
 	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $method
-	 * @param  array   $args
+	 * @param string $method
+	 * @param array $args
 	 * @return mixed
+	 * @throws ReflectionException
 	 */
 	public static function __callStatic( string $method, array $args ) {
 
