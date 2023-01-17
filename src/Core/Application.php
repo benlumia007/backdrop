@@ -137,7 +137,7 @@ class Application extends Container implements Bootable {
 	 * @param  ServiceProvider|string  $provider
 	 * @return void
 	 */
-	public function provider( ServiceProvider $provider ): void {
+	public function provider( $provider ): void {
 
 		// If passed a class name, resolve provider.
 		if ( is_string( $provider ) ) {
@@ -159,7 +159,7 @@ class Application extends Container implements Bootable {
 	 * @param  string    $provider
 	 * @return object
 	 */
-	protected function resolveProvider( string $provider ): object {
+	protected function resolveProvider( string $provider ) {
 
 		return new $provider( $this );
 	}
@@ -172,7 +172,7 @@ class Application extends Container implements Bootable {
 	 * @param  object    $provider
 	 * @return void
 	 */
-	protected function registerProvider( object $provider ): void {
+	protected function registerProvider( $provider ): void {
 
 		if ( method_exists( $provider, 'register' ) ) {
 			$provider->register();
@@ -187,7 +187,7 @@ class Application extends Container implements Bootable {
 	 * @param  object    $provider
 	 * @return void
 	 */
-	protected function bootProvider( object $provider ): void {
+	protected function bootProvider( $provider ): void {
 
 		$class_name = get_class( $provider );
 

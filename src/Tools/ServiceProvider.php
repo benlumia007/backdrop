@@ -26,17 +26,18 @@ abstract class ServiceProvider implements Bootable {
 	 * @access protected
 	 * @var    Container
 	 */
-	protected Container $app;
+	protected $app;
 
 	/**
 	 * Accepts the application and sets it to the `$app` property.
 	 *
-	 * @param  Container  $app
+	 * @param Container $app
 	 * @return void
 	 *@since  2.0.0
 	 * @access public
 	 */
 	public function __construct( Container $app ) {
+
 		$this->app = $app;
 	}
 
