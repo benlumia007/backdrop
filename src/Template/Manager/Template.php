@@ -36,7 +36,7 @@ class Template implements TemplateContract {
 	 * @access protected
 	 * @var    string
 	 */
-	protected string $type = 'post';
+	protected $type = 'post';
 
 	/**
 	 * Array of subtypes template works with.
@@ -45,7 +45,7 @@ class Template implements TemplateContract {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $subtype = [];
+	protected $subtype = [];
 
 	/**
 	 * Filename of the template.
@@ -54,7 +54,7 @@ class Template implements TemplateContract {
 	 * @access protected
 	 * @var    string
 	 */
-	protected string $filename = '';
+	protected $filename = '';
 
 	/**
 	 * Internationalized text label.
@@ -63,7 +63,7 @@ class Template implements TemplateContract {
 	 * @access protected
 	 * @var    string
 	 */
-	protected string $label = '';
+	protected $label = '';
 
 	/**
 	 * Magic method to use in case someone tries to output the object as a
