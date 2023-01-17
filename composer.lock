@@ -4,56 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcafc1ae529d39230cb06c816b9041d1",
-    "packages": [
-        {
-            "name": "benlumia007/backdrop-contracts",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/benlumia007/backdrop-contracts.git",
-                "reference": "0bf8ae0b1af5a32502e74dec17bb28cc5e76824b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/0bf8ae0b1af5a32502e74dec17bb28cc5e76824b",
-                "reference": "0bf8ae0b1af5a32502e74dec17bb28cc5e76824b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Backdrop\\Contracts\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Lu",
-                    "email": "benlumia007@gmail.com",
-                    "homepage": "https://benjlu.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Backdrop Contracts for Backdrop framework.",
-            "homepage": "https://github.com/benlumia007/backdrop-contracts",
-            "keywords": [
-                "classicpress",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/benlumia007/backdrop-contracts/issues",
-                "source": "https://github.com/benlumia007/backdrop-contracts/tree/1.0.0"
-            },
-            "time": "2023-01-17T07:26:43+00:00"
-        }
-    ],
+    "content-hash": "2026dda4a6c66b33294d7fd54200b131",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
@@ -61,7 +13,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.0"
+        "php": ">=7.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
