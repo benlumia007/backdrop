@@ -15,6 +15,7 @@ use Backdrop\Container\Container;
 use Backdrop\Contracts\Bootable;
 use Backdrop\Proxies\App;
 use Backdrop\Proxies\Proxy;
+use Backdrop\Tools\ServiceProvider;
 
 /**
  * Application class.
@@ -40,7 +41,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $providers = [];
+	protected $providers = [];
 
 	/**
 	 * Array of static proxy classes and aliases.
@@ -49,7 +50,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $proxies = [];
+	protected $proxies = [];
 
 	/**
 	 * Array of booted service providers.
@@ -58,7 +59,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $booted_providers = [];
+	protected $booted_providers = [];
 
 	/**
 	 * Array of registered proxies.
@@ -67,7 +68,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $registered_proxies = [];
+	protected $registered_proxies = [];
 
 	/**
 	 * Registers the default bindings, providers, and proxies for the
@@ -136,7 +137,7 @@ class Application extends Container implements Bootable {
 	 * @param  ServiceProvider|string  $provider
 	 * @return void
 	 */
-	public function provider( ServiceProvider|string $provider ): void {
+	public function provider( ServiceProvider $provider ): void {
 
 		// If passed a class name, resolve provider.
 		if ( is_string( $provider ) ) {

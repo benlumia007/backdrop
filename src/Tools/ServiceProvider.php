@@ -12,10 +12,10 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Backdrop\Core;
+namespace Backdrop\Tools;
 
-use Backdrop\Contracts\Bootable;
 use Backdrop\Container\Container;
+use Backdrop\Contracts\Bootable;
 
 abstract class ServiceProvider implements Bootable {
 	/**
