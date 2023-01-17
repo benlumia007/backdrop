@@ -38,7 +38,7 @@ class Component implements Hierarchy {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $types = [
+	protected $types = [
 		'404',
 		'archive',
 		'attachment',
