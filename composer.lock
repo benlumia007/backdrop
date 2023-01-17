@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13bc584c0b2542b3bf86dd8fa3b0ab31",
+    "content-hash": "dcafc1ae529d39230cb06c816b9041d1",
     "packages": [
         {
             "name": "benlumia007/backdrop-contracts",
