@@ -47,7 +47,7 @@ if ( ! function_exists( __NAMESPACE__ . '\\locate' ) ) {
 
 			foreach ( locations() as $location ) {
 
-				$file = functions - helpers . phptrailingslashit($location) . $template;
+				$file = trailingslashit( $location ) . $template;
 
 				if ( file_exists( $file ) ) {
 					$located = $file;
