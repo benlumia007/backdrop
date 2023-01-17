@@ -30,7 +30,7 @@ class Collection extends ArrayObject {
 	 * @param  mixed   $value
 	 * @return void
 	 */
-	public function add( string $name, mixed $value ): void {
+	public function add( string $name, $value ): void {
 
 		$this->offsetSet( $name, $value );
 	}
