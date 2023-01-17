@@ -26,7 +26,7 @@ class Component implements Bootable {
 	 *
 	 * @var array
 	 */
-	public array $sidebar_id;
+	public $sidebar_id;
 
 	/**
 	 * Construct

@@ -31,7 +31,7 @@ class Component implements Bootable {
 	 * @access public
 	 * @return array
 	 */
-	public array $menu_id;
+	public $menu_id;
 
 	/**
 	 * $menu_id
