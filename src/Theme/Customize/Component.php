@@ -12,7 +12,7 @@
 /**
  * Define namespace
  */
-namespace Backdrop\Customize;
+namespace Backdrop\Theme\Customize;
 
 use Backdrop\Contracts\Bootable;
 
