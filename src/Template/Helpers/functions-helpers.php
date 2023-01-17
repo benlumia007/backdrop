@@ -27,7 +27,7 @@ if ( ! function_exists( __NAMESPACE__ . '\\path' ) ) {
 		$file = ltrim( $file, '/' );
 		$path = apply_filters( 'backdrop/template/path', 'public/views' );
 
-		return $file ? functions - helpers . phptrailingslashit($path) . $file : trailingslashit( $path );
+		return $file ? trailingslashit( $path ) . $file : trailingslashit( $path );
 	}
 }
 
