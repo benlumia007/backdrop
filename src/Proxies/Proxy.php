@@ -82,6 +82,6 @@ class Proxy {
 
 		$instance = static::instance();
 
-		return $instance?->$method(...$args);
+		return $instance->$method(...$args);
 	}
 }
