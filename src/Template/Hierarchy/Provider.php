@@ -16,7 +16,7 @@
  */
 namespace Backdrop\Template\Hierarchy;
 
-use Backdrop\Core\ServiceProvider;
+use Backdrop\Tool\ServiceProvider;
 use Backdrop\Contracts\Template\Hierarchy;
 
 /**
