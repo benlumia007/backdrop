@@ -12,7 +12,8 @@
 /**
  * Define namespace
  */
-namespace Backdrop\Theme;
+namespace Backdrop;
+
 use function Backdrop\Template\Helpers\path;
 
 /**
