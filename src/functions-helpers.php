@@ -15,7 +15,6 @@
 namespace Backdrop;
 
 use Backdrop\App;
-use ReflectionException;
 
 if ( ! function_exists(__NAMESPACE__ . '\\booted' ) ) {
 
@@ -29,14 +28,16 @@ if ( ! function_exists(__NAMESPACE__ . '\\booted' ) ) {
 	 * @return bool
 	 */
 	function booted(): bool {
+
 		return defined('BACKDROP_BOOTED') && true === BACKDROP_BOOTED;
 	}
 }
 
 if ( ! function_exists(__NAMESPACE__ . '\\app' ) ) {
+
 	/**
 	 * The single instance of the app. Use this function for quickly working
-	 * with data.  Returns an instance of the `\Hybrid\Core\Application`
+	 * with data.  Returns an instance of the `Backdrop\Core\Application`
 	 * class. If the `$abstract` parameter is passed in, it'll resolve and
 	 * return the value from the container.
 	 *
@@ -48,6 +49,6 @@ if ( ! function_exists(__NAMESPACE__ . '\\app' ) ) {
 	 */
 	function app( string $abstract = '', array $params = [] ) {
 
-		return App::resolve($abstract ?: 'app', $params);
+		return App::resolve( $abstract ?: 'app', $params );
 	}
 }
