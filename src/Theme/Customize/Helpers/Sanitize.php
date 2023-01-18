@@ -23,7 +23,7 @@ class Sanitize {
 	 * @since 3.0.0
 	 * @access public
 	 * @param string $input
-	 * @param 		$settings
+	 * @param $setting
 	 * @return mixed|string
 	 */
 	public static function layouts( string $input, $setting ) {

@@ -19,7 +19,7 @@ use Backdrop\Contracts\Bootable;
 /**
  * Regiser Menu Class
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 class Component implements Bootable {
@@ -27,7 +27,7 @@ class Component implements Bootable {
 	/**
 	 * $menu_id
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return array
 	 */
@@ -36,7 +36,7 @@ class Component implements Bootable {
 	/**
 	 * $menu_id
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param array $menu_id
 	 * @return void
@@ -49,7 +49,7 @@ class Component implements Bootable {
 	/**
 	 * Register Menus
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -63,7 +63,7 @@ class Component implements Bootable {
 	/**
 	 * Create Menus
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param string $name outputs name.
 	 * @param string $id output id.
@@ -80,7 +80,7 @@ class Component implements Bootable {
 	/**
 	 * Boot the Menus
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */

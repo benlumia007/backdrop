@@ -18,10 +18,11 @@ use Backdrop\Contracts\Bootable;
 
 
 class Component implements Bootable {
+
 	/**
 	 * menu()
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 */
 	public function menu() {}
@@ -29,7 +30,7 @@ class Component implements Bootable {
 	/**
 	 * callback()
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 */
 	public function callback() {}
@@ -37,7 +38,7 @@ class Component implements Bootable {
 	/**
 	 * tabs()
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 */
 	public function tabs() {}
@@ -45,13 +46,13 @@ class Component implements Bootable {
 	/**
 	 * pages()
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 */
 	public function pages() {}
 
 	public function boot(): void {
 		add_action( 'admin_menu', array( $this, 'menu' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ), true, '1.0.0' );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ), true, '2.0.0' );
 	}
 }

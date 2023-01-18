@@ -74,7 +74,7 @@ class Component implements ViewContract {
 	 * @access protected
 	 * @var    ?string
 	 */
-	protected $template = null;
+	protected ?string $template = null;
 
 	/**
 	 * Sets up the view properties.
