@@ -68,7 +68,7 @@ function comments_template( $template ) {
  */
 function excerpt_more( string $text ): string {
 
-	if (! str_starts_with( $text, '<a')) {
+	if ( 0 !== strpos( $text, '<a' ) ) {
 
 		$text = sprintf(
 			' <a href="%s" class="entry__more-link">%s</a>',
