@@ -33,7 +33,7 @@ class Component implements Bootable {
 	 * @access protected
 	 * @var    Templates
 	 */
-	protected $templates;
+	protected Templates $templates;
 
 	/**
 	 * Sets the initial templates collection.
@@ -75,7 +75,7 @@ class Component implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function register() {
+	public function register(): void {
 
 		do_action( 'backdrop/templates/register', $this->templates );
 	}
@@ -95,7 +95,7 @@ class Component implements Bootable {
 	 * @param  string  $post_type
 	 * @return array
 	 */
-	public function postTemplates( $templates, $theme, $post, $post_type ) {
+	public function postTemplates( array $templates, object $theme, object $post, string $post_type ): array {
 
 		foreach ( $this->templates->all() as $template ) {
 

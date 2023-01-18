@@ -39,9 +39,10 @@ class Provider extends ServiceProvider {
 	/**
 	 * Boots the manager by firing its hooks in the `boot()` method.
 	 *
+	 * @return void
+	 * @throws \ReflectionException
 	 * @since  1.0.0
 	 * @access public
-	 * @return void
 	 */
 	public function boot() : void {
 
