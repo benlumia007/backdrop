@@ -44,7 +44,6 @@ if ( ! function_exists(__NAMESPACE__ . '\\app' ) ) {
 	 * @access public
 	 * @param string $abstract
 	 * @param array $params
-	 * @throws ReflectionException
 	 * @return mixed
 	 */
 	function app( string $abstract = '', array $params = [] ) {
