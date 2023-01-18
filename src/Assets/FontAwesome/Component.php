@@ -17,7 +17,7 @@ namespace Backdrop\Assets\FontAwesome;
 use Backdrop\Contracts\Bootable;
 
 /**
- * Regiser Menu Class
+ * Register Menu Class
  */
 class Component implements Bootable {
 	/**
@@ -30,10 +30,12 @@ class Component implements Bootable {
 	 * @return void
 	 */
 	public function enqueue(): void {
+
 		wp_enqueue_style( 'backdrop-fontawesome', get_theme_file_uri( '/vendor/benlumia007/backdrop/assets/fontawesome/css/all.css' ), array(), '1.0.0' );
 	}
 
 	public function boot() : void {
+
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
 	}
 }
