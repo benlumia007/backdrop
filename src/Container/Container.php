@@ -348,9 +348,9 @@ class Container implements ArrayAccess {
 	 * @param  mixed  $concrete
 	 * @param  array  $parameters
 	 * @throws ReflectionException
-	 * @return object
+	 * @return void
 	 */
-	protected function build( $concrete, array $parameters = [] ): object {
+	protected function build( $concrete, array $parameters = [] ) {
 
 		if ( $concrete instanceof Closure ) {
 			return $concrete( $this, $parameters );
