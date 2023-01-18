@@ -41,7 +41,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $providers = [];
+	protected array $providers = [];
 
 	/**
 	 * Array of static proxy classes and aliases.
@@ -50,7 +50,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $proxies = [];
+	protected array $proxies = [];
 
 	/**
 	 * Array of booted service providers.
@@ -59,7 +59,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $booted_providers = [];
+	protected array $booted_providers = [];
 
 	/**
 	 * Array of registered proxies.
@@ -68,7 +68,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $registered_proxies = [];
+	protected array $registered_proxies = [];
 
 	/**
 	 * Registers the default bindings, providers, and proxies for the
@@ -159,7 +159,7 @@ class Application extends Container implements Bootable {
 	 * @param  string    $provider
 	 * @return object
 	 */
-	protected function resolveProvider( string $provider ) {
+	protected function resolveProvider( string $provider ): object {
 
 		return new $provider( $this );
 	}
@@ -167,12 +167,12 @@ class Application extends Container implements Bootable {
 	/**
 	 * Calls a service provider's `register()` method if it exists.
 	 *
-	 * @since  2.0.0
-	 * @access protected
 	 * @param  object    $provider
 	 * @return void
+	 *@since  2.0.0
+	 * @access protected
 	 */
-	protected function registerProvider( $provider ): void {
+	protected function registerProvider( object $provider ): void {
 
 		if ( method_exists( $provider, 'register' ) ) {
 			$provider->register();
@@ -182,12 +182,12 @@ class Application extends Container implements Bootable {
 	/**
 	 * Calls a service provider's `boot()` method if it exists.
 	 *
-	 * @since  2.0.0
-	 * @access protected
 	 * @param  object    $provider
 	 * @return void
+	 *@since  2.0.0
+	 * @access protected
 	 */
-	protected function bootProvider( $provider ): void {
+	protected function bootProvider( object $provider ): void {
 
 		$class_name = get_class( $provider );
 

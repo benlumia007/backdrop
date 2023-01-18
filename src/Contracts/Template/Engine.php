@@ -14,12 +14,10 @@
  */
 namespace Backdrop\Contracts\Template;
 
-use Backdrop\Tools\Collection;
-
 /**
  * Engine interface.
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 interface Engine {
@@ -27,7 +25,7 @@ interface Engine {
 	/**
 	 * Returns a View object.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string	$name
 	 * @param  array	$slugs
@@ -39,7 +37,7 @@ interface Engine {
 	/**
 	 * Outputs a view template.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string	$name
 	 * @param  array	$slugs
@@ -51,7 +49,7 @@ interface Engine {
 	/**
 	 * Returns a view template as a string.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string	$name
 	 * @param  array	$slugs

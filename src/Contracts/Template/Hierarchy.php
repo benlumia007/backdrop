@@ -18,7 +18,7 @@ use Backdrop\Contracts\Bootable;
 /**
  * Template hierarchy interface.
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 interface Hierarchy extends Bootable {
@@ -27,7 +27,7 @@ interface Hierarchy extends Bootable {
 	 * Should return an array of template file names without the file
 	 * extension (`.php`).
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return array
 	 */
