@@ -19,11 +19,12 @@ class Component implements Bootable {
 	 *
 	 * THe enqueue(); is used to define any scripts and styles that's going to be used part of a theme.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function enqueue(): void {
+
 		/**
 		 * This will load Fonts as part of the theme. Fira Sans, Merriweather, and Tangerine. For more information
 		 * regarding this feature, please go to the following url. https://google-webfonts-helper.herokuapp.com/fonts
@@ -41,6 +42,7 @@ class Component implements Bootable {
 	 *
 	 */
 	public function boot() : void {
+
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
 	}
 }

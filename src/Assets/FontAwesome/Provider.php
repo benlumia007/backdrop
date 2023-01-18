@@ -9,17 +9,15 @@
  * @link      https://github.com/benlumia007/backdrop/fontawesome
  */
 
-/**
- * Define namespace
- */
 namespace Backdrop\Assets\FontAwesome;
 
 use Backdrop\Tools\ServiceProvider;
+use ReflectionException;
 
 /**
  * FontAwesome provider.
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 class Provider extends ServiceProvider {
@@ -27,7 +25,7 @@ class Provider extends ServiceProvider {
 	/**
 	 * Binds the implementation of the attributes contract to the container.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -38,6 +36,12 @@ class Provider extends ServiceProvider {
 		$this->app->alias( Component::class, 'backdrop/fontawesome' );
 	}
 
+	/**
+	 * @since  2.0.0
+	 * @access public
+	 * @throws ReflectionException
+	 * @return void;
+	 */
 	public function boot() : void {
 		$this->app->resolve( 'backdrop/fontawesome' )->boot();
 	}

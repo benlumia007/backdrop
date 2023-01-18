@@ -10,13 +10,15 @@
  */
 
 namespace Backdrop\Assets\Fonts;
+
 use Backdrop\Tools\ServiceProvider;
+use ReflectionException;
 
 class Provider extends ServiceProvider {
 	/**
 	 * Binds the implementation of the attributes contract to the container.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -27,6 +29,12 @@ class Provider extends ServiceProvider {
 		$this->app->alias( Component::class, 'backdrop/fonts' );
 	}
 
+	/**
+	 * @since  2.0.0
+	 * @access public
+	 * @throws ReflectionException
+	 * @return void;
+	 */
 	public function boot() : void {
 		$this->app->resolve( 'backdrop/fonts' )->boot();
 	}
