@@ -142,6 +142,7 @@ class Container implements ArrayAccess {
 	 * @access public
 	 * @param  string  $abstract
 	 * @param  array   $parameters
+	 * @throws ReflectionException
 	 * @return mixed
 	 */
 	public function resolve( string $abstract, array $parameters = [] ) {
@@ -149,7 +150,7 @@ class Container implements ArrayAccess {
 		// Get the true abstract name.
 		$abstract = $this->getAbstract( $abstract );
 
-		// If this is being managed as an instance and we already have
+		// If this is being managed as an instance, and we already have
 		// the instance, return it now.
 		if ( isset( $this->instances[ $abstract ] ) ) {
 
@@ -215,6 +216,7 @@ class Container implements ArrayAccess {
 	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $abstract
+	 * @throws ReflectionException
 	 * @return object
 	 */
 	public function get( string $abstract ) {
@@ -238,13 +240,13 @@ class Container implements ArrayAccess {
 	/**
 	 * Add a shared binding.
 	 *
+	 * @return void
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $abstract
-	 * @param  object  $concrete
-	 * @return void
+	 * @param string $abstract
+	 * @param object|null $concrete
 	 */
-	public function singleton( string $abstract, $concrete = null ): void {
+	public function singleton( string $abstract, object $concrete = null ): void {
 
 		$this->add( $abstract, $concrete, true );
 	}
@@ -450,6 +452,7 @@ class Container implements ArrayAccess {
 	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $offset
+	 * @throws ReflectionException
 	 * @return false|object|string
 	 */
 	public function offsetGet( $offset ) {
@@ -504,6 +507,7 @@ class Container implements ArrayAccess {
 	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $name
+	 * @throws ReflectionException
 	 * @return false|object|string
 	 */
 	public function __get( string $name ) {
