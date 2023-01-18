@@ -24,7 +24,7 @@ use function Backdrop\Template\Helpers\path;
 /**
  * Template collection class.
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 class Templates extends Collection {
@@ -32,7 +32,7 @@ class Templates extends Collection {
 	/**
 	 * Add a new custom template.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $name
 	 * @param  mixed   $value

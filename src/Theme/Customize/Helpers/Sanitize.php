@@ -20,7 +20,7 @@ class Sanitize {
 	/**
 	 * Loads choices for layouts
 	 *
-	 * @since 3.0.0
+	 * @since 2.0.0
 	 * @access public
 	 * @param string $input
 	 * @param $setting
@@ -48,8 +48,11 @@ class Sanitize {
 	/**
 	 * 1.0 - Customize ( Validations )
 	 *
+	 * @since  2.0.0
+	 * @access public
 	 * @param array $page_id output.
 	 * @param array $setting output.
+	 * @return void;
 	 */
 	public static function dropdown( array $page_id, array $setting ) {
 

@@ -15,6 +15,7 @@
 namespace Backdrop\Template\Manager;
 
 use Backdrop\Tools\ServiceProvider;
+use ReflectionException;
 
 /**
  * Object templates provider class.
@@ -40,7 +41,7 @@ class Provider extends ServiceProvider {
 	 * Boots the manager by firing its hooks in the `boot()` method.
 	 *
 	 * @return void
-	 * @throws \ReflectionException
+	 * @throws ReflectionException
 	 * @since  1.0.0
 	 * @access public
 	 */

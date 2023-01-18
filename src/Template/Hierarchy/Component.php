@@ -27,14 +27,15 @@ use WP_User;
 /**
  * Overwrites the core WP template hierarchy.
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 class Component implements Hierarchy {
+
 	/**
 	 * Array of template types in WordPress Core.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -63,7 +64,7 @@ class Component implements Hierarchy {
 	 * Copy of the located template found when running through
 	 * the tamplate hierarchy.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    string
 	 */
@@ -78,7 +79,7 @@ class Component implements Hierarchy {
 	/**
 	 * Setup the template hierarchy filters.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -103,7 +104,7 @@ class Component implements Hierarchy {
 	/**
 	 * Returns the full template hierarchy for the current page load.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return array
 	 */
@@ -125,7 +126,7 @@ class Component implements Hierarchy {
 	 * via the standard page template.  User choice should always trump
 	 * developer choice.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  array   $templates
 	 * @return array
@@ -153,7 +154,7 @@ class Component implements Hierarchy {
 	 * Filters a queried template hierarchy for each type of template
 	 * and looks templates within `resources/views'.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return array
 	 */
@@ -188,7 +189,7 @@ class Component implements Hierarchy {
 	 * that the template hierarchy continues processing. That way, we can
 	 * capture the entire hierarchy.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $template
 	 * @return string
@@ -206,7 +207,7 @@ class Component implements Hierarchy {
 	 * Filter on `template_include` to make sure we fall back to our
 	 * located template from earlier.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $template
 	 * @return string

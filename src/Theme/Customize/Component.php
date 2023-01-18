@@ -21,7 +21,7 @@ use WP_Customize_Manager;
 /**
  * Customize class.
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 class Component implements Bootable {
@@ -29,7 +29,7 @@ class Component implements Bootable {
 	/**
 	 * Add our panels for customizer.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param WP_Customize_Manager $manager
 	 * @return void
@@ -39,7 +39,7 @@ class Component implements Bootable {
 	/**
 	 * Add our sections for customizer.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param WP_Customize_Manager $manager
 	 * @return void
@@ -49,7 +49,7 @@ class Component implements Bootable {
 	/**
 	 * Add our settings for customizer.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param WP_Customize_Manager $manager
 	 * @return void
@@ -59,7 +59,7 @@ class Component implements Bootable {
 	/**
 	 * Add our controls for customizer.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param WP_Customize_Manager $manager
 	 * @return void
@@ -69,7 +69,7 @@ class Component implements Bootable {
 	/**
 	 * Sets up the customizer manager actions and filters.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */

@@ -22,14 +22,14 @@ use Backdrop\Contracts\Bootable;
 /**
  * Template interface.
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 class Component implements Bootable {
 	/**
 	 * Templates collection.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    Templates
 	 */
@@ -38,7 +38,7 @@ class Component implements Bootable {
 	/**
 	 * Sets the initial templates collection.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  Templates  $templates
 	 * @return void
@@ -51,7 +51,7 @@ class Component implements Bootable {
 	/**
 	 * Sets up the templates manager actions and filters.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -71,7 +71,7 @@ class Component implements Bootable {
 	 * Note that this method is `public` because of WP's hook callback
 	 * system. See the implemented contract for publicly-available methods.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -87,7 +87,7 @@ class Component implements Bootable {
 	 * Note that this method is `public` because of WP's hook callback
 	 * system. See the implemented contract for publicly-available methods.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  array   $templates
 	 * @param  object  $theme

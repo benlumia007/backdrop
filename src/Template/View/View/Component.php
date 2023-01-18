@@ -32,7 +32,7 @@ use function Backdrop\Template\Helpers\locate as locate_template;
 /**
  * View class.
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 class Component implements ViewContract {
@@ -41,7 +41,7 @@ class Component implements ViewContract {
 	 * Name of the view. This is primarily used as the folder name. However,
 	 * it can also be the filename as the final fallback if no folder exists.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    string
 	 */
@@ -52,7 +52,7 @@ class Component implements ViewContract {
 	 * `$name` property (e.g., `{$name}/{$slug}.php`). Slugs are used in
 	 * the order that they are set.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    string|array
 	 */
@@ -61,7 +61,7 @@ class Component implements ViewContract {
 	/**
 	 * An array of data that is passed into the view template.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    array|Collection
 	 */
@@ -70,7 +70,7 @@ class Component implements ViewContract {
 	/**
 	 * The template filename.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @var    ?string
 	 */
@@ -79,7 +79,7 @@ class Component implements ViewContract {
 	/**
 	 * Sets up the view properties.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param string $name
 	 * @param string|array $slugs
@@ -100,7 +100,7 @@ class Component implements ViewContract {
 	/**
 	 * When attempting to use the object as a string, return the template output.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return string
 	 */
@@ -112,7 +112,7 @@ class Component implements ViewContract {
 	/**
 	 * Returns the array of slugs.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return array
 	 */
@@ -125,7 +125,7 @@ class Component implements ViewContract {
 	 * Uses the array of template slugs to build a hierarchy of potential
 	 * templates that can be used.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return array
 	 */
@@ -153,7 +153,7 @@ class Component implements ViewContract {
 	/**
 	 * Locates the template.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return string
 	 */
@@ -165,7 +165,7 @@ class Component implements ViewContract {
 	/**
 	 * Returns the located template.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return string
 	 */
@@ -182,7 +182,7 @@ class Component implements ViewContract {
 	/**
 	 * Sets up data to be passed to the template and renders it.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -215,7 +215,7 @@ class Component implements ViewContract {
 	/**
 	 * Returns the template output as a string.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @return string
 	 */
@@ -231,7 +231,7 @@ class Component implements ViewContract {
 	 * Note that WP refers to `$name` and `$slug` differently than we do.
 	 * They're the opposite of what we use in our function.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -257,7 +257,7 @@ class Component implements ViewContract {
 	 * building custom attachment templates. We'll assume that the theme
 	 * author will handle the appropriate output in the template itself.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access protected
 	 * @return void
 	 */

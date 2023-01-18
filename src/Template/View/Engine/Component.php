@@ -25,7 +25,7 @@ use Backdrop\Tools\Collection;
 /**
  * Egine class
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @access public
  */
 class Component {
@@ -33,7 +33,7 @@ class Component {
 	/**
 	 * Returns a View object.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string			$name
 	 * @param  array			$slugs
@@ -56,7 +56,7 @@ class Component {
 	/**
 	 * Outputs a view template.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
@@ -71,7 +71,7 @@ class Component {
 	/**
 	 * Returns a view template as a string.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 * @access public
 	 * @param  string            $name
 	 * @param  array|string      $slugs
