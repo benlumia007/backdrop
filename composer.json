@@ -19,16 +19,12 @@
           "Backdrop\\": "src/"
 		},
 		"files": [
-			"src/Template/Helpers/functions-helpers.php",
-			"src/Theme/Menu/functions-menu.php",
-			"src/Theme/Sidebar/functions-sidebar.php",
-			"src/functions-filters.php",
-			"src/functions-helpers.php",
-			"src/functions-setup.php"
+			"src/functions-helpers.php"
 		]
     },
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.0",
+        "benlumia007/backdrop-contracts": "^1.0"
     },
     "minimum-stability": "dev",
 	"prefer-stable": true
