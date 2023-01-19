@@ -29,7 +29,7 @@ class Proxy {
 	 * @access protected
 	 * @var    Container
 	 */
-	protected static Container $container;
+	protected static $container;
 
 	/**
 	 * Returns the name of the accessor for object registered in the container.
@@ -50,7 +50,7 @@ class Proxy {
 	 * @access public
 	 * @return void
 	 */
-	public static function setContainer( $container ): void {
+	public static function setContainer( $container ) {
 
 		static::$container = $container;
 	}
@@ -63,7 +63,7 @@ class Proxy {
 	 * @throws ReflectionException
 	 * @return object
 	 */
-	protected static function instance(): object {
+	protected static function instance() {
 
 		return static::$container->resolve( static::accessor() );
 	}

@@ -26,7 +26,7 @@ abstract class ServiceProvider implements Bootable {
 	 * @access protected
 	 * @var    Container
 	 */
-	protected Container $app;
+	protected $app;
 
 	/**
 	 * Accepts the application and sets it to the `$app` property.
@@ -48,7 +48,7 @@ abstract class ServiceProvider implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function register(): void {}
+	public function register() {}
 
 	/**
 	 * Callback executed after all the service providers have been registered.
@@ -59,5 +59,5 @@ abstract class ServiceProvider implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function boot(): void {}
+	public function boot() {}
 }
