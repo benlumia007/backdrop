@@ -34,7 +34,7 @@ class Container implements ArrayAccess {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $bindings = [];
+	protected $bindings = [];
 
 	/**
 	 * Array of aliases for bindings.
@@ -43,7 +43,7 @@ class Container implements ArrayAccess {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $aliases = [];
+	protected $aliases = [];
 
 	/**
 	 * Array of single instance objects.
@@ -52,7 +52,7 @@ class Container implements ArrayAccess {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $instances = [];
+	protected $instances = [];
 
 	/**
 	 * Array of object extensions.
@@ -61,7 +61,7 @@ class Container implements ArrayAccess {
 	 * @access protected
 	 * @var    array
 	 */
-	protected array $extensions = [];
+	protected $extensions = [];
 
 	/**
 	 * Set up a new container.
@@ -82,20 +82,25 @@ class Container implements ArrayAccess {
 	/**
 	 * Add a binding. The abstract should be a key, abstract class name, or
 	 * interface name. The concrete should be the concrete implementation of
-	 * the abstract. If no concrete is given, its assumed the abstract
-	 * handles the concrete implementation.
+	 * the abstract.
 	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $abstract
-	 * @param  mixed   $concrete
-	 * @param  bool    $shared
+	 * @param  string $abstract
+	 * @param  mixed  $concrete
+	 * @param  bool   $shared
 	 * @return void
 	 */
-	public function bind( string $abstract, $concrete = null, bool $shared = false ): void {
+	public function bind( string $abstract, $concrete = null, bool $shared = false ) {
 
+		// Drop all the stale instances and aliases
 		unset( $this->instances[ $abstract ] );
 
+		/**
+		 * If no concrete type was given, we will simply set the concrete type to the
+		 * abstract type. After, the concrete type to be registered as shared without
+		 * be forced to state their classes in both  of the parameters
+		 */
 		if ( is_null( $concrete ) ) {
 			$concrete = $abstract;
 		}
@@ -114,9 +119,12 @@ class Container implements ArrayAccess {
 	 * @param  bool    $shared
 	 * @return void
 	 */
-	public function add( string $abstract, $concrete = null, bool $shared = false ): void {
+	public function add( string $abstract, $concrete = null, bool $shared = false ) {
 
-		$this->bind( $abstract, $concrete, $shared );
+		if ( ! $this->bound( $abstract ) ) {
+
+			$this->bind( $abstract, $concrete, $shared );
+		}
 	}
 
 	/**
@@ -127,9 +135,9 @@ class Container implements ArrayAccess {
 	 * @param  string  $abstract
 	 * @return void
 	 */
-	public function remove( string $abstract ): void {
+	public function remove( string $abstract ) {
 
-		if ( $this->has( $abstract ) ) {
+		if ( $this->bound( $abstract ) ) {
 
 			unset( $this->bindings[ $abstract ], $this->instances[ $abstract ] );
 		}
@@ -140,20 +148,23 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $abstract
-	 * @param  array   $parameters
-	 * @throws ReflectionException
+	 * @param string $abstract
+	 * @param array $parameters
 	 * @return mixed
+	 * @throws ReflectionException
 	 */
 	public function resolve( string $abstract, array $parameters = [] ) {
 
-		// Get the true abstract name.
-		$abstract = $this->getAbstract( $abstract );
+		// Let's grab the true abstract name.
+		$abstract = $this->getAlias( $abstract );
 
-		// If this is being managed as an instance, and we already have
-		// the instance, return it now.
+		/**
+		 * if an instance of the type is currently being managed as a singleton
+		 * we'll just return an existing instance instead of instantiating a new
+		 * instance so the developer can keep using the same objects instance
+		 * every time.
+		 */
 		if ( isset( $this->instances[ $abstract ] ) ) {
-
 			return $this->instances[ $abstract ];
 		}
 
@@ -164,7 +175,7 @@ class Container implements ArrayAccess {
 		if ( ! $this->isBuildable( $concrete ) ) {
 
 			// If we don't actually have this, return false.
-			if ( ! $this->has( $abstract ) ) {
+			if ( ! $this->bound( $abstract ) ) {
 				return false;
 			}
 
@@ -174,7 +185,7 @@ class Container implements ArrayAccess {
 		// Build the object.
 		$object = $this->build( $concrete, $parameters );
 
-		if ( ! $this->has( $abstract ) ) {
+		if ( ! $this->bound( $abstract ) ) {
 			return $object;
 		}
 
@@ -196,28 +207,16 @@ class Container implements ArrayAccess {
 	}
 
 	/**
-	 * Creates an alias for an abstract. This allows you to add names that
-	 * are easy to access without remembering more complex class names.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  string  $alias
-	 * @return void
-	 */
-	public function alias( string $abstract, string $alias ): void {
-
-		$this->aliases[ $alias ] = $abstract;
-	}
-
-	/**
 	 * Alias for `resolve()`.
 	 *
+	 * Follows the PSR-11 standard. Do not alter.
+	 * @link https://www.php-fig.org/psr/psr-11/
+	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $abstract
-	 * @throws ReflectionException
+	 * @param string $abstract
 	 * @return object
+	 * @throws ReflectionException
 	 */
 	public function get( string $abstract ) {
 
@@ -227,12 +226,15 @@ class Container implements ArrayAccess {
 	/**
 	 * Check if a binding exists.
 	 *
+	 * Follows the PSR-11 standard. Do not alter.
+	 * @link https://www.php-fig.org/psr/psr-11/
+	 *
 	 * @since  2.0.0
 	 * @access public
 	 * @param  string  $abstract
 	 * @return bool
 	 */
-	public function has( string $abstract ): bool {
+	public function bound( string $abstract ): bool {
 
 		return isset( $this->bindings[ $abstract ] ) || isset( $this->instances[ $abstract ] );
 	}
@@ -240,13 +242,13 @@ class Container implements ArrayAccess {
 	/**
 	 * Add a shared binding.
 	 *
-	 * @return void
 	 * @since  2.0.0
 	 * @access public
-	 * @param string $abstract
-	 * @param null $concrete
+	 * @param  string  $abstract
+	 * @param  object  $concrete
+	 * @return void
 	 */
-	public function singleton( string $abstract, $concrete = null ): void {
+	public function singleton( string $abstract, $concrete = null ) {
 
 		$this->add( $abstract, $concrete, true );
 	}
@@ -278,11 +280,81 @@ class Container implements ArrayAccess {
 	 * @param  Closure $closure
 	 * @return void
 	 */
-	public function extend( string $abstract, Closure $closure ): void {
+	public function extend( string $abstract, Closure $closure ) {
 
-		$abstract = $this->getAbstract( $abstract );
+		$abstract = $this->getAlias( $abstract );
 
 		$this->extensions[ $abstract ][] = $closure;
+	}
+
+
+	/**
+	 * Creates an alias for an abstract type. This allows you to add alias
+	 * names that are easier to remember rather than using full class names.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @param  string  $abstract
+	 * @param  string  $alias
+	 * @return void
+	 */
+	public function alias( string $abstract, string $alias ) {
+
+		$this->aliases[ $alias ] = $abstract;
+	}
+
+	/**
+	 * Checks if a property exists via `ArrayAccess`.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @param  mixed  $offset
+	 * @return bool
+	 */
+	public function offsetExists( $offset ): bool {
+
+		return $this->bound( $offset );
+	}
+
+	/**
+	 * Returns a property via `ArrayAccess`.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @param mixed $offset
+	 * @return false|object
+	 * @throws ReflectionException
+	 */
+	public function offsetGet( $offset ) {
+
+		return $this->get( $offset );
+	}
+
+	/**
+	 * Sets a property via `ArrayAccess`.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @param  mixed  $offset
+	 * @param  mixed   $value
+	 * @return void
+	 */
+	public function offsetSet( $offset, $value ) {
+
+		$this->add( $offset, $value );
+	}
+
+	/**
+	 * Unsets a property via `ArrayAccess`.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @param  mixed  $offset
+	 * @return void
+	 */
+	public function offsetUnset( $offset ) {
+
+		$this->remove( $offset );
 	}
 
 	/**
@@ -294,9 +366,10 @@ class Container implements ArrayAccess {
 	 * @param  string    $abstract
 	 * @return string
 	 */
-	protected function getAbstract( string $abstract ): string {
+	protected function getAlias( string $abstract ) : string {
 
 		if ( isset( $this->aliases[ $abstract ] ) ) {
+
 			return $this->aliases[ $abstract ];
 		}
 
@@ -314,9 +387,9 @@ class Container implements ArrayAccess {
 	protected function getConcrete( string $abstract ) {
 
 		$concrete = false;
-		$abstract = $this->getAbstract( $abstract );
+		$abstract = $this->getAlias( $abstract );
 
-		if ( $this->has( $abstract ) ) {
+		if ( $this->bound( $abstract ) ) {
 			$concrete = $this->bindings[ $abstract ]['concrete'];
 		}
 
@@ -334,8 +407,7 @@ class Container implements ArrayAccess {
 	 */
 	protected function isBuildable( $concrete ): bool {
 
-		return $concrete instanceof Closure
-			|| ( is_string( $concrete ) && class_exists( $concrete ) );
+		return $concrete instanceof Closure || ( is_string( $concrete ) && class_exists( $concrete ) );
 	}
 
 	/**
@@ -345,10 +417,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  2.0.0
 	 * @access protected
-	 * @param  mixed  $concrete
-	 * @param  array  $parameters
+	 * @param mixed $concrete
+	 * @param array $parameters
+	 * @return object
 	 * @throws ReflectionException
-	 * @return void
 	 */
 	protected function build( $concrete, array $parameters = [] ) {
 
@@ -376,9 +448,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  2.0.0
 	 * @access protected
-	 * @param  array     $dependencies
-	 * @param  array     $parameters
+	 * @param array $dependencies
+	 * @param array $parameters
 	 * @return array
+	 * @throws ReflectionException
 	 */
 	protected function resolveDependencies( array $dependencies, array $parameters ): array {
 
@@ -405,61 +478,6 @@ class Container implements ArrayAccess {
 
 		return $args;
 	}
-
-	/**
-	 * Sets a property via `ArrayAccess`.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  string  $offset
-	 * @param  mixed   $value
-	 * @return void
-	 */
-	public function offsetSet( $offset, $value ) {
-
-		$this->add( $offset, $value );
-	}
-
-	/**
-	 * Unsets a property via `ArrayAccess`.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  string  $offset
-	 * @return void
-	 */
-	public function offsetUnset( $offset ) {
-
-		$this->remove( $offset );
-	}
-
-	/**
-	 * Checks if a property exists via `ArrayAccess`.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  string  $offset
-	 * @return bool
-	 */
-	public function offsetExists( $offset ): bool {
-
-		return $this->has( $offset );
-	}
-
-	/**
-	 * Returns a property via `ArrayAccess`.
-	 *
-	 * @since  2.0.0
-	 * @access public
-	 * @param  string  $offset
-	 * @throws ReflectionException
-	 * @return false|object|string
-	 */
-	public function offsetGet( $offset ) {
-
-		return $this->get( $offset );
-	}
-
 
 	/**
 	 * Magic method when trying to set a property.
@@ -496,9 +514,9 @@ class Container implements ArrayAccess {
 	 * @param  string  $name
 	 * @return bool
 	 */
-	public function __isset( string $name ) {
+	public function __isset( string $name ): bool {
 
-		return $this->has( $name );
+		return $this->bound( $name );
 	}
 
 	/**
@@ -506,9 +524,9 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  2.0.0
 	 * @access public
-	 * @param  string  $name
+	 * @param string $name
 	 * @throws ReflectionException
-	 * @return false|object|string
+	 * @return false|object
 	 */
 	public function __get( string $name ) {
 
