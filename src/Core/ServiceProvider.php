@@ -18,6 +18,7 @@ use Backdrop\Container\Container;
 use Backdrop\Contracts\Bootable;
 
 abstract class ServiceProvider implements Bootable {
+
 	/**
 	 * Application instance. Subclasses should use this property to access
 	 * the application (container) to add, remove, or resolve bindings.
