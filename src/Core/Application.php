@@ -15,7 +15,6 @@ use Backdrop\Container\Container;
 use Backdrop\Contracts\Bootable;
 use Backdrop\Proxies\App;
 use Backdrop\Proxies\Proxy;
-use Backdrop\Tools\ServiceProvider;
 
 /**
  * Application class.
