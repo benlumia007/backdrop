@@ -1,9 +1,9 @@
 # Changelog
 
-## 2.0.0
+## 2.0.0 - January 22, 2023
 - New and Improved Framework
 
-## 1.1.6
+## 1.1.6 - January 19, 2021
 - This is the last update for version 1.1.6
 
 ## 1.1.2 - November 18, 2020
