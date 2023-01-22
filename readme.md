@@ -41,6 +41,9 @@ $slug = Backdrop\booted ? Backdrop\app() : new Backdrop\Core\Application();
 // Add service provider
 $slug->provider( YourProject\Provider::class );
 
+// Create and action hook for child themes or plugins
+do_action( "$slug/child/theme", $slug );
+
 // Boot the application
 $slug->boot();
 </pre>
