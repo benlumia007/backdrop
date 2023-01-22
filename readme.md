@@ -33,7 +33,7 @@ if ( file_exists( plugin_dir_path( __FILE__ ) . '/vendor/autoload.php' ) ) {
 </pre>
 
 ## Registering and Booting Backdrop.
-Please note that the Backdrop isn't launched until an instance of its `Backdrop\Core\Application` class is created and its `boot()` check the Backdrop\booted() function before attempting to create a new app. If one exists, then it should use the existing instance via the Backdrop\app() helper function.
+Please note that the Backdrop isn't launched until an instance of its `Backdrop\Core\Application` class is created and its `boot()` check the Backdrop\booted() function before attempting to create a new app. If one exists, then it should use the existing instance via the `Backdrop\app()` helper function.
 <pre>
 // Create a new application
 $slug = Backdrop\booted ? Backdrop\app() : new Backdrop\Core\Application();
