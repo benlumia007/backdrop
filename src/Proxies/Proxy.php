@@ -11,7 +11,7 @@
 
 namespace Backdrop\Proxies;
 
-use Backdrop\Container\Container;
+use Backdrop\Core\Container;
 use ReflectionException;
 
 /**
