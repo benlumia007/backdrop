@@ -3,12 +3,6 @@
 ## 2.0.0
 - New and Improved Framework
 
-## 2.0.1
-- Minor Changes
-
-## 2.0.0
-- Add Container and provider
-
 ## 1.1.6
 - This is the last update for version 1.1.6
 
