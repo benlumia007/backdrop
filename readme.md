@@ -9,9 +9,6 @@ Backdrop is the core application layer that consists of a service container and 
 - PHP 7.0+
 - [Composer](https://getcomposer.org) for managing PHP dependencies
 
-## Documentations
-The documentation is under construction and will be available when I finished writing up everything I need.
-
 ## Installation
 Use the following command from your preferred command line utility to install Backdrop.
 
