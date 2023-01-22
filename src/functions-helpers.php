@@ -14,7 +14,7 @@
 
 namespace Backdrop;
 
-use Backdrop\App;
+use Backdrop\Proxies\App;
 
 if ( ! function_exists(__NAMESPACE__ . '\\booted' ) ) {
 
