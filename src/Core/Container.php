@@ -464,19 +464,62 @@ class Container implements ArrayAccess {
 
 				$args[] = $parameters[ $dependency->getName() ];
 
-				// If the parameter is a class, resolve it.
-			} elseif ( ! is_null( $dependency->getClass() ) ) {
+				continue;
+			}
 
-				$args[] = $this->resolve( $dependency->getClass()->getName() );
+			// If the parameter is a class, resolve it.
+			$types = $this->getReflectionTypes( $dependency );
 
-				// Else, use the default parameter value.
-			} elseif ( $dependency->isDefaultValueAvailable() ) {
+			if ( $types ) {
+				$resolved_type = false;
+
+				foreach ( $types as $type ) {
+					if ( class_exists( $type->getName() ) ) {
+						$args[] = $this->resolve(
+							$type->getName()
+						);
+						$resolved_type = true;
+					}
+				}
+
+				if ( $resolved_type ) {
+					continue;
+				}
+			}
+
+			// Else, use the default parameter value.
+			if ( $dependency->isDefaultValueAvailable() ) {
 
 				$args[] = $dependency->getDefaultValue();
 			}
 		}
 
 		return $args;
+
+	}
+
+	/**
+	 * `ReflectionParameter::getType()` in PHP may return an instance of
+	 * `ReflectionNamedType` or an `ReflectionUnionType`.  The latter class's
+	 * `getTypes()` method returns and array of the former objects. This
+	 * method ensures that we always get an array of `ReflectionNamedType`
+	 * objects.
+	 *
+	 * @since  1.0.0
+	 * @access protected
+	 * @param  object    $dependency
+	 * @return array
+	 */
+	protected function getReflectionTypes( $dependency ) {
+		$types = $dependency->getType();
+
+		if ( ! $types ) {
+			return [];
+		} elseif ( class_exists( 'ReflectionUnionType' ) && $types instanceof \ReflectionUnionType ) {
+			return $types->getTypes();
+		}
+
+		return [ $types ];
 	}
 
 	/**
