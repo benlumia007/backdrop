@@ -23,7 +23,7 @@
 		]
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.1",
         "benlumia007/backdrop-contracts": "^1.0"
     },
     "minimum-stability": "dev",
