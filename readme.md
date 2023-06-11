@@ -4,10 +4,10 @@ Backdrop is a framework for developing themes & plugins for ClassicPress and Wor
 Backdrop is the core application layer that consists of a service container and it can be use alone or alongside with Backdrop's available packages.
 
 ## Requirements
-- [ClassicPress](https://www.classicpress.net/) 1.4.0 or higher
-- [WordPress](https://wordpress.org) 4.9 or higher
-- [PHP](https://www.php.net/releases/7_1_0.php) 7.1 or higher
-- [Composer](https://getcomposer.org) 2.2.21
+- [ClassicPress](https://www.classicpress.net/)
+- [WordPress](https://wordpress.org)
+- [PHP 7.1](https://www.php.net/releases/7_1_0.php)
+- [Composer](https://getcomposer.org)
 
 ## Installation
 Use the following command from your preferred command line utility to install Backdrop.
