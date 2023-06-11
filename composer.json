@@ -1,10 +1,8 @@
 {
     "name": "backdrop-dev/framework",
-    "description": "A core that helps you build amazing themes",
-    "keywords": [
-        "wordpress"
-    ],
-    "homepage": "https://github.com/benlumia007/backdrop",
+    "description": "Backdrop Framework: A framework for developing ClassicPress and WordPress themes and plugins.",
+    "keywords": [ "classicpress", "wordpress" ],
+    "homepage": "https://benjlu.com/project/backdrop-dev",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
