@@ -22,7 +22,7 @@ abstract class ServiceProvider implements Bootable {
 	 * Application instance. Subclasses should use this property to access
 	 * the application (container) to add, remove, or resolve bindings.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @var    Container
 	 */
@@ -33,7 +33,7 @@ abstract class ServiceProvider implements Bootable {
 	 *
 	 * @param Container $app
 	 * @return void
-	 *@since  2.0.0
+	 *@since  1.0.0
 	 * @access public
 	 */
 	public function __construct( Container $app ) {
@@ -44,7 +44,7 @@ abstract class ServiceProvider implements Bootable {
 	/**
 	 * Callback executed when the `Application` class registers providers.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -55,7 +55,7 @@ abstract class ServiceProvider implements Bootable {
 	 * This is particularly useful for single-instance container objects that
 	 * only need to be loaded once per page and need to be resolved early.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */

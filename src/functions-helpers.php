@@ -23,7 +23,7 @@ if ( ! function_exists(__NAMESPACE__ . '\\booted' ) ) {
 	 * booted. Use before launching a new application. If booted, reference
 	 * the `app()` instance directly.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return bool
 	 */
@@ -41,7 +41,7 @@ if ( ! function_exists(__NAMESPACE__ . '\\app' ) ) {
 	 * class. If the `$abstract` parameter is passed in, it'll resolve and
 	 * return the value from the container.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @param string $abstract
 	 * @param array $params

@@ -18,7 +18,7 @@ use Backdrop\Proxies\Proxy;
 /**
  * Application class.
  *
- * @since  2.0.0
+ * @since  1.0.0
  * @access public
  */
 class Application extends Container implements Bootable {
@@ -26,16 +26,16 @@ class Application extends Container implements Bootable {
 	/**
 	 * The current version of the framework.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @var    string
 	 */
-	const VERSION = '2.0.0';
+	const VERSION = '1.0.0';
 
 	/**
 	 * Array of service provider objects.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -44,7 +44,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Array of static proxy classes and aliases.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -53,7 +53,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Array of booted service providers.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -62,7 +62,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Array of registered proxies.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @var    array
 	 */
@@ -72,7 +72,7 @@ class Application extends Container implements Bootable {
 	 * Registers the default bindings, providers, and proxies for the
 	 * framework.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -85,7 +85,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Calls the functions to register and boot providers and proxies.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -102,7 +102,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Registers the default bindings we need to run the framework.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -118,7 +118,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Adds the default static proxy classes.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -131,7 +131,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Adds a service provider.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @param  ServiceProvider|string  $provider
 	 * @return void
@@ -153,7 +153,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Creates a new instance of a service provider class.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @param  object    $provider
 	 * @return object
@@ -166,7 +166,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Calls a service provider's `register()` method if it exists.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @param object $provider
 	 * @return void
@@ -182,7 +182,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Calls a service provider's `boot()` method if it exists.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @param  object	$provider
 	 * @return void
@@ -205,7 +205,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Returns an array of service providers.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @return array
 	 */
@@ -217,7 +217,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Calls the `boot()` method of all the registered service providers.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @return void
 	 */
@@ -232,7 +232,7 @@ class Application extends Container implements Bootable {
 	 * Adds a static proxy alias. Developers must pass in fully-qualified
 	 * class name and alias class name.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @param  string  $class_name
 	 * @param  string  $alias
@@ -245,7 +245,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Registers a static proxy class alias.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access public
 	 * @param  string  $class
 	 * @param  string  $alias
@@ -263,7 +263,7 @@ class Application extends Container implements Bootable {
 	/**
 	 * Registers the static proxy classes.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @access protected
 	 * @return void
 	 */
