@@ -89,7 +89,7 @@ class Application extends Container implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function boot() {
+	public function boot(): void {
 
 		$this->bootProviders();
 		$this->registerProxies();
@@ -106,7 +106,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @return void
 	 */
-	protected function registerDefaultBindings() {
+	protected function registerDefaultBindings(): void {
 
 		// Add the instance of this application.
 		$this->instance( 'app', $this );
@@ -122,7 +122,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @return void
 	 */
-	protected function registerDefaultProxies() {
+	protected function registerDefaultProxies(): void {
 
 		// Makes the `Backdrop\App` class an alias for the app.
 		$this->proxy( App::class, 'Backdrop\App' );
@@ -136,7 +136,7 @@ class Application extends Container implements Bootable {
 	 * @param  ServiceProvider|string  $provider
 	 * @return void
 	 */
-	public function provider( $provider ) {
+	public function provider( ServiceProvider|string $provider ): void {
 
 		// If passed a class name, resolve provider.
 		if ( is_string( $provider ) ) {
@@ -158,7 +158,7 @@ class Application extends Container implements Bootable {
 	 * @param  object    $provider
 	 * @return object
 	 */
-	protected function resolveProvider( $provider ) {
+	protected function resolveProvider( object $provider ): object {
 
 		return new $provider( $this );
 	}
@@ -171,7 +171,7 @@ class Application extends Container implements Bootable {
 	 * @param object $provider
 	 * @return void
 	 */
-	protected function registerProvider( $provider ) {
+	protected function registerProvider( object $provider ): void {
 
 		if ( method_exists( $provider, 'register' ) ) {
 
@@ -187,7 +187,7 @@ class Application extends Container implements Bootable {
 	 * @param  object	$provider
 	 * @return void
 	 */
-	protected function bootProvider( $provider ) {
+	protected function bootProvider( object $provider ): void {
 
 		$class_name = get_class( $provider );
 
@@ -221,9 +221,10 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @return void
 	 */
-	protected function bootProviders() {
+	protected function bootProviders(): void {
 
 		foreach ( $this->getProviders() as $provider ) {
+
 			$this->bootProvider( $provider );
 		}
 	}
@@ -238,7 +239,8 @@ class Application extends Container implements Bootable {
 	 * @param  string  $alias
 	 * @return void
 	 */
-	public function proxy( string $class_name, string $alias ) {
+	public function proxy( string $class_name, string $alias ): void {
+
 		$this->proxies[ $class_name ] = $alias;
 	}
 
@@ -251,7 +253,7 @@ class Application extends Container implements Bootable {
 	 * @param  string  $alias
 	 * @return void
 	 */
-	protected function registerProxy( string $class, string $alias ) {
+	protected function registerProxy( string $class, string $alias ): void {
 
 		if ( ! class_exists( $alias ) ) {
 			class_alias( $class, $alias );
@@ -267,7 +269,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @return void
 	 */
-	protected function registerProxies() {
+	protected function registerProxies(): void {
 
 		// Only set the container on the first call.
 		if ( ! $this->registered_proxies ) {
