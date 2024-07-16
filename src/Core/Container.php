@@ -119,7 +119,7 @@ class Container implements ArrayAccess {
 	 * @param  bool    $shared
 	 * @return void
 	 */
-	public function add( string $abstract, $concrete = null, bool $shared = false ): void;
+	public function add( string $abstract, $concrete = null, bool $shared = false ): void {
 
 		if ( ! $this->bound( $abstract ) ) {
 
