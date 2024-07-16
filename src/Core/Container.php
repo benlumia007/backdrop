@@ -304,10 +304,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  string  $offset
+	 * @param  mixed $offset
 	 * @return bool
 	 */
-	public function offsetExists( string $offset ): bool {
+	public function offsetExists( mixed $offset ): bool {
 
 		return $this->bound( $offset );
 	}
