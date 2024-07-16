@@ -22,7 +22,7 @@
     },
     "require": {
         "php": ">=7.1",
-        "backdrop-dev/contracts": "1.0.x-dev"
+        "backdrop-dev/contracts": "^1.0"
     },
     "minimum-stability": "dev",
 	"prefer-stable": true
