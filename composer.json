@@ -21,7 +21,8 @@
 		]
     },
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.1",
+        "backdrop-dev/contracts": "^1.0"
     },
     "minimum-stability": "dev",
 	"prefer-stable": true
