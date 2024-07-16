@@ -344,10 +344,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  string  $offset
+	 * @param  mixed  $offset
 	 * @return void
 	 */
-	public function offsetUnset( string $offset ): void {
+	public function offsetUnset( mixed $offset ): void {
 
 		$this->remove( $offset );
 	}
