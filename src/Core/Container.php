@@ -91,7 +91,7 @@ class Container implements ArrayAccess {
 	 * @param  bool   $shared
 	 * @return void
 	 */
-	public function bind( string $abstract, $concrete = null, bool $shared = false ) {
+	public function bind( string $abstract, $concrete = null, bool $shared = false ): void;
 
 		// Drop all the stale instances and aliases
 		unset( $this->instances[ $abstract ] );
@@ -119,7 +119,7 @@ class Container implements ArrayAccess {
 	 * @param  bool    $shared
 	 * @return void
 	 */
-	public function add( string $abstract, $concrete = null, bool $shared = false ) {
+	public function add( string $abstract, $concrete = null, bool $shared = false ): void;
 
 		if ( ! $this->bound( $abstract ) ) {
 
@@ -135,7 +135,7 @@ class Container implements ArrayAccess {
 	 * @param  string  $abstract
 	 * @return void
 	 */
-	public function remove( string $abstract ) {
+	public function remove( string $abstract ): void;
 
 		if ( $this->bound( $abstract ) ) {
 
@@ -209,14 +209,10 @@ class Container implements ArrayAccess {
 	/**
 	 * Alias for `resolve()`.
 	 *
-	 * Follows the PSR-11 standard. Do not alter.
-	 * @link https://www.php-fig.org/psr/psr-11/
-	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @param string $abstract
-	 * @return object
-	 * @throws ReflectionException
+	 * @return mixed
 	 */
 	public function get( string $abstract ) {
 
@@ -248,7 +244,7 @@ class Container implements ArrayAccess {
 	 * @param  object  $concrete
 	 * @return void
 	 */
-	public function singleton( string $abstract, $concrete = null ) {
+	public function singleton( string $abstract, mixed $concrete = null ): void {
 
 		$this->add( $abstract, $concrete, true );
 	}
@@ -280,7 +276,7 @@ class Container implements ArrayAccess {
 	 * @param  Closure $closure
 	 * @return void
 	 */
-	public function extend( string $abstract, Closure $closure ) {
+	public function extend( string $abstract, Closure $closure ): void {
 
 		$abstract = $this->getAlias( $abstract );
 
@@ -298,7 +294,7 @@ class Container implements ArrayAccess {
 	 * @param  string  $alias
 	 * @return void
 	 */
-	public function alias( string $abstract, string $alias ) {
+	public function alias( string $abstract, string $alias ): void {
 
 		$this->aliases[ $alias ] = $abstract;
 	}
@@ -308,10 +304,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  mixed  $offset
+	 * @param  string  $offset
 	 * @return bool
 	 */
-	public function offsetExists( $offset ): bool {
+	public function offsetExists( string $offset ): bool {
 
 		return $this->bound( $offset );
 	}
@@ -321,11 +317,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param mixed $offset
-	 * @return false|object
-	 * @throws ReflectionException
+	 * @param string $offset
+	 * @return mixed
 	 */
-	public function offsetGet( $offset ) : mixed {
+	public function offsetGet( string $offset ) {
 
 		return $this->get( $offset );
 	}
@@ -335,11 +330,11 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  mixed  $offset
+	 * @param  string  $offset
 	 * @param  mixed   $value
 	 * @return void
 	 */
-	public function offsetSet( $offset, $value ): void {
+	public function offsetSet( string $offset, $value ): void {
 
 		$this->add( $offset, $value );
 	}
@@ -349,10 +344,10 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  mixed  $offset
+	 * @param  string  $offset
 	 * @return void
 	 */
-	public function offsetUnset( $offset ): void {
+	public function offsetUnset( string $offset ): void {
 
 		$this->remove( $offset );
 	}
@@ -366,7 +361,7 @@ class Container implements ArrayAccess {
 	 * @param  string    $abstract
 	 * @return string
 	 */
-	protected function getAlias( string $abstract ) : string {
+	protected function getAlias( string $abstract ): string {
 
 		if ( isset( $this->aliases[ $abstract ] ) ) {
 
@@ -420,9 +415,8 @@ class Container implements ArrayAccess {
 	 * @param mixed $concrete
 	 * @param array $parameters
 	 * @return object
-	 * @throws ReflectionException
 	 */
-	protected function build( $concrete, array $parameters = [] ) {
+	protected function build( $concrete, array $parameters = [] ): object {
 
 		if ( $concrete instanceof Closure ) {
 			return $concrete( $this, $parameters );
@@ -510,7 +504,7 @@ class Container implements ArrayAccess {
 	 * @param  object    $dependency
 	 * @return array
 	 */
-	protected function getReflectionTypes( $dependency ) {
+	protected function getReflectionTypes( object $dependency ): array {
 		$types = $dependency->getType();
 
 		if ( ! $types ) {
@@ -531,7 +525,6 @@ class Container implements ArrayAccess {
 	 * @param  mixed   $value
 	 * @return void
 	 */
-	public function __set( string $name, $value ) {
 
 		$this->add( $name, $value );
 	}
@@ -544,7 +537,7 @@ class Container implements ArrayAccess {
 	 * @param  string  $name
 	 * @return void
 	 */
-	public function __unset( string $name ) {
+	public function __unset( string $name ): void {
 
 		$this->remove( $name );
 	}
@@ -568,8 +561,7 @@ class Container implements ArrayAccess {
 	 * @since  1.0.0
 	 * @access public
 	 * @param string $name
-	 * @throws ReflectionException
-	 * @return false|object
+	 * @return mixed
 	 */
 	public function __get( string $name ) {
 
