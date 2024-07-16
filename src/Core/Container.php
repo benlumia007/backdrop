@@ -244,7 +244,7 @@ class Container implements ArrayAccess {
 	 * @param  object  $concrete
 	 * @return void
 	 */
-	public function singleton( string $abstract, mixed $concrete = null ): void {
+	public function singleton( string $abstract, $concrete = null ): void {
 
 		$this->add( $abstract, $concrete, true );
 	}
