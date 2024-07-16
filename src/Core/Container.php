@@ -135,7 +135,7 @@ class Container implements ArrayAccess {
 	 * @param  string  $abstract
 	 * @return void
 	 */
-	public function remove( string $abstract ): void;
+	public function remove( string $abstract ): void {
 
 		if ( $this->bound( $abstract ) ) {
 
