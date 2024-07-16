@@ -330,11 +330,11 @@ class Container implements ArrayAccess {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @param  string  $offset
-	 * @param  mixed   $value
+	 * @param  mixed $offset
+	 * @param  mixed $value
 	 * @return void
 	 */
-	public function offsetSet( string $offset, $value ): void {
+	public function offsetSet( mixed $offset, mixed $value ): void {
 
 		$this->add( $offset, $value );
 	}
