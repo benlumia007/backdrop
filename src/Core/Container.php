@@ -91,7 +91,7 @@ class Container implements ArrayAccess {
 	 * @param  bool   $shared
 	 * @return void
 	 */
-	public function bind( string $abstract, $concrete = null, bool $shared = false ): void;
+	public function bind( string $abstract, $concrete = null, bool $shared = false ): void {
 
 		// Drop all the stale instances and aliases
 		unset( $this->instances[ $abstract ] );
