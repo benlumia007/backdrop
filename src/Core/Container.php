@@ -525,6 +525,7 @@ class Container implements ArrayAccess {
 	 * @param  mixed   $value
 	 * @return void
 	 */
+	public function __set( string $name, $value ): void {
 
 		$this->add( $name, $value );
 	}
