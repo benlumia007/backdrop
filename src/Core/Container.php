@@ -414,9 +414,9 @@ class Container implements ArrayAccess {
 	 * @access protected
 	 * @param mixed $concrete
 	 * @param array $parameters
-	 * @return object
+	 * @return mixed
 	 */
-	protected function build( $concrete, array $parameters = [] ): object {
+	protected function build( $concrete, array $parameters = [] ) {
 
 		if ( $concrete instanceof Closure ) {
 			return $concrete( $this, $parameters );
