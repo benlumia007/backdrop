@@ -307,7 +307,7 @@ class Container implements ArrayAccess {
 	 * @param  mixed $offset
 	 * @return bool
 	 */
-	public function offsetExists( mixed $offset ): bool {
+	public function offsetExists( $offset ): bool {
 
 		return $this->bound( $offset );
 	}
@@ -320,7 +320,7 @@ class Container implements ArrayAccess {
 	 * @param mixed $offset
 	 * @return mixed
 	 */
-	public function offsetGet( mixed $offset ) {
+	public function offsetGet( $offset ) {
 
 		return $this->get( $offset );
 	}
@@ -334,7 +334,7 @@ class Container implements ArrayAccess {
 	 * @param  mixed $value
 	 * @return void
 	 */
-	public function offsetSet( mixed $offset, mixed $value ): void {
+	public function offsetSet( $offset, $value ): void {
 
 		$this->add( $offset, $value );
 	}
@@ -347,7 +347,7 @@ class Container implements ArrayAccess {
 	 * @param  mixed  $offset
 	 * @return void
 	 */
-	public function offsetUnset( mixed $offset ): void {
+	public function offsetUnset( $offset ): void {
 
 		$this->remove( $offset );
 	}
