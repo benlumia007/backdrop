@@ -136,7 +136,7 @@ class Application extends Container implements Bootable {
 	 * @param  ServiceProvider|string  $provider
 	 * @return void
 	 */
-	public function provider( ServiceProvider|string $provider ): void {
+	public function provider( $provider ): void {
 
 		// If passed a class name, resolve provider.
 		if ( is_string( $provider ) ) {
