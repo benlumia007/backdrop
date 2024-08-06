@@ -7,8 +7,8 @@
  *
  * @package   Backdrop
  * @author    Benjamin Lu <benlumia007@gmail.com>
- * @copyright 2019-2023. Benjamin Lu
- * @link      https://github.com/benlumia007/backdrop
+ * @copyright 2019 Benjamin Lu
+ * @link      https://github.com/backdrop-dev/framework
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
@@ -27,290 +27,291 @@ use ReflectionException;
  */
 class Container implements ArrayAccess {
 
-	/**
-	 * Stored definitions of objects.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected $bindings = [];
+    /**
+     * Stored definitions of objects.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @var    array
+     */
+    protected array $bindings = [];
 
-	/**
-	 * Array of aliases for bindings.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected $aliases = [];
+    /**
+     * Array of aliases for bindings.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @var    array
+     */
+    protected array $aliases = [];
 
-	/**
-	 * Array of single instance objects.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected $instances = [];
+    /**
+     * Array of single instance objects.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @var    array
+     */
+    protected array $instances = [];
 
-	/**
-	 * Array of object extensions.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @var    array
-	 */
-	protected $extensions = [];
+    /**
+     * Array of object extensions.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @var    array
+     */
+    protected array $extensions = [];
 
-	/**
-	 * Set up a new container.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array  $definitions
-	 * @return void
-	 */
-	public function __construct( array $definitions = [] ) {
+    /**
+     * Set up a new container.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  array  $definitions
+     * @return void
+     */
+    public function __construct( array $definitions = [] ) {
 
-		foreach ( $definitions as $abstract => $concrete ) {
+        foreach ( $definitions as $abstract => $concrete ) {
 
-			$this->add( $abstract, $concrete );
-		}
-	}
+            $this->add( $abstract, $concrete );
+        }
+    }
 
-	/**
-	 * Add a binding. The abstract should be a key, abstract class name, or
-	 * interface name. The concrete should be the concrete implementation of
-	 * the abstract.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string $abstract
-	 * @param  mixed  $concrete
-	 * @param  bool   $shared
-	 * @return void
-	 */
-	public function bind( string $abstract, $concrete = null, bool $shared = false ): void {
+    /**
+     * Add a binding. The abstract should be a key, abstract class name, or
+     * interface name. The concrete should be the concrete implementation of
+     * the abstract.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string $abstract
+     * @param  mixed  $concrete
+     * @param  bool   $shared
+     * @return void
+     */
+    public function bind( string $abstract, $concrete = null, bool $shared = false): void {
 
-		// Drop all the stale instances and aliases
-		unset( $this->instances[ $abstract ] );
+        // Drop all the stale instances and aliases
+        unset( $this->instances[$abstract] );
 
-		/**
-		 * If no concrete type was given, we will simply set the concrete type to the
-		 * abstract type. After, the concrete type to be registered as shared without
-		 * be forced to state their classes in both  of the parameters
-		 */
-		if ( is_null( $concrete ) ) {
-			$concrete = $abstract;
-		}
+        /**
+         * If no concrete type was given, we will simply set the concrete type to the
+         * abstract type. After, the concrete type to be registered as shared without
+         * be forced to state their classes in both  of the parameters
+         */
+        if ( is_null( $concrete ) ) {
+            $concrete = $abstract;
+        }
 
-		$this->bindings[ $abstract ]   = compact( 'concrete', 'shared' );
-		$this->extensions[ $abstract ] = [];
-	}
+        $this->bindings[$abstract] = compact( 'concrete', 'shared' );
+        $this->extensions[$abstract] = [];
+    }
 
-	/**
-	 * Alias for `bind()`.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  mixed   $concrete
-	 * @param  bool    $shared
-	 * @return void
-	 */
-	public function add( string $abstract, $concrete = null, bool $shared = false ): void {
+    /**
+     * Alias for `bind()`.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string  $abstract
+     * @param  mixed   $concrete
+     * @param  bool    $shared
+     * @return void
+     */
+    public function add( string $abstract, $concrete = null, bool $shared = false ): void {
 
-		if ( ! $this->bound( $abstract ) ) {
+        if ( ! $this->bound( $abstract ) ) {
+            $this->bind( $abstract, $concrete, $shared );
+        }
+    }
 
-			$this->bind( $abstract, $concrete, $shared );
-		}
-	}
+    /**
+     * Remove a binding.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string  $abstract
+     * @return void
+     */
+    public function remove( string $abstract ): void {
 
-	/**
-	 * Remove a binding.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @return void
-	 */
-	public function remove( string $abstract ): void {
+        if ($this->bound( $abstract ) ) {
+            unset( $this->bindings[$abstract], $this->instances[$abstract] );
+        }
+    }
 
-		if ( $this->bound( $abstract ) ) {
+    /**
+     * Resolve and return the binding.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param string $abstract
+     * @param array $parameters
+     * @return mixed
+     * @throws ReflectionException
+     */
+    public function resolve( string $abstract, array $parameters = [] ) {
 
-			unset( $this->bindings[ $abstract ], $this->instances[ $abstract ] );
-		}
-	}
+        // Let's grab the true abstract name.
+        $abstract = $this->getAlias( $abstract );
 
-	/**
-	 * Resolve and return the binding.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param string $abstract
-	 * @param array $parameters
-	 * @return mixed
-	 * @throws ReflectionException
-	 */
-	public function resolve( string $abstract, array $parameters = [] ) {
+        /**
+         * if an instance of the type is currently being managed as a singleton
+         * we'll just return an existing instance instead of instantiating a new
+         * instance so the developer can keep using the same objects instance
+         * every time.
+         */
+        if ( isset( $this->instances[$abstract] ) ) {
 
-		// Let's grab the true abstract name.
-		$abstract = $this->getAlias( $abstract );
+            return $this->instances[$abstract];
+        }
 
-		/**
-		 * if an instance of the type is currently being managed as a singleton
-		 * we'll just return an existing instance instead of instantiating a new
-		 * instance so the developer can keep using the same objects instance
-		 * every time.
-		 */
-		if ( isset( $this->instances[ $abstract ] ) ) {
-			return $this->instances[ $abstract ];
-		}
+        // Get the concrete implementation.
+        $concrete = $this->getConcrete($abstract);
 
-		// Get the concrete implementation.
-		$concrete = $this->getConcrete( $abstract );
+        // If we can't build an object, assume we should return the value.
+        if ( ! $this->isBuildable( $concrete ) ) {
 
-		// If we can't build an object, assume we should return the value.
-		if ( ! $this->isBuildable( $concrete ) ) {
+            // If we don't actually have this, return false.
+            if ( ! $this->bound( $abstract ) ) {
 
-			// If we don't actually have this, return false.
-			if ( ! $this->bound( $abstract ) ) {
-				return false;
-			}
+                return false;
+            }
 
-			return $concrete;
-		}
+            return $concrete;
+        }
 
-		// Build the object.
-		$object = $this->build( $concrete, $parameters );
+        // Build the object.
+        $object = $this->build( $concrete, $parameters );
 
-		if ( ! $this->bound( $abstract ) ) {
-			return $object;
-		}
+        if ( ! $this->bound( $abstract ) ) {
 
-		// If shared instance, make sure to store it in the instances
-		// array so that we're not creating new objects later.
-		if ( $this->bindings[ $abstract ]['shared'] && ! isset( $this->instances[ $abstract ] ) ) {
+            return $object;
+        }
 
-			$this->instances[ $abstract ] = $object;
-		}
+        // If shared instance, make sure to store it in the instances
+        // array so that we're not creating new objects later.
+        if ( $this->bindings[$abstract]['shared'] && ! isset( $this->instances[$abstract] ) ) {
 
-		// Run through each of the extensions for the object.
-		foreach ( $this->extensions[ $abstract ] as $extension ) {
+            $this->instances[$abstract] = $object;
+        }
 
-			$object = new $extension( $object, $this );
-		}
+        // Run through each of the extensions for the object.
+        foreach ( $this->extensions[$abstract] as $extension ) {
 
-		// Return the object.
-		return $object;
-	}
+            $object = new $extension( $object, $this );
+        }
 
-	/**
-	 * Alias for `resolve()`.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param string $abstract
-	 * @return mixed
-	 */
-	public function get( string $abstract ) {
+        // Return the object.
+        return $object;
+    }
 
-		return $this->resolve( $abstract );
-	}
+    /**
+     * Alias for `resolve()`.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param string $abstract
+     * @return mixed
+     */
+    public function get( string $abstract ) {
 
-	/**
-	 * Check if a binding exists.
-	 *
-	 * Follows the PSR-11 standard. Do not alter.
-	 * @link https://www.php-fig.org/psr/psr-11/
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @return bool
-	 */
-	public function bound( string $abstract ): bool {
+        return $this->resolve( $abstract );
+    }
 
-		return isset( $this->bindings[ $abstract ] ) || isset( $this->instances[ $abstract ] );
-	}
+    /**
+     * Check if a binding exists.
+     *
+     * Follows the PSR-11 standard. Do not alter.
+     * @link https://www.php-fig.org/psr/psr-11/
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string  $abstract
+     * @return bool
+     */
+    public function bound( string $abstract ): bool {
 
-	/**
-	 * Add a shared binding.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  object  $concrete
-	 * @return void
-	 */
-	public function singleton( string $abstract, $concrete = null ): void {
+		return isset( $this->bindings[$abstract] ) || isset( $this->instances[$abstract] );
+    }
 
-		$this->add( $abstract, $concrete, true );
-	}
+    /**
+     * Add a shared binding.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string  $abstract
+     * @param  object  $concrete
+     * @return void
+     */
+    public function singleton( string $abstract, $concrete = null ): void {
 
-	/**
-	 * Add an existing instance. This can be an instance of an object or a
-	 * single value that should be stored.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  mixed   $instance
-	 * @return mixed
-	 */
-	public function instance( string $abstract, $instance ) {
+        $this->add( $abstract, $concrete, true );
+    }
 
-		$this->instances[ $abstract ] = $instance;
+    /**
+     * Add an existing instance. This can be an instance of an object or a
+     * single value that should be stored.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string  $abstract
+     * @param  mixed   $instance
+     * @return mixed
+     */
+    public function instance( string $abstract, $instance ) {
+
+        $this->instances[$abstract] = $instance;
 
 		return $instance;
-	}
+    }
 
-	/**
-	 * Extend a binding with something like a decorator class. Cannot
-	 * extend resolved instances.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  Closure $closure
-	 * @return void
-	 */
-	public function extend( string $abstract, Closure $closure ): void {
+    /**
+     * Extend a binding with something like a decorator class. Cannot
+     * extend resolved instances.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string  $abstract
+     * @param  Closure $closure
+     * @return void
+     */
+    public function extend( string $abstract, Closure $closure ): void {
 
 		$abstract = $this->getAlias( $abstract );
 
-		$this->extensions[ $abstract ][] = $closure;
-	}
+        $this->extensions[$abstract][] = $closure;
+    }
 
 
-	/**
-	 * Creates an alias for an abstract type. This allows you to add alias
-	 * names that are easier to remember rather than using full class names.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $abstract
-	 * @param  string  $alias
-	 * @return void
-	 */
-	public function alias( string $abstract, string $alias ): void {
+    /**
+     * Creates an alias for an abstract type. This allows you to add alias
+     * names that are easier to remember rather than using full class names.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string  $abstract
+     * @param  string  $alias
+     * @return void
+     */
+    public function alias( string $abstract, string $alias ): void {
 
-		$this->aliases[ $alias ] = $abstract;
-	}
+        $this->aliases[$alias] = $abstract;
+    }
 
-	/**
-	 * Checks if a property exists via `ArrayAccess`.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  mixed $offset
-	 * @return bool
-	 */
-	public function offsetExists( mixed $offset ): bool {
+    /**
+     * Checks if a property exists via `ArrayAccess`.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  mixed $offset
+     * @return bool
+     */
+    public function offsetExists( $offset ): bool {
 
-		return $this->bound( $offset );
-	}
+        return $this->bound( $offset );
+    }
 
 	/**
 	 * Returns a property via `ArrayAccess`.
@@ -320,215 +321,216 @@ class Container implements ArrayAccess {
 	 * @param mixed $offset
 	 * @return mixed
 	 */
-	public function offsetGet( mixed $offset ) {
+	public function offsetGet( $offset ) {
 
 		return $this->get( $offset );
 	}
 
-	/**
-	 * Sets a property via `ArrayAccess`.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  mixed $offset
-	 * @param  mixed $value
-	 * @return void
-	 */
-	public function offsetSet( mixed $offset, mixed $value ): void {
+    /**
+     * Sets a property via `ArrayAccess`.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  mixed $offset
+     * @param  mixed $value
+     * @return void
+     */
+    public function offsetSet($offset, $value): void {
 
 		$this->add( $offset, $value );
-	}
+    }
 
-	/**
-	 * Unsets a property via `ArrayAccess`.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  mixed  $offset
-	 * @return void
-	 */
-	public function offsetUnset( mixed $offset ): void {
+    /**
+     * Unsets a property via `ArrayAccess`.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  mixed  $offset
+     * @return void
+     */
+    public function offsetUnset( $offset ): void {
 
 		$this->remove( $offset );
-	}
+    }
 
-	/**
-	 * Checks if we're dealing with an alias and returns the abstract. If
-	 * not an alias, return the abstract passed in.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @param  string    $abstract
-	 * @return string
-	 */
-	protected function getAlias( string $abstract ): string {
+    /**
+     * Checks if we're dealing with an alias and returns the abstract. If
+     * not an alias, return the abstract passed in.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @param  string    $abstract
+     * @return string
+     */
+    protected function getAlias( string $abstract ): string {
+        if ( isset( $this->aliases[$abstract] ) ) {
 
-		if ( isset( $this->aliases[ $abstract ] ) ) {
+			return $this->aliases[$abstract];
+        }
 
-			return $this->aliases[ $abstract ];
-		}
+        return $abstract;
+    }
 
-		return $abstract;
-	}
+    /**
+     * Gets the concrete of an abstract.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @param  string    $abstract
+     * @return mixed
+     */
+    protected function getConcrete( string $abstract ) {
 
-	/**
-	 * Gets the concrete of an abstract.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @param  string    $abstract
-	 * @return mixed
-	 */
-	protected function getConcrete( string $abstract ) {
+        $concrete = false;
+        $abstract = $this->getAlias( $abstract );
 
-		$concrete = false;
-		$abstract = $this->getAlias( $abstract );
+        if ( $this->bound( $abstract ) ) {
 
-		if ( $this->bound( $abstract ) ) {
-			$concrete = $this->bindings[ $abstract ]['concrete'];
-		}
+			$concrete = $this->bindings[$abstract]['concrete'];
+        }
 
-		return $concrete ?: $abstract;
-	}
+        return $concrete ?: $abstract;
+    }
 
-	/**
-	 * Determines if a concrete is buildable. It should either be a closure
-	 * or a concrete class.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @param  mixed    $concrete
-	 * @return bool
-	 */
-	protected function isBuildable( $concrete ): bool {
+    /**
+     * Determines if a concrete is buildable. It should either be a closure
+     * or a concrete class.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @param  mixed    $concrete
+     * @return bool
+     */
+    protected function isBuildable( $concrete ): bool {
 
-		return $concrete instanceof Closure || ( is_string( $concrete ) && class_exists( $concrete ) );
-	}
+        return $concrete instanceof Closure || ( is_string( $concrete ) && class_exists( $concrete ) );
+    }
 
-	/**
-	 * Builds the concrete implementation. If a closure, we'll simply return
-	 * the closure and pass the included parameters. Otherwise, we'll resolve
-	 * the dependencies for the class and return a new object.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @param mixed $concrete
-	 * @param array $parameters
-	 * @return mixed
-	 */
-	protected function build( $concrete, array $parameters = [] ) {
+    /**
+     * Builds the concrete implementation. If a closure, we'll simply return
+     * the closure and pass the included parameters. Otherwise, we'll resolve
+     * the dependencies for the class and return a new object.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @param mixed $concrete
+     * @param array $parameters
+     * @return mixed
+     */
+    protected function build( $concrete, array $parameters = [] ) {
 
-		if ( $concrete instanceof Closure ) {
+        if ( $concrete instanceof Closure ) {
+
 			return $concrete( $this, $parameters );
-		}
+        }
 
-		$reflect = new ReflectionClass( $concrete );
+        $reflect = new ReflectionClass( $concrete );
+        $constructor = $reflect->getConstructor();
 
-		$constructor = $reflect->getConstructor();
+        if ( ! $constructor ) {
 
-		if ( ! $constructor ) {
 			return new $concrete();
-		}
+        }
 
-		return $reflect->newInstanceArgs(
-			$this->resolveDependencies( $constructor->getParameters(), $parameters )
-		);
-	}
+        return $reflect->newInstanceArgs( $this->resolveDependencies( $constructor->getParameters(), $parameters ) );
+    }
 
-	/**
-	 * Resolves the dependencies for a method's parameters.
-	 *
-	 * @todo Handle errors when we can't solve a dependency.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @param array $dependencies
-	 * @param array $parameters
-	 * @return array
-	 * @throws ReflectionException
-	 */
-	protected function resolveDependencies( array $dependencies, array $parameters ): array {
+    /**
+     * Resolves the dependencies for a method's parameters.
+     *
+     * @todo Handle errors when we can't solve a dependency.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @param array $dependencies
+     * @param array $parameters
+     * @return array
+     * @throws ReflectionException
+     */
+    protected function resolveDependencies( array $dependencies, array $parameters ): array {
 
 		$args = [];
 
-		foreach ( $dependencies as $dependency ) {
+        foreach ( $dependencies as $dependency ) {
 
-			// If a dependency is set via the parameters passed in, use it.
-			if ( isset( $parameters[ $dependency->getName() ] ) ) {
+            // If a dependency is set via the parameters passed in, use it.
+            if ( isset( $parameters[$dependency->getName() ] ) ) {
 
-				$args[] = $parameters[ $dependency->getName() ];
+				$args[] = $parameters[$dependency->getName()];
+                continue;
+            }
 
-				continue;
-			}
+            // If the parameter is a class, resolve it.
+            $types = $this->getReflectionTypes( $dependency );
 
-			// If the parameter is a class, resolve it.
-			$types = $this->getReflectionTypes( $dependency );
+            if ( $types ) {
+                $resolved_type = false;
 
-			if ( $types ) {
-				$resolved_type = false;
+                foreach ( $types as $type ) {
 
-				foreach ( $types as $type ) {
-					if ( class_exists( $type->getName() ) ) {
-						$args[] = $this->resolve(
-							$type->getName()
-						);
-						$resolved_type = true;
-					}
-				}
+                    if ( class_exists( $type->getName() ) ) {
 
-				if ( $resolved_type ) {
-					continue;
-				}
-			}
+                        $args[] = $this->resolve( $type->getName() );
+                        $resolved_type = true;
+                    }
+                }
 
-			// Else, use the default parameter value.
-			if ( $dependency->isDefaultValueAvailable() ) {
+                if ( $resolved_type ) {
+                    continue;
+                }
+            }
+
+            // Else, use the default parameter value.
+            if ( $dependency->isDefaultValueAvailable() ) {
 
 				$args[] = $dependency->getDefaultValue();
-			}
-		}
+            }
+        }
 
-		return $args;
+        return $args;
+    }
 
-	}
+    /**
+     * `ReflectionParameter::getType()` in PHP may return an instance of
+     * `ReflectionNamedType` or an `ReflectionUnionType`.  The latter class's
+     * `getTypes()` method returns and array of the former objects. This
+     * method ensures that we always get an array of `ReflectionNamedType`
+     * objects.
+     *
+     * @since  1.0.0
+     * @access protected
+     * @param  object    $dependency
+     * @return array
+     */
+    protected function getReflectionTypes( object $dependency ): array {
 
-	/**
-	 * `ReflectionParameter::getType()` in PHP may return an instance of
-	 * `ReflectionNamedType` or an `ReflectionUnionType`.  The latter class's
-	 * `getTypes()` method returns and array of the former objects. This
-	 * method ensures that we always get an array of `ReflectionNamedType`
-	 * objects.
-	 *
-	 * @since  1.0.0
-	 * @access protected
-	 * @param  object    $dependency
-	 * @return array
-	 */
-	protected function getReflectionTypes( object $dependency ): array {
-		$types = $dependency->getType();
+        $types = $dependency->getType();
 
-		if ( ! $types ) {
+        if ( !$types ) {
+
 			return [];
-		} elseif ( class_exists( 'ReflectionUnionType' ) && $types instanceof \ReflectionUnionType ) {
+        } elseif ( class_exists( 'ReflectionUnionType' ) && $types instanceof \ReflectionUnionType ) {
+
 			return $types->getTypes();
-		}
+        }
 
-		return [ $types ];
-	}
+        return [$types];
+    }
 
-	/**
-	 * Magic method when trying to set a property.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $name
-	 * @param  mixed   $value
-	 * @return void
-	 */
-	public function __set( string $name, $value ): void {
+    /**
+     * Magic method when trying to set a property.
+     *
+     * @since  1.0.0
+     * @access public
+     * @param  string  $name
+     * @param  mixed   $value
+     * @return void
+     */
+    public function __set( string $name, $value ): void {
 
-		$this->add( $name, $value );
-	}
+		$this->add($name, $value);
+    }
+
 
 	/**
 	 * Magic method when trying to unset a property.
@@ -557,13 +559,13 @@ class Container implements ArrayAccess {
 	}
 
 	/**
-	 * Magic method when trying to get a property.
-	 *
+	* Magic method when trying to get a property.
+	*
 	 * @since  1.0.0
 	 * @access public
 	 * @param string $name
 	 * @return mixed
-	 */
+	*/
 	public function __get( string $name ) {
 
 		return $this->get( $name );
