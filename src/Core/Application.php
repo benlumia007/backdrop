@@ -48,7 +48,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $proxies = [];
+	protected array $proxies = [];
 
 	/**
 	 * Array of booted service providers.
@@ -57,7 +57,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $booted_providers = [];
+	protected array $booted_providers = [];
 
 	/**
 	 * Array of registered proxies.
@@ -66,7 +66,7 @@ class Application extends Container implements Bootable {
 	 * @access protected
 	 * @var    array
 	 */
-	protected $registered_proxies = [];
+	protected array $registered_proxies = [];
 
 	/**
 	 * Registers the default bindings, providers, and proxies for the
